@@ -13,7 +13,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
 <style>:root{--paper:#F4F2EC;--paper-2:#EBE8DF;--card:#FBFAF6;--ink:#13161D;--ink-2:#444956;--ink-3:#646A78;
---line:#D6D1C4;--line-2:#E5E1D6;--ref:#7C766A;--you:#2442E6;--ai:#E0522B;--ok:#17794F;--warn:#A8620A;--truth:#13161D;
+--line:#D6D1C4;--line-2:#E5E1D6;--ref:#7C766A;--you:#2442E6;--ai:#B8401C;--ok:#17794F;--warn:#8A5208;--truth:#13161D;
 --you-bg:#E4E8FC;--ai-bg:#FBE6DE;--ok-bg:#E1F0E7;--warn-bg:#F6EAD3;--on-ink:#F4F2EC;--shadow:0 1px 0 rgba(19,22,29,.04),0 18px 40px -22px rgba(19,22,29,.28);
 --grain:.05;
 --hec:#00447C;}
@@ -30,7 +30,7 @@
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,48px);padding-block:0;min-height:100%;overflow-x:hidden}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--grain);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+body::before{content:none;position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--grain);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
 .wrap{max-width:1280px;margin-inline:auto;position:relative;z-index:1}
 h1,h2,h3,h4{font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.01em;margin:0;text-wrap:balance}
 p{margin:0;text-wrap:pretty}
@@ -39,6 +39,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .mono,.eyebrow{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase}
 .eyebrow{color:var(--ink-3)}
 :focus-visible{outline:2px solid var(--you);outline-offset:3px;border-radius:4px}
+h1[tabindex="-1"]:focus{outline:none}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 
 /* top bar */
@@ -53,7 +54,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .nav button[aria-current=page]{color:var(--ink)}
 .nav .bar{position:absolute;bottom:0;height:2px;background:var(--ink);border-radius:2px;transition:left .35s cubic-bezier(.3,.8,.2,1),width .35s cubic-bezier(.3,.8,.2,1);pointer-events:none}
 .icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;flex:none;transition:transform .2s,border-color .2s}
-.icon-btn:hover{transform:rotate(18deg);border-color:var(--ink-3)}
+.icon-btn:hover{border-color:var(--ink-3)}
 .icon-btn svg{width:18px;height:18px}
 @media(max-width:640px){.top{gap:10px;padding-block:10px 2px}.brand span{display:none}.top-in{gap:4px 8px;flex-wrap:wrap}.icon-btn{margin-left:auto}.nav{order:3;flex:1 1 100%;margin-left:0;gap:0;justify-content:space-between;overflow:visible}.nav button{padding:8px 3px;font-size:.85rem}}
 
@@ -252,7 +253,7 @@ table.t td:first-child{color:var(--ink-3);width:28%}
 .steps b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:500}
 .steps .on{color:var(--ink)}
 .steps .on b{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
-.steps .done b{background:var(--ok);color:#fff;border-color:var(--ok)}
+.steps .done b{background:var(--ok);color:var(--on-ink);border-color:var(--ok)}
 .steps i{width:24px;height:1px;background:var(--line)}
 .brief{font-family:'Instrument Serif',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.28;max-width:30em}
 .chips{display:flex;gap:6px;flex-wrap:wrap}
@@ -297,8 +298,8 @@ table.t td:first-child{color:var(--ink-3);width:28%}
 .sides{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
 .checks{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:2px}
 .chk{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:9px 6px;border-radius:10px;transition:background .3s}
-.chk .ic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;border:1.5px solid var(--line);color:var(--ink-3);transition:all .35s cubic-bezier(.3,1.6,.5,1)}
-.chk.ok .ic{background:var(--ok);border-color:var(--ok);color:#fff;transform:scale(1.08)}
+.chk .ic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;border:1.5px solid var(--line);color:var(--ink-3);transition:background-color .2s,border-color .2s,color .2s}
+.chk.ok .ic{background:var(--ok);border-color:var(--ok);color:var(--on-ink)}
 .chk.warn .ic{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
 .chk b{font-weight:600;display:block;font-size:.95rem}
 .chk span.d{display:block;color:var(--ink-2);font-size:.86rem}
@@ -383,7 +384,7 @@ const DIRS = [
   { n: 14, g: 'va', t: 'Leverage strategic resources', q: 'Which resources or expertise do you underuse that others might want?' }
 ];
 
-/* kind: course = read from textbook or slides; analysis = Capo's Assignment 1; built = constructed for this tool from course concepts */
+/* kind: course = read from textbook or slides; analysis = the author's own Assignment 1; built = constructed for this tool from course concepts */
 const CASES = [
   {
     id: 'fairphone', name: 'Fairphone', vs: 'iPhone', kind: 'course', year: '2013', place: 'Netherlands',
@@ -451,12 +452,13 @@ const CASES = [
       ['Sourcing', 'The brand\'s own workshop scraps, at almost no material cost.'],
       ['Design', 'External artists and craftsmen with carte blanche.'],
       ['Production', 'A dedicated, multi-skilled re-creation workshop.'],
+      ['Promotion', 'Editorial content and events.'],
       ['Distribution', 'Pop-up stores and infrequent sales, mostly inside existing Hermès boutiques.']
     ],
     contrib: {
-      fin: ['Negligible material cost, but a higher production cost per piece.', 'No dedicated fixed assets.', 'First permanent store opened in 2021 (67 square metres), after exhibitions since 2011.'],
+      fin: ['Prices vary greatly from piece to piece.', 'Negligible material cost, but a higher production cost per piece.', '"Free" editorial communication.', 'No dedicated fixed assets.', 'First permanent store opened in 2021 (67 square metres), after exhibitions since 2011.'],
       env: ['Less pollution because discarded materials are reused.'],
-      soc: ['Work for artists and craftsmen in a dedicated workshop.']
+      soc: ['Not specified in the textbook grid.']
     },
     brief: 'Hermès is exacting about the quality of materials and finished goods, so many are rejected. They cannot be discounted without hurting the brand. Petit h recovers them and gives them to artists and craftsmen, who turn them into unique objects sold in seasonal exhibitions.'
   },
@@ -489,16 +491,16 @@ const CASES = [
       ['Extensions', 'Services based on its know-how and a portfolio of its own consumer brands.']
     ],
     contrib: {
-      fin: ['Raised 350 million dollars by 2021.', 'Approved in the United States and, in 2022, in India.', 'Acquired a gelatin company in India.'],
+      fin: ['Revenue from the protein sold to food companies, by volume.', 'Costs: R&D, procurement, production and marketing.', 'Capital employed: labs, fermentation equipment and buildings, so the model is capital-heavy.', 'Results: raised 350 million dollars by 2021, approved in the United States and, in 2022, in India.'],
       env: ['97% less greenhouse gas, 99% less water and up to 60% less non-renewable energy than dairy-derived whey.'],
-      soc: ['Animal welfare concerns are met without the cow.']
+      soc: ['An allergy- and residue-free product.']
     },
     brief: 'Demand for food without animal ingredients keeps growing, driven by concern about carbon and animal welfare. Founded in 2016, Perfect Day uses a modified microflora fed on plant sugars to make the protein responsible for the taste and texture of milk, and sells it to food companies.'
   },
   {
     id: 'michelin', name: 'Michelin Fleet Solutions', vs: 'Tire sales', kind: 'course', year: '2000', place: 'France',
     tag: 'Selling kilometres, not tires',
-    source: 'Session 4-5 slide and HEC case',
+    source: 'Session 5 slide and HEC case',
     prov: 'Curves read from the course slide. The slide shows no point for the tire-sale offer on variable costs and image, so those two reference levels are our estimate and are marked.',
     summary: 'Michelin stopped selling tires to large European fleets and sold a tire-management service billed per kilometre. Three years in, expansion was far below expectations and the unit was still unprofitable.',
     practice: true,
@@ -508,7 +510,7 @@ const CASES = [
         ['Value for money (TCO)', 2, 4, 'One fee per kilometre covers tires and maintenance, so the fleet pays for use, not for rubber.'],
         ['Ease of maintenance', 2, 4, 'Maintenance is handled through Michelin\'s network, so the fleet manager does not handle it.'],
         ['Ease of switching suppliers', 4.5, 1, 'The contract locks the customer in. This is the one attribute where the new offer is worse.'],
-        ['Carbon footprint', 3.5, 4.5, 'Regrooving and retreading extend the life of each tire.'],
+        ['Low carbon footprint', 3.5, 4.5, 'The slide calls it "carbon footprint" and puts the better offer higher. Regrooving and retreading extend the life of each tire.'],
         ['Variable costs', 2, 4.5, 'Costs follow the kilometres driven. The reference level is our estimate.', 'r'],
         ['Image (in case of accident)', 3, 4.5, 'Well-maintained tires protect the carrier\'s image after an accident. The reference level is our estimate.', 'r']
       ]
@@ -581,7 +583,7 @@ const CASES = [
     source: 'Built for this tool from Session 6',
     prov: 'Constructed from course concepts, not read from a course chart. The course supplies the platform logic and the move of the fee from sellers to buyers. The levels are our judgement, so challenge them.',
     summary: 'Vinted is a two-sided second-hand platform. Its key move was a business model change, charging the buyer a protection fee at checkout instead of charging the seller.',
-    practice: false,
+    practice: true,
     sides: [
       {
         name: 'Buyers', ref: 'A thrift store', neu: 'Vinted',
@@ -655,7 +657,8 @@ const CASES = [
     dirs: [
       [6, 'Farmers are connected directly with buyers.'],
       [5, 'Codes from games enter shopping, described as "Costco meets Disneyland".'],
-      [9, 'Middlemen are removed and goods ship directly from the source.']
+      [10, 'Middlemen are removed from the chain and goods ship directly from the source.'],
+      [14, 'The buyers themselves are the resource: their social networks bring in more buyers. Session 6 asks how Pinduoduo used its buyers.']
     ],
     arch: [
       ['Chicken and egg', 'Buyers came from WeChat\'s existing social graph. Sellers came because the middlemen were removed.'],
@@ -673,13 +676,13 @@ const CASES = [
     tag: 'The rental shop disrupted',
     source: 'Built for this tool from Session 11',
     prov: 'Constructed from course concepts, not read from a course chart. Session 11 gives the Blockbuster and Netflix story and the disruption logic. The levels are our judgement, so challenge them.',
-    summary: 'Netflix replaced the rental shop with a subscription and, later, streaming. The curve shows what viewers gain and what they give up, and why an incumbent paid by late fees found the move hard to copy.',
+    summary: 'Netflix replaced the rental shop with DVDs by mail on subscription, then streaming (2007). Blockbuster did copy it: in 2005 it merged online and in-store rental and briefly had the best offer, then abandoned the move. Session 11 reads this as an incumbent that stopped exploring, not a move that could not be copied.',
     practice: false,
     sides: [{
       name: 'Home movie viewers', ref: 'Blockbuster store rental', neu: 'Netflix',
       attrs: [
         ['Choice of titles', 3, 4.5, 'A shelf is finite, a catalogue is not.'],
-        ['Convenience (no trip)', 1.5, 5, 'No trip to the store and no return.'],
+        ['Convenience (no trip)', 1.5, 5, 'No trip to the store. DVDs by mail still went back in the post; streaming removed even that.'],
         ['Absence of late fees', 1, 5, 'A subscription removes the late fee.'],
         ['Watching right now', 2.5, 5, 'Streaming plays on demand.'],
         ['Personal recommendations', 1.5, 5, 'Viewing data feeds suggestions. The course note says Netflix has had customer data since 1997.'],
@@ -689,7 +692,8 @@ const CASES = [
       ]
     }],
     dirs: [
-      [8, 'The internet delivers the films, and viewing data drives recommendations.'],
+      [8, 'The internet delivers the films: first ordering online, then streaming.'],
+      [14, 'Viewing data collected since 1997 becomes a strategic resource. Session 11: "Data is key", and technology is not the most important part.'],
       [7, 'A subscription replaces a per-rental price with late fees.'],
       [10, 'The physical store and the return trip disappear.']
     ],
@@ -733,6 +737,7 @@ class VC {
   destroy() { this.ro.disconnect(); Object.values(this.tw).forEach(cancelAnimationFrame); }
   set(labels, series, { reveal = true } = {}) {
     this.labels = labels.slice();
+    this.svg.setAttribute('aria-label', 'Value curve on ' + labels.length + ' attributes: ' + labels.map((l, i) => l || 'attribute ' + (i + 1)).join(', '));
     this.series = series.map(s => ({ id: s.id, cls: s.cls, drag: !!s.drag, name: s.name || s.id, vals: s.vals.slice(), show: s.show !== false }));
     if (!this.host.clientWidth) { this.pend = reveal; return; }
     this.pend = undefined; this.build(reveal);
@@ -935,6 +940,7 @@ function go(view, id, extra) {
   if (view === 'practice') S.prac = id ? { caseId: id } : null;
   if (extra) Object.assign(S, extra);
   paint();
+  const h1 = $('#app h1'); if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
   const hash = '#' + view + (id ? '-' + id : '');
   try { if (location.hash !== hash) history.pushState(null, '', hash); else history.replaceState(null, '', hash); } catch (e) {}
   window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
@@ -1046,15 +1052,15 @@ function viewHome(root) {
       h('span', { class: 'ix', text: m[1] }), h('h3', { text: m[2] }), h('p', { text: m[3] }), h('span', { class: 'go' }, m[4], h('span', { class: 'arrow', text: '→' })),
       h('span', { html: '<svg class="bg" viewBox="0 0 150 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 70 L35 30 L70 55 L110 20 L145 40" stroke-dasharray="6 7"/><path d="M5 50 L35 65 L70 25 L110 60 L145 15"/></svg>' })))));
   const cases = h('section', { class: 'sec' },
-    h('div', { class: 'sec-h rv' }, h('h2', { text: 'Eight cases, each labelled by where it comes from' }), h('p', { text: 'Four are read from the textbook, one is the author\'s own analysis from Assignment 1, and three are built here from course concepts.' })),
+    h('div', { class: 'sec-h rv' }, h('h2', { text: 'Eight cases, each labelled by where it comes from' }), h('p', { text: 'Three are read from the textbook and one from the course slides, one is the author\'s own analysis from Assignment 1, and three are built here from course concepts.' })),
     h('div', { class: 'cases' }, CASES.map((c, i) => h('button', { class: 'case rv', style: `--d:${(i % 4) * .07}s`, onclick: () => go('explore', c.id) },
       badge(c), h('h3', { text: c.name }), h('span', { class: 'vs', text: 'vs ' + c.vs }), h('span', { html: spark(c.sides[0]) })))));
   const ground = h('section', { class: 'sec' }, h('div', { class: 'ground rv' },
-    h('div', null, h('span', { class: 'eyebrow', style: 'color:inherit;opacity:.6', text: 'How the feedback is built' }), h('h2', { style: 'margin-top:12px', text: 'It only speaks the language of the course.' }),
+    h('div', null, h('span', { class: 'eyebrow', style: 'color:inherit;opacity:.6', text: 'How the feedback is built' }), h('h2', { style: 'margin-top:12px', text: 'It speaks the language of the course.' }),
       h('p', { style: 'margin-top:16px', text: 'The checks, the questions and the hints you see are built around the course\'s rules and its 14 directions, not around a generic business model template.' }),
       h('div', { style: 'margin-top:24px' }, h('button', { class: 'btn ghost', style: 'color:var(--on-ink);border-color:color-mix(in srgb,var(--on-ink) 40%,transparent)', onclick: () => go('method') }, 'See the method ', h('span', { class: 'arrow', text: '→' })))),
     h('ul', null, [
-      ['1', 'Course concepts only. Value curve rules, the three pillars and the 14 directions.'],
+      ['1', 'Course concepts first. Value curve rules, the three pillars and the 14 directions; the tool\'s own rules of thumb are marked as such.'],
       ['2', 'You draw first. Practice reveals the answer after you commit, and Build checks your curve after you place it.'],
       ['3', 'You bring the facts. The tool never looks a company up, so you must gather and judge the information yourself.'],
       ['4', 'Every number has a label. Estimated points are flagged, and nothing is passed off as official.']
@@ -1071,7 +1077,7 @@ function viewHome(root) {
     dots.querySelectorAll('i').forEach((d, i) => d.classList.toggle('on', i === k % HERO.length));
     chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: sd.attrs.map(a => a[1]) }, { id: 'new', cls: 's-new', vals: sd.attrs.map(a => a[1]) }]);
     later(() => chart.to('new', sd.attrs.map(a => a[2]), 1500), 1300);
-    k++; later(play, 6200);
+    k++; if (k < HERO.length && !RM) later(play, 6200);   // one pass through the cases, then it rests
   };
   play();
 }
@@ -1103,9 +1109,9 @@ function viewExplore(root) {
   const right = h('aside', { class: 'side' }, h('div', { class: 'panel' }, h('h3', { text: 'Why each point sits where it does' }), h('p', { class: 'hint', style: 'margin-bottom:8px', text: 'Select an attribute here or on the chart.' }), listHost));
   drawSide();
   const tabs = h('div', { class: 'tabs', role: 'tablist' }), body = h('div', { class: 'tab-body' });
-  const T = [['vp', 'Directions used'], ['va', 'Value architecture'], ['ct', 'Contributions']];
+  const T = [['vp', 'Directions (our reading)'], ['va', 'Value architecture'], ['ct', 'Contributions']];
   const showTab = k => { S.tab = k; tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.k === k)); body.textContent = '';
-    if (k === 'vp') body.append(h('p', { class: 'hint', style: 'margin-bottom:6px', text: 'Highlighted cards are the directions this case relies on. The others are shown so you can ask whether they were also available.' }), dirGrid(c.dirs));
+    if (k === 'vp') body.append(h('p', { class: 'hint', style: 'margin-bottom:6px', text: 'Highlighted cards are the directions we read in this case: the textbook does not name directions for its cases, so argue with them. The others are shown so you can ask whether they were also available.' }), dirGrid(c.dirs));
     if (k === 'va') body.append(archBlock(c));
     if (k === 'ct') body.append(contribBlock(c)); };
   T.forEach(([k, t]) => tabs.append(h('button', { role: 'tab', 'data-k': k, onclick: () => showTab(k) }, t)));
@@ -1137,7 +1143,7 @@ function viewCompare(root) {
       row('Biggest raise', `${pa.bigUp[0]} (${sgn(pa.bigUp[2] - pa.bigUp[1])})`, `${pb.bigUp[0]} (${sgn(pb.bigUp[2] - pb.bigUp[1])})`),
       row('Biggest cut', pa.dn.length ? `${pa.bigDn[0]} (${sgn(pa.bigDn[2] - pa.bigDn[1])})` : 'Nothing is cut', pb.dn.length ? `${pb.bigDn[0]} (${sgn(pb.bigDn[2] - pb.bigDn[1])})` : 'Nothing is cut'),
       row('Average move per attribute', pa.mean.toFixed(1) + ' points', pb.mean.toFixed(1) + ' points'),
-      row('Directions used', chips(da, both), chips(db, both))));
+      row('Directions (our reading)', chips(da, both), chips(db, both))));
     const obs = [];
     if (pa.dn.length && pb.dn.length) obs.push('Both give something up. That is the course rule at work: a new curve cannot beat the reference on every attribute.');
     else if (pa.dn.length !== pb.dn.length) obs.push(`${pa.dn.length ? A.c.name : B.c.name} gives something up, ${pa.dn.length ? B.c.name : A.c.name} does not in this reading. Ask what the second one trades away that the chart does not show.`);
@@ -1156,7 +1162,8 @@ function viewPractice(root) {
     root.append(h('div', { class: 'pcards' }, CASES.filter(c => c.practice).map(c => { const p = prog[c.id]; return h('button', { class: 'pcard rv', onclick: () => go('practice', c.id) }, badge(c), h('h3', { text: c.name }), h('p', { text: c.tag + '. ' + c.vs + ' is the reference.' }), p ? h('span', { class: 'best', text: `Best so far: ${p.best}%` }) : h('span', { class: 'hint', text: 'Not tried yet' })); })));
     return;
   }
-  const c = caseById(P.caseId), sd = c.sides[0], n = sd.attrs.length, ref = sd.attrs.map(a => a[1]), truth = sd.attrs.map(a => a[2]);
+  const c = caseById(P.caseId), si = Math.min(P.side || 0, c.sides.length - 1), sd = c.sides[si], n = sd.attrs.length, ref = sd.attrs.map(a => a[1]), truth = sd.attrs.map(a => a[2]);
+  const key = c.id + (si ? ':' + si : ''), ours = c.kind !== 'course', truthName = ours ? 'Our reading' : 'The course';
   const st = { vals: ref.slice(), moved: new Set(), dirs: new Set(), why: '', conf: '', done: false };
   const stepsEl = h('div', { class: 'steps' });
   const setSteps = k => { stepsEl.textContent = ''; ['Read the brief', 'Draw your curve', 'Reveal and reflect'].forEach((t, i) => { if (i) stepsEl.append(h('i')); stepsEl.append(h('span', { class: i === k ? 'on' : i < k ? 'done' : '' }, h('b', { text: i < k ? '✓' : String(i + 1) }), t)); }); };
@@ -1164,7 +1171,7 @@ function viewPractice(root) {
   const host = h('div'), legend = h('div', { class: 'legend' }, h('span', null, h('i', { class: 'ref' }), sd.ref + ' (given)'), h('span', null, h('i'), 'Your curve, drag the dots'));
   const chart = mkChart(host, { height: 440, onChange: (id, i) => { st.moved.add(i); upd(); } });
   chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: ref, drag: true, name: 'Your curve' }]);
-  const reveal = h('button', { class: 'btn you', disabled: true, onclick: doReveal }, 'Reveal the course\'s curve ', h('span', { class: 'arrow', text: '→' }));
+  const reveal = h('button', { class: 'btn you', disabled: true, onclick: doReveal }, ours ? 'Reveal our reading ' : 'Reveal the course\'s curve ', h('span', { class: 'arrow', text: '→' }));
   const hintEl = h('p', { class: 'hint', text: 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' });
   function upd() {
     st.vals = chart.get('you').vals.slice();
@@ -1183,43 +1190,46 @@ function viewPractice(root) {
     lbl('Which directions did the company use?'), chips, lbl('Your bet'), why, lbl('How sure are you?'), conf,
     h('div', { class: 'flex', style: 'margin-top:16px' }, reveal), hintEl));
   const right = h('aside', { class: 'side' }, h('div', { class: 'panel' },
-    h('span', { class: 'eyebrow', text: c.name + ' · ' + c.year + ' · ' + c.place }), h('p', { class: 'brief', style: 'margin:10px 0 14px', text: c.brief }),
+    h('span', { class: 'eyebrow', text: c.name + ' · ' + c.year + ' · ' + c.place }), h('p', { class: 'brief', style: 'margin:10px 0 14px', text: c.brief || c.summary }),
+    ours ? h('p', { class: 'hint', style: 'margin-bottom:8px', text: 'This curve is not from a course chart: you are comparing your reading with ours, built from course concepts. Disagree if you can argue it.' }) : null,
     h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` })));
-  root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, h('div', { class: 'two' }, left, right), result);
+  const sideTabs = c.sides.length > 1 ? h('div', { class: 'sides', style: 'margin:0 0 16px' }, h('span', { class: 'hint', text: 'Two customer groups, two curves:' }), c.sides.map((x, i) => h('button', { class: 'chip', 'aria-pressed': i === si, onclick: () => go('practice', c.id, { prac: { caseId: c.id, side: i } }) }, x.name))) : null;
+  root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, sideTabs, h('div', { class: 'two' }, left, right), result);
   upd();
 
   function doReveal() {
     if (st.done) return; st.done = true; setSteps(3); reveal.disabled = true;
     chartCard.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
     const yv = chart.get('you').vals.slice();
-    legend.textContent = ''; legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), 'Your curve'), h('span', null, h('i', { class: 'truth' }), 'The course: ' + sd.neu));
+    legend.textContent = ''; legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), 'Your curve'), h('span', null, h('i', { class: 'truth' }), truthName + ': ' + sd.neu));
     chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: yv }, { id: 'truth', cls: 's-truth', vals: yv.slice() }], { reveal: false });
     chart.showGaps = false; chart.update();
     chart.to('truth', truth, 1600, 300);
     const rows = sd.attrs.map((a, i) => { const d = Math.abs(yv[i] - truth[i]); return { i, a, d, pts: d <= .5 ? 2 : d <= 1 ? 1 : 0 }; });
     const tot = rows.reduce((s, r) => s + r.pts, 0), pct = Math.round(tot / (2 * n) * 100);
     const lab = pct >= 85 ? 'A sharp eye' : pct >= 60 ? 'A good read' : 'Worth a second look';
-    const pd = prog[c.id] || {}; const best = Math.max(pct, pd.best || 0);
+    const pd = prog[key] || {}, lastT = pd.journal && pd.journal.length ? pd.journal[pd.journal.length - 1].t : 0;
+    const retry = Date.now() - lastT < 15 * 60 * 1000, best = retry ? (pd.best || 0) : Math.max(pct, pd.best || 0);
     const confT = (CONF.find(x => x[0] === st.conf) || [])[1] || '';
     const entry = { t: Date.now(), pct, bet: st.why.trim(), conf: confT, reflection: '' };
     const journal = (pd.journal || []).concat(entry).slice(-20);
-    const saveProg = () => store.put({ prog: Object.assign({}, store.get().prog, { [c.id]: { best, last: pct, journal } }) });
+    const saveProg = () => store.put({ prog: Object.assign({}, store.get().prog, { [key]: { best, last: pct, journal } }) });
     saveProg();
-    const calib = st.conf === 'sure' && pct < 60 ? 'You were sure and the course read it differently: that gap is the most useful thing to reflect on.' : st.conf === 'guess' && pct >= 85 ? 'You called it a guess and read it well: your eye is better than you think.' : '';
+    const calib = st.conf === 'sure' && pct < 60 ? `You were sure and ${ours ? 'our reading' : 'the course'} differs: that gap is the most useful thing to reflect on.` : st.conf === 'guess' && pct >= 85 ? 'You called it a guess and read it well: your eye is better than you think.' : '';
     const R = 46, C = 2 * Math.PI * R, fg = h('circle', { class: 'fg', cx: 55.9, cy: 55.9, r: R, 'stroke-dasharray': C, 'stroke-dashoffset': C });
     const ring = h('div', { class: 'ring' }, h('span', { html: `<svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="${R}"/></svg>` }), h('b', { text: '0' }));
     ring.querySelector('svg').append(fg); fg.setAttribute('cx', 56); fg.setAttribute('cy', 56);
     setTimeout(() => { fg.style.strokeDashoffset = C * (1 - pct / 100); countUp(ring.querySelector('b'), pct, 1400); }, 600);
     const vd = r => r.pts === 2 ? ['v-hit', 'Spot on'] : r.pts === 1 ? ['v-near', 'Close'] : ['v-miss', 'Rethink'];
-    const table = h('div', { class: 'ptable' }, rows.map((r, k) => { const [cl, tx] = vd(r); return h('div', { class: 'prow', style: `--d:${.9 + k * .12}s` }, h('b', { text: r.a[0] }), h('span', { class: 'num', text: `You ${fmt(yv[r.i])}` }), h('span', { class: 'num', text: `Course ${fmt(truth[r.i])}` }), h('span', { class: 'verdict ' + cl, text: tx }), h('p', { text: r.a[3] })); }));
+    const table = h('div', { class: 'ptable' }, rows.map((r, k) => { const [cl, tx] = vd(r); return h('div', { class: 'prow', style: `--d:${.9 + k * .12}s` }, h('b', { text: r.a[0] }), h('span', { class: 'num', text: `You ${fmt(yv[r.i])}` }), h('span', { class: 'num', text: `${ours ? 'Ours' : 'Course'} ${fmt(truth[r.i])}` }), h('span', { class: 'verdict ' + cl, text: tx }), h('p', { text: r.a[3] })); }));
     const tdirs = c.dirs.map(d => d[0]), hit = tdirs.filter(x => st.dirs.has(x)), miss = tdirs.filter(x => !st.dirs.has(x)), extra = [...st.dirs].filter(x => !tdirs.includes(x));
     const worst = rows.slice().sort((a, b) => b.d - a.d)[0];
-    const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not named by the course for this case. Can you argue for it?'); }))) : null;
+    const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not in our reading of this case. Can you argue for it?'); }))) : null;
     result.textContent = '';
     result.append(h('div', { class: 'sec', style: 'padding-top:34px' }, h('div', { class: 'two' },
-      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because the course curves are read by eye.` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }))), h('div', { style: 'margin-top:12px' }, table)),
+      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because ${ours ? 'our levels are a judgement' : 'the course curves are read by eye'}.` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }), retry ? h('p', { class: 'hint', text: 'A retry within 15 minutes does not change your best score: come back later and see if it holds.' }) : null)), h('div', { style: 'margin-top:12px' }, table)),
       h('div', { class: 'stack' },
-        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} that the course names for this case.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
+        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} directions in our reading of this case. The textbook does not name directions for its cases, so treat this as a discussion, not a key.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
         h('div', { class: 'panel' }, h('h3', { text: 'Reflect before moving on' }), h('ul', { class: 'qs' },
           h('li', { text: worst.d > .5 ? `You were furthest from the course on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, course ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
           h('li', { text: 'Which attribute does the company give up, and who is the customer that does not mind?' }),
@@ -1232,7 +1242,7 @@ function viewPractice(root) {
             ta.addEventListener('change', keep);
             return h('div', { style: 'margin-top:12px' }, lbl('Your reflection'), ta, h('div', { class: 'flex', style: 'margin-top:8px' }, h('button', { class: 'btn ghost sm', onclick: keep }, 'Save reflection'), h('button', { class: 'btn ghost sm', onclick: copyJournal }, 'Copy my practice journal'), saved));
           })(),
-          h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn', onclick: () => go('practice', c.id) }, '↻ Try again'), h('button', { class: 'btn ghost', onclick: () => go('explore', c.id) }, 'See the full case'), h('button', { class: 'btn ghost', onclick: () => go('practice') }, 'Next case')))))));
+          h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn', onclick: () => go('practice', c.id, { prac: { caseId: c.id, side: si } }) }, '↻ Try again'), h('button', { class: 'btn ghost', onclick: () => go('explore', c.id) }, 'See the full case'), h('button', { class: 'btn ghost', onclick: () => go('practice') }, 'Next case')))))));
     later(() => result.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), RM ? 300 : 2600);
   }
 }
@@ -1244,13 +1254,13 @@ function viewMethod(root) {
   <h2>The framework it teaches</h2>
   <p>Odyssey 3.14 asks you to reinvent a business model by working on three pillars: the <b>value proposition</b> (drawn as a value curve), the <b>value architecture</b> (value chain, partners, strategic resources and competencies) and the <b>contributions</b> (financial, environmental, societal). Fourteen directions help you move: seven act on the proposition, seven on the architecture.</p>
   <h2>What the coach looks at</h2>
-  <p>The coach is built around the course's value-curve rules. It looks at seven things as you build:</p>
+  <p>The coach is built around the course's value-curve rules, plus two rules of thumb of this tool, marked as such. It looks at seven things as you build:</p>
   <ol class="rules">
-    <li><span><b>Five to eight attributes.</b> Enough to show a profile, few enough to read.</span></li>
+    <li><span><b>Five to eight attributes</b> <span class="badge">tool rule of thumb</span> Enough to show a profile, few enough to read.</span></li>
     <li><span><b>The customer's point of view.</b> Attributes are what the customer sees, never "our algorithm" or "our supply chain".</span></li>
     <li><span><b>Two clearly different curves.</b> A reference and a new offer on the same attributes, compared attribute by attribute.</span></li>
     <li><span><b>Something is given up.</b> Not everything can get better, so a believable new curve falls somewhere.</span></li>
-    <li><span><b>Not a perfect score.</b> A new curve with every level at 4 or more has no weak spot.</span></li>
+    <li><span><b>Not a perfect score</b> <span class="badge">tool rule of thumb</span> A new curve with every level at 4 or more has no weak spot.</span></li>
     <li><span><b>One curve per customer group.</b> A model that serves two groups, such as buyers and sellers, needs a curve for each.</span></li>
     <li><span><b>The customer's cost is on the curve.</b> Directions 1 and 7 start there.</span></li>
   </ol>
@@ -1258,7 +1268,7 @@ function viewMethod(root) {
   <h2>The 14 directions</h2><div id="mdirs"></div>
   <h2>Where the cases come from</h2>
   <ul>
-    <li><span class="badge k-course">From the course</span> Fairphone, Petit h, Perfect Day and Michelin Fleet Solutions are read from the textbook charts. Levels are read by eye on a 1 to 5 scale, and two Michelin points are estimated and flagged.</li>
+    <li><span class="badge k-course">From the course</span> Fairphone, Petit h and Perfect Day are read from the textbook charts, and Michelin Fleet Solutions from the Session 5 slide. Levels are read by eye on a 1 to 5 scale, and two Michelin points are estimated and flagged. The directions shown for each case are our reading: the textbook does not name them.</li>
     <li><span class="badge k-analysis">Student analysis</span> Bending Spoons comes from a course assignment by the author of this tool.</li>
     <li><span class="badge k-built">Built from course concepts</span> Vinted, Pinduoduo and Netflix versus Blockbuster were drawn for this tool using course concepts and are labelled as our judgement.</li>
   </ul>
@@ -1283,7 +1293,7 @@ function viewMethod(root) {
 /* ---------- Build: your own curve, rule-based coach, optional AI ---------- */
 const blankSide = () => ({ name: '', ref: '', neu: '', attrs: [0, 1, 2, 3, 4].map(() => ({ l: '', r: 3, n: 3 })) });
 function loadB() { const b = store.get().build; if (b && b.sides && b.sides.length) return b; return { company: '', offer: '', sides: [blankSide()], active: 0 }; }
-const BAD_VIEW = /\b(we|our|us|algorithm|technology|supply chain|process|infrastructure|team|backend|machine learning|ai-powered)\b/i;
+const BAD_VIEW = /\b(we|our|us|algorithm|technology|supply chain|infrastructure|backend|machine learning|ai-powered)\b/i;
 const PLATFORM = /platform|marketplace|two-sided|both sides|buyers and sellers|sellers|drivers|riders|advertis|creators|merchants|hosts|guests|farmers/i;
 function coach(B) {
   const sd = B.sides[B.active], A = sd.attrs.filter(a => a.l.trim()), n = A.length, text = [B.company, B.offer, sd.name, sd.neu].join(' ');
@@ -1292,11 +1302,11 @@ function coach(B) {
   const priceLab = A.some(a => /price|cost|fee|afford|cheap|expens|free|pay|subscription/i.test(a.l));
   const plat = PLATFORM.test(text) && B.sides.length === 1;
   const checks = [
-    { id: 'count', ok: n >= 5 && n <= 8, t: 'Five to eight attributes', d: n >= 5 && n <= 8 ? `${n} named attributes, inside the range.` : n < 5 ? `You have ${n}. Name at least five so the curve has a shape.` : `You have ${n}. Beyond eight the curve becomes hard to read. Merge or drop some.` },
+    { id: 'count', ok: n >= 5 && n <= 8, t: 'Five to eight attributes (rule of thumb)', d: n >= 5 && n <= 8 ? `${n} named attributes, inside the range.` : n < 5 ? `You have ${n}. Name at least five so the curve has a shape.` : `You have ${n}. Beyond eight the curve becomes hard to read. Merge or drop some.` },
     { id: 'view', ok: n > 0 && !bad.length && !dup, t: 'Written from the customer\'s point of view', d: bad.length ? `"${bad[0]}" sounds like the company's point of view. Rewrite it as something the customer feels or gets.` : dup ? 'Two attributes share a name. Each must be distinct.' : n ? 'No company-side wording spotted. Check each label by asking "does the customer see this?"' : 'Name your attributes first.' },
     { id: 'differ', ok: n > 0 && mean >= .75, t: 'The two curves clearly differ', d: n && mean >= .75 ? `On average they differ by ${mean.toFixed(1)} points per attribute.` : 'The new curve barely leaves the reference. A reinvention should change the shape, not nudge it.' },
     { id: 'trade', ok: worse.length > 0, t: 'Something is given up', d: worse.length ? `"${worse[0].l}" falls. That is the trade-off that makes the curve believable.` : 'Every attribute holds or rises. The course says not everything can get better. What does this offer give up?' },
-    { id: 'notall', ok: n > 0 && !A.every(a => a.n >= 4), t: 'Not a perfect score', d: n && !A.every(a => a.n >= 4) ? 'The new curve has at least one modest level.' : 'All new levels are 4 or more. Customers will not believe a curve with no weak spot.' },
+    { id: 'notall', ok: n > 0 && !A.every(a => a.n >= 4), t: 'Not a perfect score (rule of thumb)', d: n && !A.every(a => a.n >= 4) ? 'The new curve has at least one modest level.' : 'All new levels are 4 or more. Customers will not believe a curve with no weak spot.' },
     { id: 'sides', ok: B.sides.length > 1 ? B.sides.every(x => x.name.trim() && x.attrs.filter(a => a.l.trim()).length >= 3) : !plat, t: B.sides.length > 1 ? 'One curve per customer group' : 'One curve is enough, or is it?', d: B.sides.length > 1 ? (B.sides.every(x => x.name.trim() && x.attrs.filter(a => a.l.trim()).length >= 3) ? 'Each group has its own named curve. Click each chart to review it.' : 'Give every group a name and at least three attributes of its own.') : plat ? 'Your text mentions more than one group (for example buyers and sellers). Add a second customer group: each group needs its own curve.' : 'The text points to one customer group, so one curve will do.' },
     { id: 'price', ok: priceLab, t: 'The customer\'s cost is on the curve', d: priceLab ? 'An attribute speaks to what the customer pays.' : 'No attribute is about price or cost. Direction 1 (reduce customer overall costs) and 7 (modify the revenue stream) both start there.' }
   ];
@@ -1310,7 +1320,8 @@ function coach(B) {
   });
   if (B.sides.length > 1 || plat) push(6, 'More than one group is involved: another stakeholder is already part of the model.');
   if (/subscription|lease|rent|pay per|freemium|advert|commission|fee|insurance|per use/i.test(text)) push(7, 'Your description mentions a billing logic that could differ from the reference.');
-  if (/\b(ai|algorithm|app|software|sensor|blockchain|data|automation|robot|platform)\b/i.test(text)) push(8, 'A technology appears in your description. Which step of the value chain does it change?');
+  if (/\b(ai|algorithm|software|sensor|blockchain|automation|robot|internet|streaming)\b/i.test(text)) push(8, 'A technology appears in your description. Which step of the value chain does it change?');
+  if (/\b(data|community)\b/i.test(text)) push(14, 'You mention data or a community you already have. Could it be a strategic resource? (Session 6: a platform is not a technology by itself.)');
   if (/non-?customers?|never (bought|use)|do(es)?n.t (buy|use)/i.test(text)) push(3, 'You mention people who do not buy today.');
   const up = A.slice().sort((a, b) => (b.n - b.r) - (a.n - a.r))[0], dn = A.slice().sort((a, b) => (a.n - a.r) - (b.n - b.r))[0], qs = [];
   if (up && up.n - up.r > 0) qs.push(`Which strategic resource or competence makes "${up.l}" possible for you, and could a rival copy it within a year?`);
@@ -1357,7 +1368,7 @@ function viewBuild(root) {
   const R = h('div', { class: 'stack' }, attrsEl, coachEl, aiEl);
   root.append(form, h('div', { class: 'two build', style: 'margin-top:20px' }, L, R));
 
-  const field = (lab, el) => h('div', { class: 'field' }, h('label', { text: lab }), el);
+  const field = (lab, el) => { el.id = el.id || 'f-' + Math.random().toString(36).slice(2, 8); return h('div', { class: 'field' }, h('label', { text: lab, for: el.id }), el); };
   const bind = (el, obj, key, after) => { el.value = obj[key] || ''; el.addEventListener('input', () => { obj[key] = el.value; save(); after && after(); }); return el; };
   let rt; const rebuildChart = () => { clearTimeout(rt); rt = setTimeout(() => drawChart(), 180); };
 
