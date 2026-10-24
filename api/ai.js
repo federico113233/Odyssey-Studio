@@ -4,7 +4,8 @@
 // cannot be used as a general-purpose Gemini proxy.
 import { FRAME } from './_course.js';
 
-const MODELS = [process.env.GEMINI_MODEL, 'gemini-flash-latest', 'gemini-3.6-flash', 'gemini-2.5-flash'].filter(Boolean);
+// gemini-3.6-flash answers in a few seconds; gemini-flash-latest hung until the timeout on 24 Oct 2026, so it is last.
+const MODELS = [...new Set([process.env.GEMINI_MODEL, 'gemini-3.6-flash', 'gemini-2.5-flash', 'gemini-flash-latest'].filter(Boolean))];
 const LIMIT = Number(process.env.AI_RATE_LIMIT || 12);   // requests per IP per window
 const WINDOW_MS = 10 * 60 * 1000;                           // 10 minutes
 const MODEL_TIMEOUT_MS = 28 * 1000;                         // one attempt with one model

@@ -23,7 +23,7 @@ The browser never sees the API key. It sends only the company facts and the curv
 1. Import this repository in Vercel (framework preset: **Other**, no build command, no output directory).
 2. In **Settings → Environment Variables** add:
    - `GEMINI_API_KEY` — your key from Google AI Studio (required)
-   - `GEMINI_MODEL` — optional, e.g. `gemini-3.6-flash` (default: `gemini-flash-latest`, with automatic fallback)
+   - `GEMINI_MODEL` — optional (default: `gemini-3.6-flash`, then `gemini-2.5-flash`, then `gemini-flash-latest`)
    - `AI_RATE_LIMIT` — optional, requests per IP every 10 minutes (default `12`)
 3. Redeploy so the variables take effect, then add your domain in **Settings → Domains**.
 
