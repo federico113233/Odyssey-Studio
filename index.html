@@ -12,13 +12,13 @@
 <style>[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
-<style>:root{--paper:#F4F2EC;--paper-2:#EBE8DF;--card:#FBFAF6;--ink:#13161D;--ink-2:#444956;--ink-3:#646A78;
---line:#D6D1C4;--line-2:#E5E1D6;--ref:#7C766A;--you:#2442E6;--ai:#B8401C;--ok:#17794F;--warn:#8A5208;--truth:#13161D;
+<style>:root{--paper:#F4F2EC;--paper-2:#EBE8DF;--card:#FBFAF6;--ink:#13161D;--ink-2:#444956;--ink-3:#5F6572;
+--line:#D6D1C4;--line-2:#E5E1D6;--line-strong:#8F887A;--ref:#7C766A;--you:#2442E6;--ai:#B8401C;--ok:#17794F;--warn:#8A5208;--truth:#13161D;
 --you-bg:#E4E8FC;--ai-bg:#FBE6DE;--ok-bg:#E1F0E7;--warn-bg:#F6EAD3;--on-ink:#F4F2EC;--shadow:0 1px 0 rgba(19,22,29,.04),0 18px 40px -22px rgba(19,22,29,.28);
 --grain:.05;
 --hec:#00447C;}
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0E1117;--paper-2:#141923;--card:#181D27;--ink:#EEEBE3;--ink-2:#C2BFB6;--ink-3:#9EA2AE;
---line:#2C3342;--line-2:#222937;--ref:#A39D8E;--you:#8CA0FF;--ai:#FF8C68;--ok:#5BCB93;--warn:#EDB25A;--truth:#EEEBE3;
+--line:#2C3342;--line-2:#222937;--line-strong:#59627A;--ref:#A39D8E;--you:#8CA0FF;--ai:#FF8C68;--ok:#5BCB93;--warn:#EDB25A;--truth:#EEEBE3;
 --you-bg:#202849;--ai-bg:#3A2219;--ok-bg:#16301F;--warn-bg:#3A2D14;--on-ink:#0E1117;--shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.7);
 --grain:.07;
 --hec:#9DBDEB;color-scheme:dark}}
@@ -81,7 +81,7 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(8px,3vw,40px) clamp(40px,6vw,80px)}
 @media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
 .hero h1{font-size:clamp(2.5rem,5.4vw,4.7rem);line-height:.98;margin:18px 0 22px}
-.hero h1 em{font-style:italic;color:var(--you)}
+.hero h1 em{font-style:italic;color:var(--ink)}
 .hero .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-2);max-width:34em}
 .hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
 .hero-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 18px 10px;box-shadow:var(--shadow);position:relative;min-width:0}
@@ -124,10 +124,10 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .case h3{font-size:1.65rem;line-height:1.05}
 .case .vs{color:var(--ink-3);font-size:.85rem}
 .case svg{width:100%;height:70px;margin-top:6px}
-.badge{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-3);width:fit-content;white-space:nowrap}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-3);width:fit-content;white-space:nowrap}
 .badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
 .k-course{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
-.k-analysis{color:var(--you);border-color:color-mix(in srgb,var(--you) 40%,transparent)}
+.k-analysis{color:var(--ink-2);border-color:var(--line)}
 .k-built{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
 
 .ground{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);background:var(--ink);color:var(--on-ink);border-radius:26px;padding:clamp(26px,4vw,56px)}
@@ -152,12 +152,12 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .vc .path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
 .vc .s-ref .path{stroke:var(--ref);stroke-dasharray:7 7;stroke-width:2.4}
 .vc .s-ref .dot{fill:var(--card);stroke:var(--ref);stroke-width:2.4}
-.vc .s-you .path,.vc .s-new .path{stroke:var(--you)}
-.vc .s-you .dot,.vc .s-new .dot{fill:var(--you);stroke:var(--card);stroke-width:3}
+.vc .s-you .path{stroke:var(--you)}
+.vc .s-you .dot{fill:var(--you);stroke:var(--card);stroke-width:3}
 .vc .s-ai .path{stroke:var(--ai)}
 .vc .s-ai .dot{fill:var(--ai);stroke:var(--card);stroke-width:3}
-.vc .s-truth .path{stroke:var(--truth)}
-.vc .s-truth .dot{fill:var(--truth);stroke:var(--card);stroke-width:3}
+.vc .s-truth .path,.vc .s-new .path{stroke:var(--truth)}
+.vc .s-truth .dot,.vc .s-new .dot{fill:var(--truth);stroke:var(--card);stroke-width:3}
 .vc .dot{transition:r .2s}
 .vc .drag .dot{cursor:grab}
 .vc .drag .dot:hover,.vc .dot.act{r:11}
@@ -165,7 +165,7 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .vc .s-ref .halo{fill:var(--ref)}
 .vc .hit{fill:transparent;cursor:grab;touch-action:none}
 .vc .drag .hit:active{cursor:grabbing}
-.vc .gap{stroke-width:7;stroke-linecap:round;opacity:.16}
+.vc .gap{stroke-width:7;stroke-linecap:round;opacity:.32}
 .vc .gap.up{stroke:var(--ok)}
 .vc .gap.dn{stroke:var(--warn)}
 .vc .tip rect{fill:var(--ink)}
@@ -190,12 +190,12 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 @media(max-width:820px){.case-head{grid-template-columns:1fr}}
 .case-head h1{font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:.98}
 .case-head h1 small{display:block;font-size:.4em;color:var(--ink-3);font-style:italic;margin-top:8px}
-.case-head .tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.5rem;color:var(--you);margin-top:10px}
+.case-head .tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.5rem;color:var(--ink-2);margin-top:10px}
 .meta{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:14px;color:var(--ink-3);font-size:.85rem;align-items:center}
 .two{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:20px;align-items:start}
 @media(max-width:980px){.two{grid-template-columns:minmax(0,1fr)}}
 .side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
-@media(max-width:980px){.side{position:static}}
+@media(max-width:980px){.side{position:static}.two.prac>.side{order:-1}}
 .panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 22px}
 .panel h3{font-size:1.5rem;margin-bottom:8px}
 .attr-list{display:grid;gap:0;margin:0;padding:0;list-style:none}
@@ -209,14 +209,14 @@ main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .delta.up{background:var(--ok-bg);color:var(--ok)}
 .delta.dn{background:var(--warn-bg);color:var(--warn)}
 .read{margin-top:16px;font-family:'Instrument Serif',serif;font-size:1.35rem;line-height:1.3;color:var(--ink)}
-.read em{color:var(--you)}
+.read em{color:var(--ink);font-weight:600;font-style:normal}
 .tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-top:44px;overflow-x:auto}
 .tabs button{background:none;border:0;padding:12px 16px;color:var(--ink-3);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
 .tabs button[aria-selected=true]{color:var(--ink);border-color:var(--ink)}
 .tab-body{padding-top:24px}
 .dirs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
-.dir{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card);opacity:.55;transition:opacity .3s,border-color .3s,transform .3s;min-width:0}
-.dir.used{opacity:1;border-color:var(--you);background:linear-gradient(180deg,var(--you-bg),var(--card) 80%)}
+.dir{border:1px dashed var(--line-strong);border-radius:14px;padding:14px 16px;background:var(--card);transition:opacity .3s,border-color .3s,transform .3s;min-width:0}
+.dir.used{opacity:1;border-color:var(--ink);background:var(--paper-2)}
 .dir .no{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-3)}
 .dir h4{font-size:1.2rem;line-height:1.15;margin:3px 0 4px}
 .dir p{font-size:.86rem;color:var(--ink-2)}
@@ -245,7 +245,7 @@ table.t td:first-child{color:var(--ink-3);width:28%}
 .tw{overflow-x:auto}
 .dchips{display:flex;gap:6px;flex-wrap:wrap}
 .dchip{font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:2px 8px;border-radius:8px;background:var(--paper-2);color:var(--ink-2)}
-.dchip.both{background:var(--you-bg);color:var(--you)}
+.dchip.both{background:var(--ink);color:var(--on-ink)}
 
 /* practice */
 .steps{display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
@@ -268,7 +268,7 @@ table.t td:first-child{color:var(--ink-3);width:28%}
 .ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Instrument Serif',serif;font-size:2.1rem;font-weight:400}
 .verdict{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
 .v-hit{background:var(--ok-bg);color:var(--ok)}
-.v-near{background:var(--you-bg);color:var(--you)}
+.v-near{background:var(--paper-2);color:var(--ink-2)}
 .v-miss{background:var(--warn-bg);color:var(--warn)}
 .ptable{display:grid;gap:0}
 .prow{display:grid;grid-template-columns:minmax(0,1.1fr) auto auto auto;gap:6px 14px;padding:12px 4px;border-top:1px solid var(--line-2);align-items:center;opacity:0;animation:viewin .5s both;animation-delay:var(--d,0s)}
@@ -287,7 +287,7 @@ table.t td:first-child{color:var(--ink-3);width:28%}
 /* build */
 .field{display:grid;gap:6px;margin-bottom:14px}
 .field label,.lab{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
-.inp,textarea.inp{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 13px;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.inp,textarea.inp{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line-strong);border-radius:12px;padding:10px 13px;transition:border-color .2s,box-shadow .2s;resize:vertical}
 .inp:focus{outline:0;border-color:var(--you);box-shadow:0 0 0 4px color-mix(in srgb,var(--you) 18%,transparent)}
 .row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
 @media(max-width:520px){.row2{grid-template-columns:1fr}}
@@ -328,7 +328,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 .method ul{display:grid;gap:8px;padding-left:20px}
 .rules{counter-reset:r;display:grid;gap:12px;list-style:none;padding:0}
 .rules li{counter-increment:r;display:grid;grid-template-columns:34px 1fr;gap:10px}
-.rules li::before{content:counter(r);font-family:'Instrument Serif',serif;font-size:1.8rem;line-height:1;color:var(--you)}
+.rules li::before{content:counter(r);font-family:'Instrument Serif',serif;font-size:1.8rem;line-height:1;color:var(--ink-3)}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
 .method .dir{opacity:1}
 .chip.sm{padding:5px 11px;font-size:.8rem}
@@ -362,7 +362,7 @@ footer .hec{height:34px}
 
 .why2{margin-top:3px;font-size:.88rem;color:var(--ink-2)}.why2 .mono{color:var(--ai);margin-right:4px}.diffs{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px}.decide{display:grid;gap:8px;margin-top:8px}.decide .inp{padding:8px 12px;font-size:.88rem}details summary{cursor:pointer;color:var(--ink-2);font-weight:600;font-size:.9rem}
 
-.crit{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.3;color:var(--ink)}.crit .mono{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--you);margin-bottom:4px}
+.crit{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.3;color:var(--ink)}.crit .mono{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--ink-3);margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -491,7 +491,7 @@ const CASES = [
       ['Extensions', 'Services based on its know-how and a portfolio of its own consumer brands.']
     ],
     contrib: {
-      fin: ['Revenue from the protein sold to food companies, by volume.', 'Costs: R&D, procurement, production and marketing.', 'Capital employed: labs, fermentation equipment and buildings, so the model is capital-heavy.', 'Results: raised 350 million dollars by 2021, approved in the United States and, in 2022, in India.'],
+      fin: ['Revenue from the protein sold to food companies, by volume.', 'Costs: R&D, procurement, production and marketing.', 'Capital employed: labs, fermentation equipment and buildings, so the model is capital-heavy (our reading).', 'Results: raised 350 million dollars by 2021, approved in the United States and, in 2022, in India.'],
       env: ['97% less greenhouse gas, 99% less water and up to 60% less non-renewable energy than dairy-derived whey.'],
       soc: ['An allergy- and residue-free product.']
     },
@@ -619,7 +619,7 @@ const CASES = [
       ['Assets', 'Asset-light, like most platforms.']
     ],
     contrib: {
-      fin: ['The buyer pays the protection fee, and the seller keeps the sale price.', 'The course note says new features ship only with a clear return.'],
+      fin: ['The buyer pays the protection fee, and the seller keeps the sale price.', 'In Session 6 (class notes), new features ship only with a clear return.'],
       env: ['Circular platform: clothes get a longer life.'],
       soc: ['Sellers earn extra income from items they own (our reading).']
     }
@@ -635,7 +635,7 @@ const CASES = [
       {
         name: 'Buyers', ref: 'Traditional e-commerce', neu: 'Pinduoduo',
         attrs: [
-          ['Price through group buying', 3, 5, 'Buying together with friends unlocks discounts.'],
+          ['Low prices through group buying', 3, 5, 'Buying together with friends unlocks discounts.'],
           ['Fun and gamification', 2, 5, 'Games such as Duo Duo Orchard keep users coming back.'],
           ['Social shopping', 1.5, 5, 'Buyers join through WeChat and their own contacts.'],
           ['Search precision', 4.5, 2.5, 'The platform shows items instead of letting you search.'],
@@ -649,7 +649,7 @@ const CASES = [
           ['Share of the final price', 1.5, 4, 'Removing the middlemen leaves more of the price with the producer.'],
           ['Direct access to customers', 1.5, 4.5, 'Goods go straight from producer to buyer.'],
           ['Demand certainty', 2, 4.5, 'Group orders are known before the goods are picked.'],
-          ['Waste from unsold goods', 2, 4, 'Demand-driven supply means less produce goes unsold.'],
+          ['Little unsold produce', 2, 4, 'Demand-driven supply means less produce goes unsold.'],
           ['Control over pricing', 3, 2.5, 'Group-buying discounts press on the price.']
         ]
       }
@@ -687,7 +687,7 @@ const CASES = [
         ['Watching right now', 2.5, 5, 'Streaming plays on demand.'],
         ['Personal recommendations', 1.5, 5, 'Viewing data feeds suggestions. The course note says Netflix has had customer data since 1997.'],
         ['Newest releases', 4.5, 3, 'Hit releases reached the store shelf first.'],
-        ['Price for heavy viewers', 2, 4, 'A flat monthly fee beats paying per rental.'],
+        ['Price attractiveness for heavy viewers', 2, 4, 'A flat monthly fee beats paying per rental.'],
         ['The going-out experience', 3, 1.5, 'Browsing shelves was an outing, and streaming gives that up.']
       ]
     }],
@@ -894,7 +894,7 @@ class VC {
 function spark(side) {
   const n = side.attrs.length, w = 240, h = 70, x = i => 8 + i * (w - 16) / Math.max(n - 1, 1), y = v => 8 + (5 - v) / 4 * (h - 16);
   const p = k => 'M' + side.attrs.map((a, i) => x(i) + ',' + y(a[k]).toFixed(1)).join('L');
-  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${p(1)}" fill="none" stroke="var(--ref)" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="${p(2)}" fill="none" stroke="var(--you)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>`;
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${p(1)}" fill="none" stroke="var(--ref)" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="${p(2)}" fill="none" stroke="var(--truth)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>`;
 }
 
 /* ---------- App core: helpers, state, router, shell ---------- */
@@ -925,12 +925,17 @@ const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return
 function mkChart(host, opts) { const c = new VC(host, opts); charts.push(c); return c; }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
 function copyText(t, host, ok) { (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(ok || 'Copied.'), () => { const ta = h('textarea', { class: 'inp', rows: 8 }); ta.value = t; host.append(ta); ta.select(); toast('Select and copy the text below.'); }); }
-const day = t => new Date(t).toISOString().slice(0, 10);
+const day = t => new Date(t).toLocaleDateString('en-CA');   // YYYY-MM-DD in the student's own time zone
 function journalText() {
   const prog = store.get().prog || {}; let t = 'Odyssey Studio · my practice journal\n';
-  CASES.filter(c => c.practice && prog[c.id] && prog[c.id].journal).forEach(c => { t += `\n${c.name} (best ${prog[c.id].best}%)\n`; prog[c.id].journal.forEach(e => { t += `- ${day(e.t)} · ${e.pct}% · ${e.conf || 'no confidence given'}\n  Bet: ${e.bet || '-'}\n  Reflection: ${e.reflection || '-'}\n`; }); });
+  const all = [];
+  CASES.filter(c => c.practice).forEach(c => c.sides.forEach((sd, i) => { const k = c.id + (i ? ':' + i : ''), g = prog[k]; if (!g || !g.journal) return; all.push(...g.journal); t += `\n${c.name}${c.sides.length > 1 ? ' · ' + sd.name : ''} (best ${g.best}%)\n`; g.journal.forEach(e => { t += `- ${day(e.t)} · ${e.pct}% · ${e.conf || 'no confidence given'}\n  Bet: ${e.bet || '-'}\n  Reflection: ${e.reflection || '-'}\n`; }); }));
+  const cal = ['A guess', 'Fairly sure', 'Sure'].map(k => { const xs = all.filter(e => e.conf === k); return xs.length ? `${k.toLowerCase()}: ${Math.round(xs.reduce((a, e) => a + e.pct, 0) / xs.length)}% on average (${xs.length})` : ''; }).filter(Boolean);
+  if (cal.length) t += `\nCalibration. When I said ${cal.join('; ')}.\n`;
   return t;
 }
+/* best score of a practice case across its customer groups */
+const bestOf = (prog, c) => Math.max(-1, ...c.sides.map((x, i) => (prog[c.id + (i ? ':' + i : '')] || {}).best ?? -1));
 function copyJournal(e) { copyText(journalText(), e && e.currentTarget ? e.currentTarget.parentElement : $('#app'), 'Practice journal copied.'); }
 function countUp(el, to, dur = 1200, dec = 0) { if (RM) { el.textContent = to.toFixed(dec); return; } const t0 = performance.now(); const f = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = (to * ease(p)).toFixed(dec); if (p < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); }
 
@@ -947,7 +952,7 @@ function go(view, id, extra) {
 }
 function fromHash() { const m = (location.hash || '').slice(1).split('-'); const v = NAV.find(n => n[0] === m[0]); if (v) { S.view = v[0]; if (v[0] === 'explore' && m[1] && CASES.some(c => c.id === m[1])) S.caseId = m[1]; if (v[0] === 'practice') S.prac = m[1] && CASES.some(c => c.id === m[1] && c.practice) ? { caseId: m[1] } : null; } }
 const navKey = () => S.view + '|' + S.caseId + '|' + (S.prac ? S.prac.caseId : '');
-function onNav() { const before = navKey(); fromHash(); if (navKey() !== before) { cleanup(); paint(); window.scrollTo(0, 0); } }
+function onNav() { const before = navKey(); fromHash(); if (navKey() !== before) { cleanup(); paint(); window.scrollTo(0, 0); const h1 = $('#app h1'); if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); } } }
 
 function observeReveal(root) {
   const els = root.querySelectorAll('.rv'); if (!els.length) return;
@@ -1035,19 +1040,19 @@ function viewHome(root) {
     h('div', null,
       h('span', { class: 'eyebrow', text: 'Reinventing Your Business Model · Odyssey 3.14' }),
       h('h1', { html: 'Draw the curve.<br>Then see how the course <em>reads</em> it.' }),
-      h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Predict a curve before the course reveals it, then build your own and argue with an AI that draws its own curve without seeing yours. You decide who is right, and every AI answer goes into your log.' }),
+      h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Predict a curve before the course reveals it, then build your own and argue with your coach, who draws its own curve without seeing yours. You decide who is right, and every answer goes into your log.' }),
       h('div', { class: 'cta' },
         h('button', { class: 'btn', onclick: () => go('practice') }, 'Start with Practice ', h('span', { class: 'arrow', text: '→' })),
-        h('button', { class: 'btn ghost', onclick: () => go('build', null, { demo: true }) }, 'See the AI disagree with you'))),
+        h('button', { class: 'btn ghost', onclick: () => go('build', null, { demo: true }) }, 'See your coach disagree with you'))),
     h('div', { class: 'hero-card' }, h('div', { class: 'cap' }, capB, dots), host, h('p', { class: 'hero-note', text: 'Dashed: the reference. Solid: the new offer. Green and amber bars show what rises and what is given up.' })));
   const strip = h('section', { class: 'strip rv' },
     [['01', 'Value proposition', 'What the customer gets, drawn as a value curve against a reference.'], ['02', 'Value architecture', 'The value chain, partners and resources that make the curve possible.'], ['03', 'Contributions', 'What the model earns, and what it does for the planet and for people.']].map(a => h('div', null, h('span', { class: 'n', text: a[0] }), h('h3', { text: a[1] }), h('p', { text: a[2] }))));
   const modes = h('section', { class: 'sec' },
     h('div', { class: 'sec-h rv' }, h('h2', { text: 'Three ways to work with a curve' }), h('p', { text: 'Each mode asks you to commit to an answer before the tool says anything.' })),
     h('div', { class: 'modes' }, [
-      ['explore', '01', 'Explore', 'Read the eight cases. Hover an attribute to see why the curve moves, then see which of the 14 directions the company used.', 'Open the cases'],
+      ['explore', '01', 'Explore', 'Read the eight cases. Hover an attribute to see why the curve moves, then see which of the 14 directions we read in it.', 'Open the cases'],
       ['practice', '02', 'Practice', 'Read a short brief, drag the new curve into place, pick the directions, then watch the course curve slide in beside yours.', 'Test your eye'],
-      ['build', '03', 'Build', 'Describe a company, place both curves and get a live checklist from the course rules. Then let Gemini draw its own curve blind, and defend your reading where you disagree.', 'Build a curve']
+      ['build', '03', 'Build', 'Describe a company, place both curves and get a live checklist from the course rules. Then let your coach draw its own curve blind, and defend your reading where you disagree.', 'Build a curve']
     ].map((m, i) => h('button', { class: 'mode rv', style: `--d:${i * .08}s`, onclick: () => go(m[0]) },
       h('span', { class: 'ix', text: m[1] }), h('h3', { text: m[2] }), h('p', { text: m[3] }), h('span', { class: 'go' }, m[4], h('span', { class: 'arrow', text: '→' })),
       h('span', { html: '<svg class="bg" viewBox="0 0 150 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 70 L35 30 L70 55 L110 20 L145 40" stroke-dasharray="6 7"/><path d="M5 50 L35 65 L70 25 L110 60 L145 15"/></svg>' })))));
@@ -1062,7 +1067,7 @@ function viewHome(root) {
     h('ul', null, [
       ['1', 'Course concepts first. Value curve rules, the three pillars and the 14 directions; the tool\'s own rules of thumb are marked as such.'],
       ['2', 'You draw first. Practice reveals the answer after you commit, and Build checks your curve after you place it.'],
-      ['3', 'You bring the facts. The tool never looks a company up, so you must gather and judge the information yourself.'],
+      ['3', 'You bring the facts. The tool never searches the web, so you must gather and judge the information yourself. Your coach may add what it already knows about a well-known company, and says so.'],
       ['4', 'Every number has a label. Estimated points are flagged, and nothing is passed off as official.']
     ].map(a => h('li', null, h('b', { text: a[0] }), h('span', { text: a[1] }))))));
   root.append(hero, strip, modes, cases, ground);
@@ -1095,7 +1100,7 @@ function viewExplore(root) {
   let chart, ul;
   const drawSide = () => {
     sd = sideData(c, S.side); legend.textContent = '';
-    legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), sd.neu),
+    legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i', { class: 'truth' }), sd.neu),
       h('span', { class: 'sp' }, h('button', { class: 'chip sm', 'aria-pressed': true, onclick: e => { const on = e.currentTarget.getAttribute('aria-pressed') !== 'true'; e.currentTarget.setAttribute('aria-pressed', on); chart.showGaps = on; chart.update(); } }, 'Show gaps'),
         h('button', { class: 'chip', onclick: replay }, '↻ Replay')));
     chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: sd.attrs.map(a => a[1]), name: sd.ref }, { id: 'new', cls: 's-new', vals: sd.attrs.map(a => a[1]), name: sd.neu }]);
@@ -1111,7 +1116,7 @@ function viewExplore(root) {
   const tabs = h('div', { class: 'tabs', role: 'tablist' }), body = h('div', { class: 'tab-body' });
   const T = [['vp', 'Directions (our reading)'], ['va', 'Value architecture'], ['ct', 'Contributions']];
   const showTab = k => { S.tab = k; tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.k === k)); body.textContent = '';
-    if (k === 'vp') body.append(h('p', { class: 'hint', style: 'margin-bottom:6px', text: 'Highlighted cards are the directions we read in this case: the textbook does not name directions for its cases, so argue with them. The others are shown so you can ask whether they were also available.' }), dirGrid(c.dirs));
+    if (k === 'vp') body.append(h('p', { class: 'hint', style: 'margin-bottom:6px', text: 'Highlighted cards are the directions we read in this case: the course material does not name directions for these cases, so argue with them. The others are shown so you can ask whether they were also available.' }), dirGrid(c.dirs));
     if (k === 'va') body.append(archBlock(c));
     if (k === 'ct') body.append(contribBlock(c)); };
   T.forEach(([k, t]) => tabs.append(h('button', { role: 'tab', 'data-k': k, onclick: () => showTab(k) }, t)));
@@ -1131,7 +1136,7 @@ function viewCompare(root) {
   function draw() {
     charts.forEach(c => c.destroy()); charts = []; out.textContent = '';
     const A = mk(0), B = mk(1), grid = h('div', { class: 'cmp-grid' });
-    [A, B].forEach(X => { const host = h('div'), card = h('div', { class: 'chart-card' }, h('div', { class: 'legend' }, h('span', null, h('i', { class: 'ref' }), X.sd.ref), h('span', null, h('i'), X.sd.neu)), host); grid.append(card);
+    [A, B].forEach(X => { const host = h('div'), card = h('div', { class: 'chart-card' }, h('div', { class: 'legend' }, h('span', null, h('i', { class: 'ref' }), X.sd.ref), h('span', null, h('i', { class: 'truth' }), X.sd.neu)), host); grid.append(card);
       const ch = mkChart(host, { height: 300 }); ch.set(X.sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: X.sd.attrs.map(a => a[1]) }, { id: 'new', cls: 's-new', vals: X.sd.attrs.map(a => a[1]) }]); later(() => ch.to('new', X.sd.attrs.map(a => a[2]), 1300), 800); });
     const pa = profile(A.sd), pb = profile(B.sd), da = A.c.dirs.map(d => d[0]), db = B.c.dirs.map(d => d[0]), both = mix(da, db);
     const chips = (arr, bothArr) => h('div', { class: 'dchips' }, arr.length ? arr.map(n => h('span', { class: 'dchip' + (bothArr.includes(n) ? ' both' : ''), title: dirT(n), text: n + ' · ' + dirT(n) })) : h('span', { class: 'hint', text: 'None noted' }));
@@ -1158,8 +1163,8 @@ function viewCompare(root) {
 function viewPractice(root) {
   const P = S.prac; const prog = store.get().prog || {};
   if (!P) {
-    root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Practice' }), h('h1', { style: 'margin-top:10px', text: 'Predict first. Then compare.' })), h('p', { text: 'You get a short brief and the reference curve. Place the new curve, pick the directions you think the company used, and reveal the course\'s reading. The gap between the two is where you learn.' })));
-    root.append(h('div', { class: 'pcards' }, CASES.filter(c => c.practice).map(c => { const p = prog[c.id]; return h('button', { class: 'pcard rv', onclick: () => go('practice', c.id) }, badge(c), h('h3', { text: c.name }), h('p', { text: c.tag + '. ' + c.vs + ' is the reference.' }), p ? h('span', { class: 'best', text: `Best so far: ${p.best}%` }) : h('span', { class: 'hint', text: 'Not tried yet' })); })));
+    root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Practice' }), h('h1', { style: 'margin-top:10px', text: 'Predict first. Then compare.' })), h('p', { text: 'You get a short brief and the reference curve. Place the new curve, pick the directions you read in it, and reveal the curve. The gap between the two is where you learn.' })));
+    root.append(h('div', { class: 'pcards' }, CASES.filter(c => c.practice).map(c => { const b = bestOf(prog, c); return h('button', { class: 'pcard rv', onclick: () => go('practice', c.id) }, badge(c), h('h3', { text: c.name }), h('p', { text: c.tag + '. ' + c.vs + ' is the reference.' }), b >= 0 ? h('span', { class: 'best', text: `Best so far: ${b}%` }) : h('span', { class: 'hint', text: 'Not tried yet' })); })));
     return;
   }
   const c = caseById(P.caseId), si = Math.min(P.side || 0, c.sides.length - 1), sd = c.sides[si], n = sd.attrs.length, ref = sd.attrs.map(a => a[1]), truth = sd.attrs.map(a => a[2]);
@@ -1187,14 +1192,16 @@ function viewPractice(root) {
   const result = h('div');
   const chartCard = h('div', { class: 'chart-card' }, legend, host);
   const left = h('div', { class: 'stack' }, chartCard, h('div', { class: 'panel' },
-    lbl('Which directions did the company use?'), chips, lbl('Your bet'), why, lbl('How sure are you?'), conf,
+    lbl('Which directions do you read in it?'), chips, lbl('Your bet'), why, lbl('How sure are you?'), conf,
     h('div', { class: 'flex', style: 'margin-top:16px' }, reveal), hintEl));
   const right = h('aside', { class: 'side' }, h('div', { class: 'panel' },
+    h('h1', { class: 'sr', text: 'Practice: ' + c.name + (c.sides.length > 1 ? ', ' + sd.name : '') }),
     h('span', { class: 'eyebrow', text: c.name + ' · ' + c.year + ' · ' + c.place }), h('p', { class: 'brief', style: 'margin:10px 0 14px', text: c.brief || c.summary }),
     ours ? h('p', { class: 'hint', style: 'margin-bottom:8px', text: 'This curve is not from a course chart: you are comparing your reading with ours, built from course concepts. Disagree if you can argue it.' }) : null,
-    h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` })));
+    h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` }),
+    (() => { const j = (prog[key] || {}).journal, e = j && j[j.length - 1]; return e ? h('div', { class: 'note', style: 'margin-top:12px' }, h('b', { text: `Last time (${day(e.t)}, ${e.pct}%). ` }), `You bet: “${(e.bet || '-').replace(/[.\s]+$/, '')}”.` + (e.reflection ? ` You reflected: “${e.reflection.replace(/[.\s]+$/, '')}”.` : '') + ' Does it still hold?') : null; })()));
   const sideTabs = c.sides.length > 1 ? h('div', { class: 'sides', style: 'margin:0 0 16px' }, h('span', { class: 'hint', text: 'Two customer groups, two curves:' }), c.sides.map((x, i) => h('button', { class: 'chip', 'aria-pressed': i === si, onclick: () => go('practice', c.id, { prac: { caseId: c.id, side: i } }) }, x.name))) : null;
-  root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, sideTabs, h('div', { class: 'two' }, left, right), result);
+  root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, sideTabs, h('div', { class: 'two prac' }, left, right), result);
   upd();
 
   function doReveal() {
@@ -1207,18 +1214,19 @@ function viewPractice(root) {
     chart.to('truth', truth, 1600, 300);
     const rows = sd.attrs.map((a, i) => { const d = Math.abs(yv[i] - truth[i]); return { i, a, d, pts: d <= .5 ? 2 : d <= 1 ? 1 : 0 }; });
     const tot = rows.reduce((s, r) => s + r.pts, 0), pct = Math.round(tot / (2 * n) * 100);
+    const way = v => Math.sign(Math.round(v * 2)), sameWay = sd.attrs.filter((a, i) => way(yv[i] - ref[i]) === way(truth[i] - ref[i])).length;
     const lab = pct >= 85 ? 'A sharp eye' : pct >= 60 ? 'A good read' : 'Worth a second look';
     const pd = prog[key] || {}, lastT = pd.journal && pd.journal.length ? pd.journal[pd.journal.length - 1].t : 0;
-    const retry = Date.now() - lastT < 15 * 60 * 1000, best = retry ? (pd.best || 0) : Math.max(pct, pd.best || 0);
+    const retry = Date.now() - lastT < 24 * 60 * 60 * 1000, best = retry ? (pd.best || 0) : Math.max(pct, pd.best || 0);
     const confT = (CONF.find(x => x[0] === st.conf) || [])[1] || '';
     const entry = { t: Date.now(), pct, bet: st.why.trim(), conf: confT, reflection: '' };
     const journal = (pd.journal || []).concat(entry).slice(-20);
     const saveProg = () => store.put({ prog: Object.assign({}, store.get().prog, { [key]: { best, last: pct, journal } }) });
     saveProg();
     const calib = st.conf === 'sure' && pct < 60 ? `You were sure and ${ours ? 'our reading' : 'the course'} differs: that gap is the most useful thing to reflect on.` : st.conf === 'guess' && pct >= 85 ? 'You called it a guess and read it well: your eye is better than you think.' : '';
-    const R = 46, C = 2 * Math.PI * R, fg = h('circle', { class: 'fg', cx: 55.9, cy: 55.9, r: R, 'stroke-dasharray': C, 'stroke-dashoffset': C });
+    const R = 46, C = 2 * Math.PI * R, fg = sv('circle', { class: 'fg', cx: 56, cy: 56, r: R, 'stroke-dasharray': C, 'stroke-dashoffset': C });
     const ring = h('div', { class: 'ring' }, h('span', { html: `<svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="${R}"/></svg>` }), h('b', { text: '0' }));
-    ring.querySelector('svg').append(fg); fg.setAttribute('cx', 56); fg.setAttribute('cy', 56);
+    ring.querySelector('svg').append(fg);
     setTimeout(() => { fg.style.strokeDashoffset = C * (1 - pct / 100); countUp(ring.querySelector('b'), pct, 1400); }, 600);
     const vd = r => r.pts === 2 ? ['v-hit', 'Spot on'] : r.pts === 1 ? ['v-near', 'Close'] : ['v-miss', 'Rethink'];
     const table = h('div', { class: 'ptable' }, rows.map((r, k) => { const [cl, tx] = vd(r); return h('div', { class: 'prow', style: `--d:${.9 + k * .12}s` }, h('b', { text: r.a[0] }), h('span', { class: 'num', text: `You ${fmt(yv[r.i])}` }), h('span', { class: 'num', text: `${ours ? 'Ours' : 'Course'} ${fmt(truth[r.i])}` }), h('span', { class: 'verdict ' + cl, text: tx }), h('p', { text: r.a[3] })); }));
@@ -1227,11 +1235,11 @@ function viewPractice(root) {
     const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not in our reading of this case. Can you argue for it?'); }))) : null;
     result.textContent = '';
     result.append(h('div', { class: 'sec', style: 'padding-top:34px' }, h('div', { class: 'two' },
-      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because ${ours ? 'our levels are a judgement' : 'the course curves are read by eye'}.` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }), retry ? h('p', { class: 'hint', text: 'A retry within 15 minutes does not change your best score: come back later and see if it holds.' }) : null)), h('div', { style: 'margin-top:12px' }, table)),
+      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because ${ours ? 'our levels are a judgement' : 'the course curves are read by eye'}.` }), h('p', { class: 'hint', text: `Shape: you moved ${sameWay} of ${n} attributes the same way as ${ours ? 'our reading' : 'the course'} (up, down or held).` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }), retry ? h('p', { class: 'hint', text: 'A retry within a day does not change your best score: come back tomorrow and see if your reading holds.' }) : null)), h('div', { style: 'margin-top:12px' }, table)),
       h('div', { class: 'stack' },
-        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} directions in our reading of this case. The textbook does not name directions for its cases, so treat this as a discussion, not a key.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
+        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} directions in our reading of this case. The course material does not name directions for these cases, so treat this as a discussion, not a key.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
         h('div', { class: 'panel' }, h('h3', { text: 'Reflect before moving on' }), h('ul', { class: 'qs' },
-          h('li', { text: worst.d > .5 ? `You were furthest from the course on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, course ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
+          h('li', { text: worst.d > .5 ? `You were furthest from ${ours ? 'our reading' : 'the course'} on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, ${ours ? 'ours' : 'course'} ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
           h('li', { text: 'Which attribute does the company give up, and who is the customer that does not mind?' }),
           h('li', { text: 'Which strategic resource or competence would a rival need in order to copy this curve?' })),
           h('p', { class: 'hint', style: 'margin-top:12px', text: 'Your bet was: ' + st.why.trim() }),
@@ -1254,7 +1262,7 @@ function viewMethod(root) {
   <h2>The framework it teaches</h2>
   <p>Odyssey 3.14 asks you to reinvent a business model by working on three pillars: the <b>value proposition</b> (drawn as a value curve), the <b>value architecture</b> (value chain, partners, strategic resources and competencies) and the <b>contributions</b> (financial, environmental, societal). Fourteen directions help you move: seven act on the proposition, seven on the architecture.</p>
   <h2>What the coach looks at</h2>
-  <p>The coach is built around the course's value-curve rules, plus two rules of thumb of this tool, marked as such. It looks at seven things as you build:</p>
+  <p>The coach is built around the course's value-curve rules, plus three rules of thumb of this tool, marked as such. It looks at seven things as you build:</p>
   <ol class="rules">
     <li><span><b>Five to eight attributes</b> <span class="badge">tool rule of thumb</span> Enough to show a profile, few enough to read.</span></li>
     <li><span><b>The customer's point of view.</b> Attributes are what the customer sees, never "our algorithm" or "our supply chain".</span></li>
@@ -1262,29 +1270,36 @@ function viewMethod(root) {
     <li><span><b>Something is given up.</b> Not everything can get better, so a believable new curve falls somewhere.</span></li>
     <li><span><b>Not a perfect score</b> <span class="badge">tool rule of thumb</span> A new curve with every level at 4 or more has no weak spot.</span></li>
     <li><span><b>One curve per customer group.</b> A model that serves two groups, such as buyers and sellers, needs a curve for each.</span></li>
-    <li><span><b>The customer's cost is on the curve.</b> Directions 1 and 7 start there.</span></li>
+    <li><span><b>The customer's cost is on the curve</b> <span class="badge">tool rule of thumb</span> Directions 1 and 7 start there.</span></li>
   </ol>
   <p style="margin-top:14px">Beyond the checks, the coach asks questions: which strategic resource makes your biggest raise possible and could a rival copy it (inimitability), and which step of the value chain changes most.</p>
   <h2>The 14 directions</h2><div id="mdirs"></div>
   <h2>Where the cases come from</h2>
   <ul>
-    <li><span class="badge k-course">From the course</span> Fairphone, Petit h and Perfect Day are read from the textbook charts, and Michelin Fleet Solutions from the Session 5 slide. Levels are read by eye on a 1 to 5 scale, and two Michelin points are estimated and flagged. The directions shown for each case are our reading: the textbook does not name them.</li>
+    <li><span class="badge k-course">From the course</span> Fairphone, Petit h and Perfect Day are read from the textbook charts, and Michelin Fleet Solutions from the Session 5 slide. Levels are read by eye on a 1 to 5 scale, and two Michelin points are estimated and flagged. The directions shown for each case are our reading: the course material does not name them.</li>
     <li><span class="badge k-analysis">Student analysis</span> Bending Spoons comes from a course assignment by the author of this tool.</li>
     <li><span class="badge k-built">Built from course concepts</span> Vinted, Pinduoduo and Netflix versus Blockbuster were drawn for this tool using course concepts and are labelled as our judgement.</li>
   </ul>
-  <h2>What the AI does, and does not do</h2>
+  <h2>What your coach does, and does not do</h2>
   <ul>
-    <li>The AI always goes second. The checklist, the direction hints and the Practice scoring work without it, so a student commits to a reading before any AI speaks.</li>
-    <li>In Build, Gemini, Google's model, acts as a sparring partner in two ways: it draws its own curve without seeing yours, or it reviews your curve after you have written down your own weakest point. Gemini does not carry the course in its memory. Every request therefore includes the course's rules, the 14 directions with their guiding questions and the textbook's worked curves, and tells Gemini to use nothing else. The course is supplied with each question, not trained into the model.</li>
-    <li>For the "AI's view" Gemini never sees your scores, so it cannot simply agree with you. It scores the attributes you chose, then you compare. Where you differ is the interesting part, and you must defend your reading.</li>
-    <li>Gemini is a second opinion, never the answer. It knows the course only through what the request contains (not the lectures or the textbook text), so its reading can miss the nuance taught in class. The tool does not browse the web, and a company it does not know is flagged as an assumption. Only the company facts and curve you typed are sent, never anything else.</li>
-    <li>No shadow AI. For every AI answer the student records what they did with it (kept their reading, changed the curve, or rejected it) and why. This AI log goes into the copied summary, ready for an AI-use statement.</li>
+    <li>Your coach is an AI model, and it always goes second. The checklist, the direction hints and the Practice scoring work without it, so a student commits to a reading before the coach speaks.</li>
+    <li>In Build, the coach is a sparring partner in two ways: it draws its own curve without seeing yours, or it reviews your curve after you have written down your own weakest point. It does not carry the course in its memory. Every request therefore includes the course's rules, the 14 directions with their guiding questions and the worked curves from the textbook and the slides, and tells the coach to use nothing else. The course is supplied with each question, not trained into the model.</li>
+    <li>When it draws its own curve, the coach never sees your levels, so it cannot simply agree with you. It scores the attributes you chose, then you compare. Where you differ is the interesting part, and you must defend your reading.</li>
+    <li>The coach is a second opinion, never the answer. It knows the course only through what the request contains (not the lectures or the textbook text), so its reading can miss the nuance taught in class. The tool does not browse the web, and a company the coach does not know is flagged as an assumption. Only what you typed is sent: the company facts, the curve and, for a review, your self-check.</li>
+    <li>No shadow AI. For every answer from the coach the student records what they did with it (kept their reading, changed the curve, or rejected it) and why. This coach log goes into the copied summary, ready for an AI-use statement.</li>
   </ul>
   <h2>For next year's students</h2>
   <ul>
     <li>Run Practice on a case before reading it in the textbook, then compare.</li>
     <li>In Build, write the company facts yourself. Gathering and judging them is part of the exercise.</li>
-    <li>Treat every red or amber check as a question to answer, not a score to fix.</li>
+    <li>Treat every amber check as a question to answer, not a score to fix.</li>
+  </ul>
+  <h2>For the teacher</h2>
+  <ul>
+    <li>Before Session 1: Practice on Fairphone as homework. In class, ask who was "sure" and missed, and why.</li>
+    <li>Assignment 1: students build the curve of their company in Build; the coach log in "Copy my summary" is a ready AI-use statement.</li>
+    <li>Assignment 2: two-sided models get one curve per group, as in the Vinted practice. Before the pitch, Compare their curve with a course case.</li>
+    <li>Live class use: many students share one network, so raise the coach's request limit (AI_RATE_LIMIT on the server) for that day.</li>
   </ul>`;
   const g = m.querySelector('#mdirs'); g.append(dirGrid([]));
   root.append(m);
@@ -1321,7 +1336,7 @@ function coach(B) {
   if (B.sides.length > 1 || plat) push(6, 'More than one group is involved: another stakeholder is already part of the model.');
   if (/subscription|lease|rent|pay per|freemium|advert|commission|fee|insurance|per use/i.test(text)) push(7, 'Your description mentions a billing logic that could differ from the reference.');
   if (/\b(ai|algorithm|software|sensor|blockchain|automation|robot|internet|streaming)\b/i.test(text)) push(8, 'A technology appears in your description. Which step of the value chain does it change?');
-  if (/\b(data|community)\b/i.test(text)) push(14, 'You mention data or a community you already have. Could it be a strategic resource? (Session 6: a platform is not a technology by itself.)');
+  if (/\b(data|community)\b/i.test(text)) push(14, 'You mention data or a community you already have. Could it be a strategic resource? (Session 6: a platform\'s specific resource is its community.)');
   if (/non-?customers?|never (bought|use)|do(es)?n.t (buy|use)/i.test(text)) push(3, 'You mention people who do not buy today.');
   const up = A.slice().sort((a, b) => (b.n - b.r) - (a.n - a.r))[0], dn = A.slice().sort((a, b) => (a.n - a.r) - (b.n - b.r))[0], qs = [];
   if (up && up.n - up.r > 0) qs.push(`Which strategic resource or competence makes "${up.l}" possible for you, and could a rival copy it within a year?`);
@@ -1332,7 +1347,7 @@ function coach(B) {
 }
 
 
-function aiErr(e) { const c = e && e.code; return c === 'cancelled' ? '' : c === 'rate_limited' ? 'Too many requests. Wait a few minutes, then try again.' : c === 'not_configured' ? 'The AI is not configured on this site yet. The checks on the left work without it.' : c === 'offline' ? 'No connection. Check your network and try again.' : c === 'timeout' ? 'The AI took too long to answer. Try again in a moment; the rest of the tool is unaffected.' : 'The AI could not answer this time. The rest of the tool is unaffected.'; }
+function aiErr(e) { const c = e && e.code; return c === 'cancelled' ? '' : c === 'rate_limited' ? 'Too many requests. Wait a few minutes, then try again.' : c === 'not_configured' ? 'Your coach is not available on this site yet. The checks above work without it.' : c === 'offline' ? 'No connection. Check your network and try again.' : c === 'timeout' ? 'Your coach took too long to answer. Try again in a moment; the rest of the tool is unaffected.' : 'Your coach could not answer this time. The rest of the tool is unaffected.'; }
 async function callAI(task, payload, signal) {
   let r, timedOut = false;
   const ctl = new AbortController(), timer = setTimeout(() => { timedOut = true; ctl.abort(); }, 65000);
@@ -1357,13 +1372,13 @@ function viewBuild(root) {
     S.demo = false;
     if (isEmpty() || confirm('Replace your current curve with the Vinted demo? Your own work will be cleared.')) {
       const v = caseById('vinted'), d = sideData(v, 0);
-      B.company = v.name; B.offer = v.brief || v.summary; B.sides = [{ name: d.name, ref: d.ref, neu: d.neu, attrs: d.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }]; B.active = 0; save();
-      later(() => toast('Demo loaded. Now press "Show the AI\'s own curve" and see where it disagrees.'), 400);
+      B.log = []; B.company = v.name; B.offer = v.brief || v.summary; B.sides = [{ name: d.name, ref: d.ref, neu: d.neu, attrs: d.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }]; B.active = 0; save();
+      later(() => toast('Demo loaded. Now press "See your coach\'s curve" and see where it disagrees.'), 400);
     }
   }
   root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Build' }), h('h1', { style: 'margin-top:10px', text: 'Your company, your curve' })), h('p', { text: 'Write what you know about the company, name the attributes, then drag both curves into place. The checklist responds as you work. The tool does not look anything up: the facts must come from you.' })));
   const form = h('div', { class: 'panel' }), attrsEl = h('div', { class: 'panel' });
-  const coachEl = h('div', { class: 'panel', style: 'margin-top:18px' }), aiEl = h('div');
+  const coachEl = h('div', { class: 'panel', style: 'margin-top:18px' }), aiEl = h('div', { 'aria-live': 'polite' });
   const L = h('div', { class: 'chartcol' });
   const R = h('div', { class: 'stack' }, attrsEl, coachEl, aiEl);
   root.append(form, h('div', { class: 'two build', style: 'margin-top:20px' }, L, R));
@@ -1379,7 +1394,7 @@ function viewBuild(root) {
       field('Company name', bind(h('input', { class: 'inp', placeholder: 'e.g. Fairphone', maxlength: 80 }), B, 'company', queueCoach)),
       field('What does it offer, and how? (facts you gathered)', bind(h('textarea', { class: 'inp', rows: 3, placeholder: 'Two or three sentences. Who is the customer, what do they get, how is it paid for?', maxlength: 700 }), B, 'offer', queueCoach)));
     const sides = h('div', { class: 'sides' }, B.sides.map((s, i) => h('button', { class: 'chip', 'aria-pressed': i === B.active, onclick: () => selectGroup(i) }, s.name.trim() || 'Group ' + (i + 1))),
-      B.sides.length < 2 ? h('button', { class: 'chip', onclick: () => { B.sides.push(blankSide()); B.active = B.sides.length - 1; save(); aiView = null; drawAll(); } }, '+ Add a second customer group') : null);
+      B.sides.length < 2 ? h('button', { class: 'chip', onclick: () => { stopAI(); B.sides.push(blankSide()); B.active = B.sides.length - 1; save(); aiView = null; drawAll(); } }, '+ Add a second customer group') : null);
     const colB = h('div', null, h('div', { class: 'mini-h', style: 'margin-top:0', text: 'Customer groups: one curve per group' }), sides,
       h('p', { class: 'hint', style: 'margin:-2px 0 12px', text: 'Most models need one. A platform that serves two groups, such as buyers and sellers on Vinted, needs a curve for each, so add the second group.' }),
       field('Who is the customer group on this curve?', bind(h('input', { class: 'inp', placeholder: 'e.g. Smartphone buyers', maxlength: 80 }), sd, 'name', () => { drawSidesLabels(); panels.forEach((q, k) => paintHead(q, k)); queueCoach(); })),
@@ -1390,29 +1405,31 @@ function viewBuild(root) {
     attrsEl.append(h('h3', { text: 'Attributes' }), h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'What the customer sees. Drag the dots on the chart to set the levels.' }));
     const list = h('div');
     sd.attrs.forEach((a, i) => list.append(h('div', { class: 'arow' }, h('span', { class: 'ix', text: i + 1 }),
-      bind(h('input', { class: 'inp', placeholder: ['Price paid', 'Ease of use', 'Durability', 'Status', 'Choice'][i % 5] + ' …', maxlength: 40, 'aria-label': 'Attribute ' + (i + 1) }), a, 'l', () => { if (aiView) { aiView = null; aiEl.textContent = ''; toast('You renamed an attribute: ask Gemini again for its curve.'); } rebuildChart(); queueCoach(); }),
-      h('button', { class: 'x', 'aria-label': 'Remove attribute ' + (i + 1), onclick: () => { if (sd.attrs.length > 2) { sd.attrs.splice(i, 1); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '×'))));
+      bind(h('input', { class: 'inp', placeholder: ['Price paid', 'Ease of use', 'Durability', 'Status', 'Choice'][i % 5] + ' …', maxlength: 40, 'aria-label': 'Attribute ' + (i + 1) }), a, 'l', () => { if (aiView) { aiView = null; aiEl.textContent = ''; toast('You renamed an attribute: ask your coach again for its curve.'); } rebuildChart(); queueCoach(); }),
+      h('button', { class: 'x', 'aria-label': 'Remove attribute ' + (i + 1), onclick: () => { if (sd.attrs.length > 2) { stopAI(); sd.attrs.splice(i, 1); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '×'))));
     attrsEl.append(list, h('div', { class: 'flex' },
-      h('button', { class: 'btn ghost sm', onclick: () => { if (sd.attrs.length < 10) { sd.attrs.push({ l: '', r: 3, n: 3 }); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '+ Add attribute'),
+      h('button', { class: 'btn ghost sm', onclick: () => { if (sd.attrs.length < 10) { stopAI(); sd.attrs.push({ l: '', r: 3, n: 3 }); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '+ Add attribute'),
       h('select', { class: 'sel', style: 'width:auto;padding:8px 12px;font-size:.85rem', 'aria-label': 'Start from a course case', onchange: e => { loadCase(e.target.value); e.target.value = ''; } },
         h('option', { value: '' }, 'Start from a course case…'), CASES.flatMap(c => c.sides.map((s, i) => h('option', { value: c.id + ':' + i }, c.name + (c.sides.length > 1 ? ' · ' + s.name : '')))))),
       h('p', { class: 'hint', style: 'margin-top:10px', text: 'Label every attribute so that "high" means more of that thing for the customer. A high price is not a good thing for them, so name it "Price attractiveness" or "Affordability".' }));
     attrsEl.append(h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn ghost sm', onclick: copySummary }, 'Copy my summary'), h('button', { class: 'btn ghost sm', onclick: resetAll }, 'Start over')));
   }
+  /* a coach answer must never land on a curve that changed while it was on its way */
+  function stopAI() { if (aiRunning && aiCtl) aiCtl.abort(); aiView = null; aiEl.textContent = ''; }
   function drawSidesLabels() { form.querySelectorAll('.sides .chip').forEach((b, i) => { if (B.sides[i]) b.textContent = B.sides[i].name.trim() || 'Group ' + (i + 1); }); }
   function loadCase(v) {
-    if (!v) return; const [id, i] = v.split(':'), cs = caseById(id), sdc = sideData(cs, +i);
+    if (!v) return; stopAI(); const [id, i] = v.split(':'), cs = caseById(id), sdc = sideData(cs, +i);
     B.sides[B.active] = { name: sdc.name, ref: sdc.ref, neu: sdc.neu, attrs: sdc.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) };
     if (!B.company.trim() && !B.offer.trim()) { B.company = cs.name; B.offer = cs.brief || cs.summary || ''; }
     save(); aiView = null; drawAll(); toast('Loaded. Now change it until it is yours.');
   }
-  function resetAll() { B.company = ''; B.offer = ''; B.sides = [blankSide()]; B.active = 0; B.log = []; aiView = null; save(); drawAll(); toast('Cleared.'); }
+  function resetAll() { if (!isEmpty() && !confirm('Start over? Your curve and your coach log will be cleared.')) return; stopAI(); B.company = ''; B.offer = ''; B.sides = [blankSide()]; B.active = 0; B.log = []; aiView = null; save(); drawAll(); toast('Cleared.'); }
   const DEC = { kept: 'kept my reading', changed: 'changed my curve', rejected: 'rejected it' };
   function summaryText() {
     let t = `${B.company || 'Company'}: ${B.offer || ''}\n`;
     B.sides.forEach(s => { t += `\nCustomer: ${s.name}. ${s.neu || 'New'} vs ${s.ref || 'reference'}\n`; s.attrs.filter(a => a.l.trim()).forEach(a => t += `- ${a.l}: ${fmt(a.r)} -> ${fmt(a.n)}\n`); });
-    t += `\nAI use: ${B.log.length ? `I consulted Gemini ${B.log.length} time(s) as a second opinion. Every decision below is mine.` : 'I did not consult the AI for this curve.'}\n`;
-    B.log.forEach(e => { t += `- ${day(e.t)} · ${e.task === 'coach' ? 'AI coach' : 'AI\'s own curve'}${e.self ? ` · my self-check first: "${e.self}"` : ''}\n`; (e.decisions || []).forEach(d => t += `  ${d.attr ? d.attr + ': ' : ''}I ${DEC[d.decision] || d.decision}. Why: ${d.why}\n`); });
+    t += `\nAI use: ${B.log.length ? `I consulted the Odyssey Studio coach, an AI model, ${B.log.length} time(s) as a second opinion. Every decision below is mine.` : 'I did not consult the Odyssey Studio coach (an AI model) for this curve.'}\n`;
+    B.log.forEach(e => { t += `- ${day(e.t)} · ${e.task === 'coach' ? 'Coach review' : 'Coach\'s own curve'}${e.self ? ` · my self-check first: "${e.self}"` : ''}\n`; (e.decisions || []).forEach(d => t += `  ${d.attr ? d.attr + ': ' : ''}I ${DEC[d.decision] || d.decision}. Why: ${d.why}\n`); });
     return t;
   }
   function copySummary() { copyText(summaryText(), attrsEl, 'Summary copied.'); }
@@ -1422,7 +1439,7 @@ function viewBuild(root) {
     const row = h('div', { class: 'decide' }, why, h('div', { class: 'flex' }, choices.map(([k, t]) => h('button', { class: 'chip sm', onclick: () => {
       if (why.value.trim().length < 8) { why.focus(); toast('Write one line on why first.'); return; }
       entry.decisions = (entry.decisions || []).filter(d => d.attr !== attr).concat({ attr, decision: k, why: why.value.trim() }); save();
-      row.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.textContent === t)); onPick && onPick(k); toast('Noted in your AI log.');
+      row.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.textContent === t)); onPick && onPick(k); drawAIBtns(); toast('Noted in your coach log.');
     } }, t))));
     return row;
   }
@@ -1452,8 +1469,8 @@ function viewBuild(root) {
   }
   function paintChart(p, i) {
     const sd = B.sides[i], labels = sd.attrs.map(a => a.l.trim()), ch = p.chart, showAI = aiView && i === B.active;
-    p.cl.textContent = ''; p.cl.append(h('span', null, h('i', { class: 'ref' }), (sd.ref || 'Reference') + ' (drag)'), h('span', null, h('i'), (sd.neu || 'Your new offer') + ' (drag)'));
-    if (showAI) p.cl.append(h('span', null, h('i', { class: 'ai dash' }), 'Gemini: ' + (sd.ref || 'reference')), h('span', null, h('i', { class: 'ai' }), 'Gemini: ' + (sd.neu || 'new offer')));
+    p.cl.textContent = ''; p.cl.append(h('span', null, h('i', { class: 'ref' }), (sd.ref || 'Reference') + (dragMode !== 'you' ? ' (drag)' : '')), h('span', null, h('i'), (sd.neu || 'Your new offer') + (dragMode !== 'ref' ? ' (drag)' : '')));
+    if (showAI) p.cl.append(h('span', null, h('i', { class: 'ai dash' }), 'Coach: ' + (sd.ref || 'reference')), h('span', null, h('i', { class: 'ai' }), 'Coach: ' + (sd.neu || 'new offer')));
     const dm = h('span', { class: 'flex', role: 'group', 'aria-label': 'Which curve to drag', style: 'gap:6px' }, h('span', { class: 'hint', text: 'Drag:' }),
       [['both', 'Both'], ['ref', 'Reference'], ['you', 'New offer']].map(([k, t]) => h('button', { class: 'chip sm', 'aria-pressed': dragMode === k, onclick: () => { dragMode = k; panels.forEach((q, j) => paintChart(q, j)); } }, t)));
     p.cl.append(h('span', { class: 'sp flex', style: 'gap:10px' }, dm, h('button', { class: 'chip sm', 'aria-pressed': ch.showGaps, onclick: e => { ch.showGaps = !ch.showGaps; e.currentTarget.setAttribute('aria-pressed', ch.showGaps); ch.update(); } }, 'Gaps')));
@@ -1462,10 +1479,11 @@ function viewBuild(root) {
     ch.set(labels, ser, { reveal: false });
   }
   function selectGroup(i) {
-    if (i === B.active) return; const had = !!aiView; B.active = i; rmConfirm = -1; aiView = null; save(); aiEl.textContent = '';
+    if (i === B.active) return; const had = !!aiView; stopAI(); B.active = i; rmConfirm = -1; aiView = null; save(); aiEl.textContent = '';
     panels.forEach((p, k) => { paintHead(p, k); if (had) paintChart(p, k); }); drawForm(); drawCoach();
   }
   function removeGroup(i) {
+    stopAI();
     B.sides.splice(i, 1); if (i < B.active || B.active >= B.sides.length) B.active = Math.max(0, Math.min(B.active - (i < B.active ? 1 : 0), B.sides.length - 1));
     rmConfirm = -1; aiView = null; save(); drawAll(); toast('Group removed.');
   }
@@ -1475,7 +1493,7 @@ function viewBuild(root) {
   function drawCoach() {
     const res = coach(B);
     if (!coachEl.firstChild) {
-      coachEl.append(h('h3', { text: 'Coach' }), h('p', { class: 'hint', text: 'Built around the course\'s rules. Each line is a question to answer, not a grade.' }), h('div', { class: 'meter' }, h('i', { id: 'mt' })), h('ul', { class: 'checks', id: 'cks' }), h('div', { id: 'cx' }));
+      coachEl.append(h('h3', { text: 'Coach' }), h('p', { class: 'hint', text: 'Built around the course\'s rules. Each line is a question to answer, not a grade.' }), h('ul', { class: 'checks', id: 'cks' }), h('div', { id: 'cx' }));
     }
     const ul = $('#cks', coachEl);
     res.checks.forEach((c, k) => {
@@ -1483,7 +1501,6 @@ function viewBuild(root) {
       if (!li || !li.isConnected) { li = items[c.id] = h('li', { class: 'chk', style: `--d:${k * .07}s` }, h('span', { class: 'ic' }), h('div', null, h('b'), h('span', { class: 'd' }))); ul.append(li); }
       li.className = 'chk ' + (c.ok ? 'ok' : 'warn'); li.querySelector('.ic').textContent = c.ok ? '✓' : '!'; li.querySelector('b').textContent = c.t; li.querySelector('.d').textContent = c.d;
     });
-    $('#mt', coachEl).style.width = (res.score / res.checks.length * 100) + '%';
     const cx = $('#cx', coachEl); cx.textContent = '';
     if (res.dirs.length) cx.append(h('div', { class: 'mini-h', text: 'Directions your curve may point to' }), h('ul', { class: 'qs' }, res.dirs.map(d => h('li', null, h('b', { text: `${d.n} · ${dirT(d.n)}. ` }), d.why))));
     cx.append(h('div', { class: 'mini-h', text: 'Questions to push your thinking' }), h('ol', { class: 'qs' }, res.qs.map(q => h('li', { text: q }))));
@@ -1492,20 +1509,22 @@ function viewBuild(root) {
   /* AI */
   function drawAIBtns() {
     let box = $('#aib', coachEl); if (!box) { box = h('div', { id: 'aib' }); coachEl.append(box); } box.textContent = '';
-    if (!aiSample) { box.append(h('p', { class: 'hint', style: 'margin-top:18px', text: 'The AI second opinion is unavailable right now. Everything above works without it.' })); return; }
+    if (!aiSample) { box.append(h('p', { class: 'hint', style: 'margin-top:18px', text: 'Your coach is unavailable right now. Everything above works without it.' })); return; }
     const ready = side().attrs.filter(a => a.l.trim()).length >= 3 && (B.company.trim() || B.offer.trim());
     const selfOk = () => selfCheck.trim().length >= 15;
-    const coachBtn = h('button', { class: 'btn ai sm', disabled: !ready || aiRunning || !selfOk(), onclick: askCoach }, 'Ask the AI coach');
-    const self = h('textarea', { class: 'inp', rows: 2, maxlength: 300, 'aria-label': 'Your self-check before asking the AI coach', placeholder: 'Before you ask: which check above is your weakest, and why?' });
-    self.value = selfCheck; self.addEventListener('input', () => { selfCheck = self.value; coachBtn.disabled = !ready || aiRunning || !selfOk(); });
-    box.append(h('div', { class: 'mini-h', text: 'Argue with an AI (Gemini)' }),
-      h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'The AI goes second. It draws its own curve without seeing your levels, or reviews yours after you have judged it yourself. You decide what to keep, and every answer goes into your AI log.' }),
-      h('div', { class: 'flex' }, h('button', { class: 'btn ai sm', disabled: !ready || aiRunning, onclick: askView }, 'Show the AI\'s own curve')),
+    const last = B.log[B.log.length - 1], pending = !!(last && !(last.decisions || []).length && aiEl.childElementCount && !aiRunning);
+    const coachBtn = h('button', { class: 'btn ai sm', disabled: !ready || aiRunning || pending || !selfOk(), onclick: askCoach }, 'Ask your coach');
+    const self = h('textarea', { class: 'inp', rows: 2, maxlength: 300, 'aria-label': 'Your self-check before asking your coach', placeholder: 'Before you ask: which level are you least sure of, and why?' });
+    self.value = selfCheck; self.addEventListener('input', () => { selfCheck = self.value; coachBtn.disabled = !ready || aiRunning || pending || !selfOk(); });
+    box.append(h('div', { class: 'mini-h', text: 'Argue with your coach' }),
+      h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'Your coach always goes second. It draws its own curve without seeing your levels, or reviews yours after you have judged it yourself. You decide what to keep, and every answer goes into your coach log.' }),
+      h('div', { class: 'flex' }, h('button', { class: 'btn ai sm', disabled: !ready || aiRunning || pending, onclick: askView }, 'See your coach\'s curve')),
+      pending ? h('p', { class: 'hint', style: 'margin-top:8px', text: 'First record what you did with your coach\'s last answer, below.' }) : null,
       h('div', { style: 'margin-top:12px' }, self, h('div', { class: 'flex', style: 'margin-top:8px' }, coachBtn)),
       ready ? null : h('p', { class: 'hint', style: 'margin-top:8px', text: 'Add the company facts and at least three attribute names to enable these. Or load a course case below.' }),
-      B.log.length ? h('details', { style: 'margin-top:12px' }, h('summary', { text: `Your AI log (${B.log.length})` }), h('ul', { class: 'qs' }, B.log.slice().reverse().map(e => h('li', null, h('b', { text: `${day(e.t)} · ${e.task === 'coach' ? 'AI coach' : 'AI\'s own curve'}. ` }),
+      B.log.length ? h('details', { style: 'margin-top:12px' }, h('summary', { text: `Your coach log (${B.log.length})` }), h('ul', { class: 'qs' }, B.log.slice().reverse().map(e => h('li', null, h('b', { text: `${day(e.t)} · ${e.task === 'coach' ? 'Coach review' : 'Coach\'s own curve'}. ` }),
         (e.decisions || []).length ? e.decisions.map(d => `${d.attr ? d.attr + ': ' : ''}I ${DEC[d.decision] || d.decision} (${d.why})`).join('; ') : 'No decision recorded yet.'))),
-        h('p', { class: 'hint', text: 'The log goes into "Copy my summary", ready for an AI-use statement.' })) : null);
+        h('p', { class: 'hint', text: 'The log goes into "Copy my summary", ready for your AI-use statement.' })) : null);
   }
   function aiStart(msg) { if (aiCtl) aiCtl.abort(); aiCtl = new AbortController(); aiRunning = true; drawAIBtns(); aiBusy(msg); return aiCtl; }
   function aiEnd(ctl) { if (ctl === aiCtl) { aiRunning = false; drawAIBtns(); } }
@@ -1513,21 +1532,20 @@ function viewBuild(root) {
   function aiBusy(msg, stop) { aiEl.textContent = ''; aiEl.append(h('div', { class: 'aibox' }, h('p', { class: 'pulse' }, h('span', { class: 'spin' }), msg), h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => aiCtl && aiCtl.abort() }, 'Stop')))); }
   function aiFail(e) { aiEl.textContent = ''; const m = aiErr(e); if (m) aiEl.append(h('div', { class: 'aibox' }, h('p', { text: m }))); }
   async function askCoach() {
-    if (aiRunning) return; const ctl = aiStart('Gemini is reading your curve with the course\'s rules…');
+    if (aiRunning) return; const ctl = aiStart('Your coach is reading your curve with the course\'s rules…');
     try {
       const r = await callAI('coach', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(true), selfCheck: selfCheck.trim() }, ctl.signal);
-      if (ctl !== aiCtl) return;
+      if (ctl !== aiCtl || ctl.signal.aborted || !root.isConnected) return;
       const entry = { t: Date.now(), task: 'coach', self: selfCheck.trim(), decisions: [] }; B.log.push(entry); B.log = B.log.slice(-50); save(); selfCheck = '';
       aiEl.textContent = '';
       const li = a => (Array.isArray(a) ? a : []).filter(x => typeof x === 'string').map(x => h('li', { text: x }));
-      aiEl.append(h('div', { class: 'aibox', 'aria-live': 'polite' }, h('span', { class: 'badge k-built', style: 'color:var(--ai);border-color:var(--ai)', text: 'Gemini, prompted with the course\'s rules' }), h('h4', { style: 'margin-top:10px', text: 'Second opinion' }),
+      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge k-built', style: 'color:var(--ai);border-color:var(--ai)', text: 'Your coach, working from the course\'s rules' }), h('h4', { style: 'margin-top:10px', text: 'Your coach\'s review' }),
         r.selfCheck ? h('div', null, h('div', { class: 'mini-h', text: 'On your self-check' }), h('p', { class: 'hint', text: 'You wrote: ' + entry.self }), h('p', { text: String(r.selfCheck) })) : null,
         h('div', { class: 'mini-h', text: 'Overall' }), h('p', { text: String(r.verdict || '') }),
         r.strengths && r.strengths.length ? h('div', null, h('div', { class: 'mini-h', text: 'What works' }), h('ul', null, li(r.strengths))) : null,
         r.issues && r.issues.length ? h('div', null, h('div', { class: 'mini-h', text: 'To fix against the rules' }), h('ul', null, li(r.issues))) : null,
         Array.isArray(r.directions) && r.directions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Directions to try' }), h('ul', null, r.directions.filter(d => d && d.n >= 1 && d.n <= 14).map(d => h('li', null, h('b', { text: `${d.n} · ${dirT(d.n)}. ` }), String(d.why || ''))))) : null,
         h('div', { class: 'mini-h', text: 'Questions to answer' }), h('ol', null, li(r.questions)),
-        r.architecture ? h('div', null, h('div', { class: 'mini-h', text: 'Value architecture' }), h('p', { text: String(r.architecture) })) : null,
         r.watch ? h('div', null, h('div', { class: 'mini-h', text: 'Watch out' }), h('p', { text: String(r.watch) })) : null,
         h('div', { class: 'mini-h', text: 'What do you do with this second opinion?' }),
         decide(entry, '', [['kept', 'I keep my curve'], ['changed', 'I change my curve'], ['rejected', 'I reject it']], () => drawAIBtns())));
@@ -1538,32 +1556,32 @@ function viewBuild(root) {
     if (aiRunning) return;
     const sd = side();
     if (sd.attrs.some(a => !a.l.trim())) { sd.attrs = sd.attrs.filter(a => a.l.trim()); save(); drawForm(); drawChart(); toast('Empty attribute rows removed.'); }
-    const labels = sd.attrs.slice(), ctl = aiStart('Gemini is drawing its own curve without seeing yours…');
+    const labels = sd.attrs.slice(), ctl = aiStart('Your coach is drawing its own curve without seeing yours…');
     try {
       const r = await callAI('view', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(false) }, ctl.signal);
-      if (ctl !== aiCtl) return;
+      if (ctl !== aiCtl || ctl.signal.aborted || !root.isConnected) return;
       const arr = Array.isArray(r.attributes) ? r.attributes : [];
       const out = labels.map((a, i) => { const m = arr.find(x => x && String(x.label).trim().toLowerCase() === a.l.trim().toLowerCase()) || arr[i] || {}; return { l: a.l.trim(), r: half(m.ref), n: half(m.new), whyRef: String(m.whyRef || m.why || ''), whyNew: String(m.whyNew || m.why || ''), conf: m.confidence || 'low', mine: a }; });
       if (out.some(o => o.r == null || o.n == null)) throw { code: 'bad' };
       aiView = out; drawChart();
       const diffs = out.filter(o => Math.abs(o.n - o.mine.n) >= 1 || Math.abs(o.r - o.mine.r) >= 1);
       const entry = { t: Date.now(), task: 'view', decisions: [] }; B.log.push(entry); B.log = B.log.slice(-50); save();
-      const useAI = o => k => { if (k === 'changed') { o.mine.r = o.r; o.mine.n = o.n; save(); drawChart(); queueCoach(); } };
+      const useAI = o => k => { if (k === 'changed') toast('Now redraw "' + o.l + '" yourself on the chart.'); };
       aiEl.textContent = '';
-      aiEl.append(h('div', { class: 'aibox', 'aria-live': 'polite' }, h('span', { class: 'badge', style: 'color:var(--ai);border-color:var(--ai)', text: r.known ? 'Gemini recognises the company' : 'Gemini does not recognise it: description only' }),
-        h('h4', { style: 'margin-top:10px', text: 'Gemini\'s view against yours' }), h('p', { text: String(r.summary || '') }),
-        h('div', { class: 'mini-h', text: diffs.length ? 'Where you and Gemini disagree by a point or more: defend your reading' : 'You and Gemini agree within a point everywhere' }),
-        h('ul', { class: 'diffs' }, diffs.map(o => { const li = reasonLi(o, sd); li.append(decide(entry, o.l, [['kept', 'Keep mine'], ['changed', 'Use Gemini\'s levels']], useAI(o))); return li; })),
+      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge', style: 'color:var(--ai);border-color:var(--ai)', text: r.known ? 'Your coach knows this company' : 'Your coach does not know it: description only' }),
+        h('h4', { style: 'margin-top:10px', text: 'Your coach\'s curve against yours' }), h('p', { text: String(r.summary || '') }),
+        h('div', { class: 'mini-h', text: diffs.length ? 'Where you and your coach disagree by a point or more: defend your reading' : 'You and your coach agree within a point everywhere' }),
+        h('ul', { class: 'diffs' }, diffs.map(o => { const li = reasonLi(o, sd); li.append(decide(entry, o.l, [['kept', 'Keep mine'], ['changed', 'I\'ll redraw it']], useAI(o))); return li; })),
         diffs.length ? null : h('div', null, h('div', { class: 'mini-h', text: 'What do you take from this?' }), decide(entry, '', [['kept', 'It confirms my reading'], ['changed', 'I will still change something']])),
-        h('details', { style: 'margin-top:10px' }, h('summary', { text: 'Gemini\'s reasoning on every attribute' }), h('ul', { class: 'diffs' }, out.map(o => reasonLi(o, sd)))),
+        h('details', { style: 'margin-top:10px' }, h('summary', { text: 'Your coach\'s reasoning on every attribute' }), h('ul', { class: 'diffs' }, out.map(o => reasonLi(o, sd)))),
         Array.isArray(r.missing) && r.missing.length ? h('div', null, h('div', { class: 'mini-h', text: 'Facts that would sharpen the curve' }), h('ul', null, r.missing.map(x => h('li', { text: String(x) })))) : null,
-        Array.isArray(r.assumptions) && r.assumptions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Gemini\'s assumptions' }), h('ul', null, r.assumptions.map(x => h('li', { text: String(x) })))) : null,
+        Array.isArray(r.assumptions) && r.assumptions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Your coach\'s assumptions' }), h('ul', null, r.assumptions.map(x => h('li', { text: String(x) })))) : null,
         h('p', { class: 'hint', style: 'margin-top:12px', text: 'A second opinion, not the truth. Decide who is right and be ready to defend it.' }),
-        h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => { aiView = null; drawChart(); aiEl.textContent = ''; } }, 'Hide Gemini\'s curve'))));
+        h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => { aiView = null; drawChart(); aiEl.textContent = ''; } }, 'Hide the coach\'s curve'))));
     } catch (e) { if (ctl === aiCtl) aiFail(e && e.code === 'bad' ? { code: 'x' } : e); }
     finally { aiEnd(ctl); }
   }
-  const reasonLi = (o, sd) => h('li', null, h('b', { text: o.l + '. ' }), `You ${fmt(o.mine.r)} → ${fmt(o.mine.n)}; Gemini ${fmt(o.r)} → ${fmt(o.n)} (${o.conf} confidence).`,
+  const reasonLi = (o, sd) => h('li', null, h('b', { text: o.l + '. ' }), `You ${fmt(o.mine.r)} → ${fmt(o.mine.n)}; coach ${fmt(o.r)} → ${fmt(o.n)} (${o.conf} confidence).`,
     h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.ref || 'Reference' }), ' ' + o.whyRef), h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.neu || 'New offer' }), ' ' + o.whyNew));
   function drawAll() { items = {}; coachEl.textContent = ''; aiEl.textContent = ''; drawForm(); drawChart(true); drawCoach(); }
   drawAll();

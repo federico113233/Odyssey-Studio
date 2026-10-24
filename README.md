@@ -4,7 +4,7 @@ An interactive web app to practise the **value curve**, the core tool of HEC Par
 
 - **Explore** eight cases (four from the textbook, one student analysis, three built from course concepts).
 - **Practice**: predict a curve, then reveal the course's reading and get scored.
-- **Build** your own curve with a live, rule-based coach, plus an optional AI second opinion from **Gemini**.
+- **Build** your own curve with a live, rule-based coach, plus a coach (an AI model, Gemini on the server) that goes second and whose every answer the student must accept or reject with a reason.
 
 A student project built on the course framework and cases. Not an official HEC tool.
 
