@@ -1,0 +1,1470 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Odyssey Studio</title>
+<meta name="description" content="Practise the value curve from HEC Paris' Reinventing Your Business Model (Odyssey 3.14): eight cases, predict-then-reveal practice, and a builder with a course-based coach.">
+<meta property="og:title" content="Odyssey Studio">
+<meta property="og:description" content="Draw the curve. Then see how the course reads it.">
+<meta name="theme-color" content="#F4F2EC">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='1' y='1' width='30' height='30' rx='9' fill='%2313161D'/%3E%3Cpath d='M5 22 L12 12 L19 18 L27 8' fill='none' stroke='%237C766A' stroke-width='2' stroke-dasharray='3 3' stroke-linecap='round'/%3E%3Cpath d='M5 18 L12 21 L19 9 L27 14' fill='none' stroke='%23F4F2EC' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='19' cy='9' r='3' fill='%23E0522B'/%3E%3C/svg%3E">
+<style>[hidden]:not([hidden=until-found i]){display:none!important}img{max-width:100%}</style>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Serif:ital@0;1&display=swap">
+<style>:root{--paper:#F4F2EC;--paper-2:#EBE8DF;--card:#FBFAF6;--ink:#13161D;--ink-2:#444956;--ink-3:#646A78;
+--line:#D6D1C4;--line-2:#E5E1D6;--ref:#7C766A;--you:#2442E6;--ai:#E0522B;--ok:#17794F;--warn:#A8620A;--truth:#13161D;
+--you-bg:#E4E8FC;--ai-bg:#FBE6DE;--ok-bg:#E1F0E7;--warn-bg:#F6EAD3;--on-ink:#F4F2EC;--shadow:0 1px 0 rgba(19,22,29,.04),0 18px 40px -22px rgba(19,22,29,.28);
+--grain:.05;
+--hec:#00447C;}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--paper:#0E1117;--paper-2:#141923;--card:#181D27;--ink:#EEEBE3;--ink-2:#C2BFB6;--ink-3:#9EA2AE;
+--line:#2C3342;--line-2:#222937;--ref:#A39D8E;--you:#8CA0FF;--ai:#FF8C68;--ok:#5BCB93;--warn:#EDB25A;--truth:#EEEBE3;
+--you-bg:#202849;--ai-bg:#3A2219;--ok-bg:#16301F;--warn-bg:#3A2D14;--on-ink:#0E1117;--shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.7);
+--grain:.07;
+--hec:#9DBDEB;color-scheme:dark}}
+:root[data-theme="dark"]{--paper:#0E1117;--paper-2:#141923;--card:#181D27;--ink:#EEEBE3;--ink-2:#C2BFB6;--ink-3:#9EA2AE;
+--line:#2C3342;--line-2:#222937;--ref:#A39D8E;--you:#8CA0FF;--ai:#FF8C68;--ok:#5BCB93;--warn:#EDB25A;--truth:#EEEBE3;
+--you-bg:#202849;--ai-bg:#3A2219;--ok-bg:#16301F;--warn-bg:#3A2D14;--on-ink:#0E1117;--shadow:0 1px 0 rgba(0,0,0,.3),0 18px 40px -22px rgba(0,0,0,.7);
+--grain:.07;
+--hec:#9DBDEB;color-scheme:dark}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:'Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;font-size:16px;line-height:1.55;-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,48px);padding-block:0;min-height:100%;overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;opacity:var(--grain);background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 1 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>")}
+.wrap{max-width:1280px;margin-inline:auto;position:relative;z-index:1}
+h1,h2,h3,h4{font-family:'Instrument Serif',Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:-.01em;margin:0;text-wrap:balance}
+p{margin:0;text-wrap:pretty}
+a{color:inherit}
+button{font:inherit;color:inherit;cursor:pointer}
+.mono,.eyebrow{font-family:'IBM Plex Mono',ui-monospace,Menlo,monospace;font-size:.72rem;letter-spacing:.09em;text-transform:uppercase}
+.eyebrow{color:var(--ink-3)}
+:focus-visible{outline:2px solid var(--you);outline-offset:3px;border-radius:4px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;display:flex;align-items:center;gap:20px;padding:14px 0;background:color-mix(in srgb,var(--paper) 86%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line-2);margin-inline:calc(-1*clamp(16px,4vw,48px));padding-inline:clamp(16px,4vw,48px)}
+.top-in{display:flex;align-items:center;gap:20px;width:100%;max-width:1280px;margin-inline:auto}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:'Instrument Serif',serif;font-size:1.45rem;line-height:1;white-space:nowrap;background:none;border:0;padding:0}
+.brand svg{width:30px;height:30px;flex:none}
+.nav{display:flex;gap:4px;margin-left:auto;position:relative;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav button{background:none;border:0;padding:8px 12px;color:var(--ink-3);font-weight:500;font-size:.93rem;position:relative;white-space:nowrap;transition:color .2s}
+.nav button:hover{color:var(--ink)}
+.nav button[aria-current=page]{color:var(--ink)}
+.nav .bar{position:absolute;bottom:0;height:2px;background:var(--ink);border-radius:2px;transition:left .35s cubic-bezier(.3,.8,.2,1),width .35s cubic-bezier(.3,.8,.2,1);pointer-events:none}
+.icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;flex:none;transition:transform .2s,border-color .2s}
+.icon-btn:hover{transform:rotate(18deg);border-color:var(--ink-3)}
+.icon-btn svg{width:18px;height:18px}
+@media(max-width:640px){.top{gap:10px}.brand span{display:none}.top-in{gap:8px}.nav{margin-left:0;flex:1}.nav button{padding:8px 9px;font-size:.88rem}}
+
+main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
+.view{animation:viewin .6s cubic-bezier(.2,.7,.2,1) both}
+@keyframes viewin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.rv{opacity:0;transform:translateY(22px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.in{opacity:1;transform:none}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:10px;border-radius:999px;padding:12px 22px;font-weight:600;font-size:.95rem;border:1px solid var(--ink);background:var(--ink);color:var(--on-ink);transition:transform .2s,box-shadow .2s,background .2s;text-decoration:none}
+.btn:hover{transform:translateY(-2px);box-shadow:0 12px 24px -12px rgba(19,22,29,.5)}
+.btn:active{transform:translateY(0)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--paper-2);box-shadow:none}
+.btn.sm{padding:8px 14px;font-size:.85rem}
+.btn[disabled]{opacity:.45;pointer-events:none}
+.btn.you{background:var(--you);border-color:var(--you);color:var(--on-ink)}
+.btn.ai{background:var(--ai);border-color:var(--ai);color:var(--on-ink)}
+.arrow{display:inline-block;transition:transform .25s}
+.btn:hover .arrow{transform:translateX(4px)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.02fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;padding-block:clamp(8px,3vw,40px) clamp(40px,6vw,80px)}
+@media(max-width:900px){.hero{grid-template-columns:minmax(0,1fr)}}
+.hero h1{font-size:clamp(2.5rem,5.4vw,4.7rem);line-height:.98;margin:18px 0 22px}
+.hero h1 em{font-style:italic;color:var(--you)}
+.hero .lede{font-size:clamp(1.05rem,1.6vw,1.22rem);color:var(--ink-2);max-width:34em}
+.hero .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
+.hero-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:18px 18px 10px;box-shadow:var(--shadow);position:relative;min-width:0}
+.hero-card .cap{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:4px 6px 0}
+.hero-card .cap b{font-family:'Instrument Serif',serif;font-weight:400;font-size:1.5rem;transition:opacity .4s}
+.hero-card .dots{display:flex;gap:6px}
+.hero-card .dots i{width:6px;height:6px;border-radius:50%;background:var(--line);transition:background .3s,transform .3s}
+.hero-card .dots i.on{background:var(--ink);transform:scale(1.4)}
+.hero-note{font-size:.82rem;color:var(--ink-3);padding:6px 6px 10px}
+
+.strip{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin-block:10px 0}
+.strip>div{padding:24px 22px 24px 0;min-width:0}
+.strip>div+div{padding-left:22px;border-left:1px solid var(--line)}
+.strip .n{font-family:'Instrument Serif',serif;font-size:2.6rem;line-height:1;color:var(--ink-3)}
+.strip h3{font-size:1.5rem;margin:8px 0 6px}
+.strip p{color:var(--ink-2);font-size:.95rem}
+@media(max-width:760px){.strip{grid-template-columns:1fr}.strip>div,.strip>div+div{padding:18px 0;border-left:0}.strip>div+div{border-top:1px solid var(--line)}}
+
+.sec{padding-top:clamp(44px,7vw,88px)}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.sec-h h2{font-size:clamp(2rem,4vw,3.1rem);line-height:1.02;max-width:16em}
+.sec-h p{color:var(--ink-2);max-width:30em}
+
+.modes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media(max-width:860px){.modes{grid-template-columns:1fr}}
+.mode{display:flex;flex-direction:column;gap:12px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:26px 24px;min-height:250px;position:relative;overflow:hidden;transition:transform .35s cubic-bezier(.2,.7,.2,1),border-color .3s,box-shadow .35s}
+.mode:hover{transform:translateY(-6px);border-color:var(--ink-3);box-shadow:var(--shadow)}
+.mode .ix{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-3)}
+.mode h3{font-size:2.1rem;line-height:1}
+.mode p{color:var(--ink-2);font-size:.96rem}
+.mode .go{margin-top:auto;font-weight:600;display:flex;align-items:center;gap:8px}
+.mode svg.bg{position:absolute;right:-20px;bottom:-14px;width:150px;opacity:.16;transition:opacity .4s,transform .5s}
+.mode:hover svg.bg{opacity:.34;transform:translate(-8px,-6px)}
+
+.cases{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
+@media(max-width:1020px){.cases{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.cases{grid-template-columns:1fr}}
+.case{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:18px 18px 14px;transition:transform .3s,border-color .3s,box-shadow .3s;min-width:0}
+.case:hover{transform:translateY(-5px);border-color:var(--ink-3);box-shadow:var(--shadow)}
+.case h3{font-size:1.65rem;line-height:1.05}
+.case .vs{color:var(--ink-3);font-size:.85rem}
+.case svg{width:100%;height:70px;margin-top:6px}
+.badge{display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;font-size:.66rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 9px;border-radius:999px;border:1px solid var(--line);color:var(--ink-3);width:fit-content;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.k-course{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 40%,transparent)}
+.k-analysis{color:var(--you);border-color:color-mix(in srgb,var(--you) 40%,transparent)}
+.k-built{color:var(--warn);border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+
+.ground{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,56px);background:var(--ink);color:var(--on-ink);border-radius:26px;padding:clamp(26px,4vw,56px)}
+.ground h2{font-size:clamp(2rem,3.6vw,2.9rem);line-height:1.02}
+.ground p,.ground li{color:color-mix(in srgb,var(--on-ink) 78%,transparent)}
+.ground ul{margin:14px 0 0;padding:0;list-style:none;display:grid;gap:12px}
+.ground li{display:grid;grid-template-columns:28px 1fr;gap:8px}
+.ground li b{font-family:'IBM Plex Mono',monospace;font-weight:500;color:var(--on-ink)}
+@media(max-width:820px){.ground{grid-template-columns:1fr}}
+
+/* chart */
+.chart-card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:14px 14px 10px;box-shadow:var(--shadow);min-width:0}
+.vc{width:100%;display:block;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.vc text{font-family:'Hanken Grotesk',system-ui,sans-serif;fill:var(--ink-2)}
+.vc .ylab{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.08em;text-transform:uppercase;fill:var(--ink-3)}
+.vc .xlab{font-size:11.5px;font-weight:500;cursor:pointer}
+.vc .xlab.on{fill:var(--ink);font-weight:700}
+.vc .xlab.ph{font-style:italic;fill:var(--ink-3)}
+.vc .grid{stroke:var(--line-2);stroke-width:1}
+.vc .col{stroke:var(--line-2);stroke-width:1;stroke-dasharray:2 5}
+.vc .col.on{stroke:var(--ink-3);stroke-dasharray:none;opacity:.5}
+.vc .path{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.vc .s-ref .path{stroke:var(--ref);stroke-dasharray:7 7;stroke-width:2.4}
+.vc .s-ref .dot{fill:var(--card);stroke:var(--ref);stroke-width:2.4}
+.vc .s-you .path,.vc .s-new .path{stroke:var(--you)}
+.vc .s-you .dot,.vc .s-new .dot{fill:var(--you);stroke:var(--card);stroke-width:3}
+.vc .s-ai .path{stroke:var(--ai)}
+.vc .s-ai .dot{fill:var(--ai);stroke:var(--card);stroke-width:3}
+.vc .s-truth .path{stroke:var(--truth)}
+.vc .s-truth .dot{fill:var(--truth);stroke:var(--card);stroke-width:3}
+.vc .dot{transition:r .2s}
+.vc .drag .dot{cursor:grab}
+.vc .drag .dot:hover,.vc .dot.act{r:11}
+.vc .halo{fill:var(--you);opacity:0;transition:opacity .2s}
+.vc .s-ref .halo{fill:var(--ref)}
+.vc .hit{fill:transparent;cursor:grab;touch-action:none}
+.vc .drag .hit:active{cursor:grabbing}
+.vc .gap{stroke-width:7;stroke-linecap:round;opacity:.16}
+.vc .gap.up{stroke:var(--ok)}
+.vc .gap.dn{stroke:var(--warn)}
+.vc .tip rect{fill:var(--ink)}
+.vc .tip text{fill:var(--on-ink);font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:500;text-anchor:middle}
+.vc .tip{pointer-events:none;transition:opacity .15s}
+.vc .colhit{fill:transparent}
+.legend{display:flex;gap:18px;flex-wrap:wrap;align-items:center;padding:6px 6px 8px;font-size:.88rem;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{display:inline-block;width:26px;height:0;border-top:3px solid var(--you);border-radius:2px}
+.legend i.ref{border-top:3px dashed var(--ref)}
+.legend i.ai{border-color:var(--ai)}
+.legend i.truth{border-color:var(--truth)}
+.legend .sp{margin-left:auto;display:flex;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 13px;font-size:.84rem;font-weight:500;color:var(--ink-2);transition:background .2s,border-color .2s,color .2s}
+.chip:hover{border-color:var(--ink-3);color:var(--ink)}
+.chip[aria-pressed=true],.chip.on{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+
+/* explore */
+.pills{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 12px;scrollbar-width:thin;margin-bottom:10px}
+.pills .chip{white-space:nowrap}
+.case-head{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:clamp(18px,4vw,56px);align-items:end;margin-bottom:36px}
+@media(max-width:820px){.case-head{grid-template-columns:1fr}}
+.case-head h1{font-size:clamp(2.6rem,5.4vw,4.4rem);line-height:.98}
+.case-head h1 small{display:block;font-size:.4em;color:var(--ink-3);font-style:italic;margin-top:8px}
+.case-head .tagline{font-family:'Instrument Serif',serif;font-style:italic;font-size:1.5rem;color:var(--you);margin-top:10px}
+.meta{display:flex;gap:8px 16px;flex-wrap:wrap;margin-top:14px;color:var(--ink-3);font-size:.85rem;align-items:center}
+.two{display:grid;grid-template-columns:minmax(0,1.95fr) minmax(0,1fr);gap:20px;align-items:start}
+@media(max-width:980px){.two{grid-template-columns:minmax(0,1fr)}}
+.side{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+@media(max-width:980px){.side{position:static}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px 22px}
+.panel h3{font-size:1.5rem;margin-bottom:8px}
+.attr-list{display:grid;gap:0;margin:0;padding:0;list-style:none}
+.attr{display:grid;grid-template-columns:1fr auto;gap:2px 12px;padding:12px 10px;border-top:1px solid var(--line-2);border-radius:10px;cursor:pointer;transition:background .2s}
+.attr:first-child{border-top:0}
+.attr:hover,.attr.on{background:var(--paper-2)}
+.attr b{font-weight:600}
+.attr p{grid-column:1/-1;color:var(--ink-2);font-size:.9rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .45s ease,opacity .35s,margin .3s}
+.attr.on p{max-height:240px;opacity:1;margin-top:6px}
+.delta{font-family:'IBM Plex Mono',monospace;font-size:.8rem;padding:2px 9px;border-radius:999px;background:var(--paper-2);color:var(--ink-2);white-space:nowrap;height:fit-content;align-self:center}
+.delta.up{background:var(--ok-bg);color:var(--ok)}
+.delta.dn{background:var(--warn-bg);color:var(--warn)}
+.read{margin-top:16px;font-family:'Instrument Serif',serif;font-size:1.35rem;line-height:1.3;color:var(--ink)}
+.read em{color:var(--you)}
+.tabs{display:flex;gap:6px;border-bottom:1px solid var(--line);margin-top:44px;overflow-x:auto}
+.tabs button{background:none;border:0;padding:12px 16px;color:var(--ink-3);font-weight:600;border-bottom:2px solid transparent;margin-bottom:-1px;white-space:nowrap}
+.tabs button[aria-selected=true]{color:var(--ink);border-color:var(--ink)}
+.tab-body{padding-top:24px}
+.dirs{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.dir{border:1px solid var(--line);border-radius:14px;padding:14px 16px;background:var(--card);opacity:.55;transition:opacity .3s,border-color .3s,transform .3s;min-width:0}
+.dir.used{opacity:1;border-color:var(--you);background:linear-gradient(180deg,var(--you-bg),var(--card) 80%)}
+.dir .no{font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ink-3)}
+.dir h4{font-size:1.2rem;line-height:1.15;margin:3px 0 4px}
+.dir p{font-size:.86rem;color:var(--ink-2)}
+.dir .why{margin-top:8px;padding-top:8px;border-top:1px dashed var(--line);color:var(--ink)}
+.grp-t{margin:22px 0 10px}
+.chain{display:flex;gap:0;overflow-x:auto;padding-bottom:8px}
+.step{flex:1 0 190px;position:relative;padding:18px 18px 18px 22px;background:var(--card);border:1px solid var(--line);border-left:0;min-width:0}
+.step:first-child{border-left:1px solid var(--line);border-radius:16px 0 0 16px}
+.step:last-child{border-radius:0 16px 16px 0}
+.step h4{font-size:1.25rem;margin-bottom:4px}
+.step p{font-size:.88rem;color:var(--ink-2)}
+.step .num{font-family:'IBM Plex Mono',monospace;font-size:.7rem;color:var(--ink-3)}
+.contrib{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+@media(max-width:820px){.contrib{grid-template-columns:1fr}}
+.contrib ul{margin:8px 0 0;padding-left:18px;color:var(--ink-2);font-size:.92rem;display:grid;gap:6px}
+.prov{display:flex;gap:10px;align-items:flex-start;margin-top:18px;font-size:.84rem;color:var(--ink-3);border-left:2px solid var(--line);padding-left:12px}
+
+/* compare */
+.cmp-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+@media(max-width:900px){.cmp-grid{grid-template-columns:1fr}}
+.sel{width:100%;appearance:none;font:inherit;background:var(--card);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px 14px;font-weight:600}
+table.t{width:100%;border-collapse:collapse;font-size:.93rem}
+table.t th,table.t td{text-align:left;padding:12px 10px;border-top:1px solid var(--line-2);vertical-align:top}
+table.t th{font-family:'IBM Plex Mono',monospace;font-size:.7rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);border-top:0}
+table.t td:first-child{color:var(--ink-3);width:28%}
+.tw{overflow-x:auto}
+.dchips{display:flex;gap:6px;flex-wrap:wrap}
+.dchip{font-family:'IBM Plex Mono',monospace;font-size:.75rem;padding:2px 8px;border-radius:8px;background:var(--paper-2);color:var(--ink-2)}
+.dchip.both{background:var(--you-bg);color:var(--you)}
+
+/* practice */
+.steps{display:flex;gap:10px;align-items:center;margin-bottom:22px;flex-wrap:wrap}
+.steps span{display:inline-flex;align-items:center;gap:8px;color:var(--ink-3);font-size:.88rem;font-weight:500}
+.steps b{width:24px;height:24px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--line);font-family:'IBM Plex Mono',monospace;font-size:.72rem;font-weight:500}
+.steps .on{color:var(--ink)}
+.steps .on b{background:var(--ink);color:var(--on-ink);border-color:var(--ink)}
+.steps .done b{background:var(--ok);color:#fff;border-color:var(--ok)}
+.steps i{width:24px;height:1px;background:var(--line)}
+.brief{font-family:'Instrument Serif',serif;font-size:clamp(1.4rem,2.4vw,1.9rem);line-height:1.28;max-width:30em}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+.chips .chip{font-size:.8rem;padding:5px 11px}
+.chips .chip small{font-family:'IBM Plex Mono',monospace;color:inherit;opacity:.65}
+.score{display:flex;align-items:center;gap:22px;flex-wrap:wrap}
+.ring{width:112px;height:112px;position:relative;flex:none}
+.ring svg{width:100%;height:100%;transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9}
+.ring .bgc{stroke:var(--line-2)}
+.ring .fg{stroke:var(--ok);stroke-linecap:round;transition:stroke-dashoffset 1.4s cubic-bezier(.2,.7,.2,1)}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-family:'Instrument Serif',serif;font-size:2.1rem;font-weight:400}
+.verdict{display:inline-block;font-family:'IBM Plex Mono',monospace;font-size:.7rem;padding:3px 9px;border-radius:999px;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+.v-hit{background:var(--ok-bg);color:var(--ok)}
+.v-near{background:var(--you-bg);color:var(--you)}
+.v-miss{background:var(--warn-bg);color:var(--warn)}
+.ptable{display:grid;gap:0}
+.prow{display:grid;grid-template-columns:minmax(0,1.1fr) auto auto auto;gap:6px 14px;padding:12px 4px;border-top:1px solid var(--line-2);align-items:center;opacity:0;animation:viewin .5s both;animation-delay:var(--d,0s)}
+.prow p{grid-column:1/-1;font-size:.88rem;color:var(--ink-2)}
+.prow .num{font-family:'IBM Plex Mono',monospace;font-size:.85rem}
+.note{background:var(--paper-2);border-radius:14px;padding:14px 16px;font-size:.92rem;color:var(--ink-2)}
+.note b{color:var(--ink)}
+.pcards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+@media(max-width:700px){.pcards{grid-template-columns:1fr}}
+.pcard{display:flex;flex-direction:column;gap:6px;text-align:left;background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;transition:transform .3s,border-color .3s,box-shadow .3s}
+.pcard:hover{transform:translateY(-5px);border-color:var(--ink-3);box-shadow:var(--shadow)}
+.pcard h3{font-size:1.9rem;line-height:1.05}
+.pcard p{color:var(--ink-2);font-size:.93rem}
+.best{margin-top:6px;font-family:'IBM Plex Mono',monospace;font-size:.75rem;color:var(--ok)}
+
+/* build */
+.field{display:grid;gap:6px;margin-bottom:14px}
+.field label,.lab{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3)}
+.inp,textarea.inp{width:100%;font:inherit;color:var(--ink);background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 13px;transition:border-color .2s,box-shadow .2s;resize:vertical}
+.inp:focus{outline:0;border-color:var(--you);box-shadow:0 0 0 4px color-mix(in srgb,var(--you) 18%,transparent)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){.row2{grid-template-columns:1fr}}
+.arow{display:grid;grid-template-columns:24px minmax(0,1fr) 34px;gap:8px;align-items:center;margin-bottom:8px}
+.arow .ix{font-family:'IBM Plex Mono',monospace;font-size:.72rem;color:var(--ink-3);text-align:right}
+.arow .x{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:none;color:var(--ink-3)}
+.arow .x:hover{color:var(--warn);border-color:var(--warn)}
+.sides{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.checks{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:2px}
+.chk{display:grid;grid-template-columns:24px 1fr;gap:10px;padding:9px 6px;border-radius:10px;transition:background .3s}
+.chk .ic{width:22px;height:22px;border-radius:50%;display:grid;place-items:center;font-size:.8rem;font-weight:700;border:1.5px solid var(--line);color:var(--ink-3);transition:all .35s cubic-bezier(.3,1.6,.5,1)}
+.chk.ok .ic{background:var(--ok);border-color:var(--ok);color:#fff;transform:scale(1.08)}
+.chk.warn .ic{background:var(--warn-bg);border-color:var(--warn);color:var(--warn)}
+.chk b{font-weight:600;display:block;font-size:.95rem}
+.chk span.d{display:block;color:var(--ink-2);font-size:.86rem}
+.chk{opacity:0;animation:viewin .45s both;animation-delay:var(--d,0s)}
+.meter{height:6px;background:var(--line-2);border-radius:6px;overflow:hidden;margin-top:6px}
+.meter i{display:block;height:100%;background:linear-gradient(90deg,var(--you),var(--ok));width:0;transition:width .7s cubic-bezier(.2,.7,.2,1)}
+.mini-h{font-family:'IBM Plex Mono',monospace;font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:20px 0 8px}
+.qs{margin:0;padding-left:20px;display:grid;gap:8px;color:var(--ink-2);font-size:.93rem}
+.aibox{border:1px solid color-mix(in srgb,var(--ai) 45%,transparent);background:linear-gradient(180deg,var(--ai-bg),var(--card) 70%);border-radius:18px;padding:18px 20px;margin-top:16px}
+.aibox h4{font-size:1.35rem;margin-bottom:6px}
+.aibox p,.aibox li{font-size:.92rem;color:var(--ink-2)}
+.aibox ul{margin:6px 0 0;padding-left:18px;display:grid;gap:5px}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid currentColor;border-right-color:transparent;border-radius:50%;animation:sp .8s linear infinite;vertical-align:-2px;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+.pulse{animation:pulse 1.6s ease-in-out infinite}
+@keyframes pulse{50%{opacity:.45}}
+.hint{font-size:.85rem;color:var(--ink-3)}
+.toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--ink);color:var(--on-ink);padding:10px 18px;border-radius:999px;font-size:.9rem;opacity:0;transition:all .35s;z-index:50;pointer-events:none;max-width:90vw}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+.stack{display:grid;gap:18px}
+.flex{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+footer{border-top:1px solid var(--line);padding-block:30px 40px;margin-top:60px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--ink-3);font-size:.85rem;position:relative;z-index:1}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;width:100%}
+.method h2{font-size:2.2rem;margin:36px 0 10px}
+.method p,.method li{color:var(--ink-2);max-width:46em}
+.method ul{display:grid;gap:8px;padding-left:20px}
+.rules{counter-reset:r;display:grid;gap:12px;list-style:none;padding:0}
+.rules li{counter-increment:r;display:grid;grid-template-columns:34px 1fr;gap:10px}
+.rules li::before{content:counter(r);font-family:'Instrument Serif',serif;font-size:1.8rem;line-height:1;color:var(--you)}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;transition-duration:.01ms!important}.rv{opacity:1;transform:none}html{scroll-behavior:auto}}
+.method .dir{opacity:1}
+.chip.sm{padding:5px 11px;font-size:.8rem}
+
+.two.build{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:stretch}
+.chart-card.stick{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+.fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:10px}
+@media(max-width:820px){.fgrid{grid-template-columns:1fr}}
+.chartcol{min-width:0}
+@media(max-width:980px){.two.build{grid-template-columns:minmax(0,1fr)}.chart-card.stick{position:static}}
+
+.hec{display:inline-block;height:30px;aspect-ratio:360/162;background:var(--hec);-webkit-mask:url(data:image/png;base64,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) center/contain no-repeat;mask:url(data:image/png;base64,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) center/contain no-repeat;flex:none}
+.hec-sep{width:1px;height:26px;background:var(--line);flex:none}
+.top .hec{height:28px}
+.top-lock{display:flex;align-items:center;gap:14px}
+@media(max-width:760px){.top .hec,.top .hec-sep{display:none}}
+footer .hec{height:34px}
+.foot-l{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+
+.ghead{display:flex;align-items:center;gap:10px;padding:2px 6px 8px;flex-wrap:wrap}
+.ghead b{font-family:'Instrument Serif',serif;font-weight:400;font-size:1.5rem;line-height:1}
+.ghead .push{margin-left:auto}
+.chartcol{display:grid;gap:18px;align-content:start}
+.chartcol.multi .chart-card{cursor:pointer;transition:border-color .25s,box-shadow .25s}
+.chartcol.multi .chart-card.active{border-color:var(--you);box-shadow:0 0 0 3px color-mix(in srgb,var(--you) 16%,transparent),var(--shadow);cursor:default}
+
+.vc .s-airef .path{stroke:var(--ai);stroke-dasharray:7 7;stroke-width:2.4;opacity:.85}
+.vc .s-airef .dot{fill:var(--card);stroke:var(--ai);stroke-width:2.4}
+.legend i.dash{border-top-style:dashed}
+
+.why2{margin-top:3px;font-size:.88rem;color:var(--ink-2)}.why2 .mono{color:var(--ai);margin-right:4px}.diffs{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px}details summary{cursor:pointer;color:var(--ink-2);font-weight:600;font-size:.9rem}
+
+.crit{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.3;color:var(--ink)}.crit .mono{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--you);margin-bottom:4px}
+</style>
+</head>
+<body>
+<script>/* ---------- Course data: the 14 directions and the eight cases ---------- */
+const DIRS = [
+  { n: 1, g: 'vp', t: 'Reduce customer overall costs', q: 'Can you trim the offer to lower the price, or give part of it away for free?' },
+  { n: 2, g: 'vp', t: 'Reduce customer hassles', q: 'Which pain points do customers meet when they use the offer, and how can you remove them?' },
+  { n: 3, g: 'vp', t: 'Find non-customers', q: 'Who ignores your offer today, and what do they buy instead?' },
+  { n: 4, g: 'vp', t: 'Add more functionality or more emotion', q: 'Is the offer mostly functional or emotional, and how could you shift it?' },
+  { n: 5, g: 'vp', t: 'Explore other segments or industries', q: 'Which codes from other segments or industries could you bring in?' },
+  { n: 6, g: 'vp', t: 'Introduce other stakeholders', q: 'Which other parties could you connect with your customers?' },
+  { n: 7, g: 'vp', t: 'Modify the revenue stream', q: 'Can you bill differently, or can a third party finance the offer?' },
+  { n: 8, g: 'va', t: 'Introduce a technology', q: 'Which technology from your own or another sector could you use?' },
+  { n: 9, g: 'va', t: 'Modify one or several steps in the value chain', q: 'Can you redesign how one step of the value chain is carried out?' },
+  { n: 10, g: 'va', t: 'Eliminate or add one or more steps', q: 'Which step could you remove, and which step could you add to create value?' },
+  { n: 11, g: 'va', t: 'Identify new inputs', q: 'Can you broaden, reduce or make more sustainable the inputs you use?' },
+  { n: 12, g: 'va', t: 'Associate with competitors, clients or suppliers', q: 'Whose strengths would complete yours?' },
+  { n: 13, g: 'va', t: 'Identify complementors', q: 'Which offers do customers use before, during and after yours?' },
+  { n: 14, g: 'va', t: 'Leverage strategic resources', q: 'Which resources or expertise do you underuse that others might want?' }
+];
+
+/* kind: course = read from textbook or slides; analysis = Capo's Assignment 1; built = constructed for this tool from course concepts */
+const CASES = [
+  {
+    id: 'fairphone', name: 'Fairphone', vs: 'iPhone', kind: 'course', year: '2013', place: 'Netherlands',
+    tag: 'A smartphone that lasts',
+    source: 'Textbook, case 8',
+    prov: 'Attributes and curves read from the textbook chart. Levels are read by eye on a 1 to 5 scale, so allow half a point either way.',
+    summary: 'Electronics makers push frequent upgrades, and phones contain rare metals that are often mined harmfully and only partly recycled. Fairphone sells a repairable, long-lived phone and prices its leasing plan to reward keeping it.',
+    practice: true,
+    sides: [{
+      name: 'Smartphone buyers', ref: 'iPhone by Apple', neu: 'Fairphone',
+      attrs: [
+        ['Price attractiveness', 1, 3.5, 'A mid-range price, and a leasing plan (Fairphone Easy) that gets cheaper the longer you keep the phone.'],
+        ['Accessibility', 5, 3.5, 'The iPhone is easy to find and use anywhere. Fairphone is sold in most European countries.'],
+        ['Repairability', 2.5, 5, 'A screwdriver opens the phone and spare parts are cheap. The book quotes a repairability index of 9.3 out of 10.'],
+        ['Number of features', 5, 2.5, 'Fairphone does not compete on feature count. It sells mid-range smartphones.'],
+        ['Interface ergonomics', 5, 2.5, 'The iPhone sets the reference for interface polish, and Fairphone gives that up.'],
+        ['Design', 5, 2.5, 'The book calls the phones stylish, but the chart keeps the iPhone as the design benchmark.'],
+        ['Durability', 1, 5, 'A 5-year warranty and 7 years of operating system updates, against a 3-year average use.']
+      ]
+    }],
+    dirs: [
+      [4, 'Ethical sourcing and a longer life give buyers an emotional reason to choose it.'],
+      [7, 'Fairphone Easy lowers the monthly payment the longer the customer keeps the phone.'],
+      [11, 'Recycled and responsibly sourced materials replace standard inputs.']
+    ],
+    arch: [
+      ['Design', 'Eco-design for easy repair.'],
+      ['Sourcing', 'Recycled or responsibly sourced materials, gold for example, from mines chosen on sustainability criteria.'],
+      ['Manufacturing', 'Outsourced and offshored to China, with direct control of workers\' well-being.'],
+      ['Distribution', 'Phones and spare parts sold directly to customers or through traditional channels.'],
+      ['After sale', 'Client and community support, operating system updates, repair of rented phones.']
+    ],
+    contrib: {
+      fin: ['Revenue from the sale or rental of mid-range smartphones.', 'Higher supply costs, very low marketing costs.', 'Few fixed assets because manufacturing is outsourced.', 'Raised 49 million euros in early 2023.'],
+      env: ['Recycled materials.', 'A longer product life reduces the need for resources.'],
+      soc: ['Better outcomes for employees of subcontractors and suppliers.', 'Better outcomes for communities living near the mines.']
+    },
+    brief: 'Electronics makers have always pushed customers to upgrade often. Fairphone, founded in 2013, designs and sells eco-designed phones with easy repairs, a 5-year warranty and a leasing plan whose price falls the longer you keep the device.'
+  },
+  {
+    id: 'petith', name: 'Petit h', vs: 'Hermès', kind: 'course', year: '2011', place: 'France',
+    tag: 'The glorified rejects',
+    source: 'Textbook, case 15',
+    prov: 'Attributes and curves read from the textbook chart. Levels are read by eye on a 1 to 5 scale, so allow half a point either way.',
+    summary: 'Hermès rejects a large volume of materials and finished goods for quality reasons, and cannot sell them at a discount. Petit h turns them into one-of-a-kind objects sold in seasonal exhibitions.',
+    practice: true,
+    sides: [{
+      name: 'Luxury buyers', ref: 'Hermès', neu: 'Petit h',
+      attrs: [
+        ['Creativity', 4.5, 5, 'Artists, designers and craftsmen are given carte blanche. Each piece is unique.'],
+        ['Exclusivity', 3.5, 5, 'Sold in seasonal exhibitions, which increases rarity and therefore price.'],
+        ['Price attractiveness', 2.5, 1, 'Rarity pushes the price higher still.'],
+        ['Product availability', 3.5, 1, 'Few pieces and rare exhibitions. The first permanent store opened in Paris in 2021.'],
+        ['Product quality', 5, 5, 'Both sit at the top. The objects are made by Hermès craftsmen.'],
+        ['Usefulness', 4.5, 2.5, 'The objects are closer to art than to a standard luxury product, "unidentified poetic objects".'],
+        ['Social status indication', 5, 5, 'Both carry the status of the Hermès house.']
+      ]
+    }],
+    dirs: [
+      [4, 'Creativity and rarity add emotion and give up usefulness.'],
+      [11, 'Rejected leather, silk and crystal become the input.'],
+      [14, 'Craft skills and discarded stock the house already owns become a product line.']
+    ],
+    arch: [
+      ['Sourcing', 'The brand\'s own workshop scraps, at almost no material cost.'],
+      ['Design', 'External artists and craftsmen with carte blanche.'],
+      ['Production', 'A dedicated, multi-skilled re-creation workshop.'],
+      ['Distribution', 'Pop-up stores and infrequent sales, mostly inside existing Hermès boutiques.']
+    ],
+    contrib: {
+      fin: ['Negligible material cost, but a higher production cost per piece.', 'No dedicated fixed assets.', 'First permanent store opened in 2021 (67 square metres), after exhibitions since 2011.'],
+      env: ['Less pollution because discarded materials are reused.'],
+      soc: ['Work for artists and craftsmen in a dedicated workshop.']
+    },
+    brief: 'Hermès is exacting about the quality of materials and finished goods, so many are rejected. They cannot be discounted without hurting the brand. Petit h recovers them and gives them to artists and craftsmen, who turn them into unique objects sold in seasonal exhibitions.'
+  },
+  {
+    id: 'perfectday', name: 'Perfect Day', vs: 'Milk-based protein', kind: 'course', year: '2016', place: 'United States',
+    tag: 'A cow-free milk protein',
+    source: 'Textbook, case 30',
+    prov: 'Attributes and curves read from the textbook chart. Levels are read by eye on a 1 to 5 scale, so allow half a point either way.',
+    summary: 'Demand for food without animal ingredients keeps growing. Perfect Day produces whey protein from plant sugars through precision fermentation and sells it as an ingredient to food companies.',
+    practice: true,
+    sides: [{
+      name: 'Food manufacturers', ref: 'Milk-based protein', neu: 'Perfect Day protein',
+      attrs: [
+        ['Price attractiveness', 4, 3, 'The chart puts the fermented protein below dairy whey on price.'],
+        ['Absence of pollutants', 3, 5, 'No pesticide, hormone or antibiotic residues, and 97% less greenhouse gas emitted.'],
+        ['Purity', 4, 5, 'A high-purity protein from a controlled fermentation process.'],
+        ['Absence of allergens', 2, 4, 'No lactose and no gluten.'],
+        ['No animal-derived ingredients', 1, 5, 'A modified microflora fed on plant sugars makes the protein. No cow is involved.']
+      ]
+    }],
+    dirs: [
+      [8, 'Precision fermentation replaces the cow.'],
+      [11, 'Plant sugars feed the microflora instead of dairy.'],
+      [14, 'Fermentation know-how is also sold as "corporate biology" services.']
+    ],
+    arch: [
+      ['R&D', 'Develop and multiply the microflora strain.'],
+      ['Production', 'Fermentation, filtering, drying and packaging.'],
+      ['Sales', 'B2B marketing and sales to agri-food companies for ice cream, milk, cream, cottage cheese and vegan chocolate bars.'],
+      ['Extensions', 'Services based on its know-how and a portfolio of its own consumer brands.']
+    ],
+    contrib: {
+      fin: ['Raised 350 million dollars by 2021.', 'Approved in the United States and, in 2022, in India.', 'Acquired a gelatin company in India.'],
+      env: ['97% less greenhouse gas, 99% less water and up to 60% less non-renewable energy than dairy-derived whey.'],
+      soc: ['Animal welfare concerns are met without the cow.']
+    },
+    brief: 'Demand for food without animal ingredients keeps growing, driven by concern about carbon and animal welfare. Founded in 2016, Perfect Day uses a modified microflora fed on plant sugars to make the protein responsible for the taste and texture of milk, and sells it to food companies.'
+  },
+  {
+    id: 'michelin', name: 'Michelin Fleet Solutions', vs: 'Tire sales', kind: 'course', year: '2000', place: 'France',
+    tag: 'Selling kilometres, not tires',
+    source: 'Session 4-5 slide and HEC case',
+    prov: 'Curves read from the course slide. The slide shows no point for the tire-sale offer on variable costs and image, so those two reference levels are our estimate and are marked.',
+    summary: 'Michelin stopped selling tires to large European fleets and sold a tire-management service billed per kilometre. Three years in, expansion was far below expectations and the unit was still unprofitable.',
+    practice: true,
+    sides: [{
+      name: 'Fleet managers', ref: 'Michelin, sale of tires', neu: 'Michelin Fleet Solutions',
+      attrs: [
+        ['Value for money (TCO)', 2, 4, 'One fee per kilometre covers tires and maintenance, so the fleet pays for use, not for rubber.'],
+        ['Ease of maintenance', 2, 4, 'Maintenance is handled through Michelin\'s network, so the fleet manager does not handle it.'],
+        ['Ease of switching suppliers', 4.5, 1, 'The contract locks the customer in. This is the one attribute where the new offer is worse.'],
+        ['Carbon footprint', 3.5, 4.5, 'Regrooving and retreading extend the life of each tire.'],
+        ['Variable costs', 2, 4.5, 'Costs follow the kilometres driven. The reference level is our estimate.', 'r'],
+        ['Image (in case of accident)', 3, 4.5, 'Well-maintained tires protect the carrier\'s image after an accident. The reference level is our estimate.', 'r']
+      ]
+    }],
+    dirs: [
+      [7, 'A fee per kilometre replaces the one-off sale of tires.'],
+      [2, 'The fleet no longer deals with tire maintenance.'],
+      [10, 'Maintenance is added as a step of the value chain.']
+    ],
+    arch: [
+      ['Before', 'Salesforce and warehouse.'],
+      ['After', 'Salesforce, warehouse and maintenance, with the Euromaster network next to the maintenance step.'],
+      ['Profit equation', 'Revenue and costs both include maintenance, and capital employed is higher.']
+    ],
+    contrib: {
+      fin: ['Sales dropped at first, because revenue arrives over the contract instead of at the sale.', 'Profitability has to be judged over the whole contract life, around four years.'],
+      env: ['Retreading and regrooving cut the footprint per kilometre.'],
+      soc: ['Not covered on the slides.']
+    },
+    brief: 'In 2000 Michelin launched Fleet Solutions for large European transport fleets. Instead of selling tires, it sold a comprehensive tire-management service and charged a monthly fee based on kilometres driven. Same product, different model.'
+  },
+  {
+    id: 'bending', name: 'Bending Spoons', vs: 'Conventional ownership', kind: 'analysis', year: '2013', place: 'Italy',
+    tag: 'Two groups, opposite curves',
+    source: 'Federico Balucani, Assignment 1',
+    prov: 'Curves read from the submitted Assignment 1 (September 2026). The two panels move in opposite directions on almost every attribute.',
+    summary: 'Bending Spoons buys software companies and rebuilds them on its own platform. The sellers and the users of the products see opposite curves, and the model decides who absorbs the cost of the others\' gains.',
+    practice: false,
+    sides: [
+      {
+        name: 'Owners selling the company', ref: 'A conventional sale (auction, private equity or strategic buyer)', neu: 'Selling to Bending Spoons',
+        attrs: [
+          ['Speed and certainty of closing', 2, 5, 'One firm all-cash offer, a fast close, no auction.'],
+          ['Cash paid up front', 3, 4.5, 'All cash, with no financing contingency.'],
+          ['Simplicity of the process', 2, 4.5, 'A single fair offer instead of a competitive process.'],
+          ['Long-term survival of the product', 2.5, 4.5, 'The product is kept and not flipped.'],
+          ['Price relative to peak valuation', 4, 2, 'Sellers accept steep discounts to their peak valuation.'],
+          ['Continuity for the existing team', 3, 1, 'Large headcount reductions follow the deal.']
+        ]
+      },
+      {
+        name: 'People using the products', ref: 'The same product under its previous owner', neu: 'The product under Bending Spoons',
+        attrs: [
+          ['Speed and reliability', 2, 4.5, 'Re-platforming and weekly releases improve performance.'],
+          ['Pace of new features and fixes', 1.5, 4.5, 'Small teams ship continuously.'],
+          ['Security and data safety', 2, 4.5, 'The product moves onto a maintained shared platform.'],
+          ['Price attractiveness', 4, 2, 'Price increases are a core part of the playbook.'],
+          ['Generosity of the free plan', 4, 3, 'The free tier is cut.']
+        ]
+      }
+    ],
+    dirs: [
+      [7, 'Subscription conversion and price rises change how the product earns.'],
+      [8, 'A proprietary platform for data, payments and experimentation is dropped into every acquisition.'],
+      [9, 'Each acquired product is re-platformed, and its operations are rebuilt.']
+    ],
+    arch: [
+      ['Loop', 'Source and screen, acquire and finance, restructure, re-platform, re-monetise, operate, recycle cash.'],
+      ['Strategic resources', 'A proprietary platform and a small, highly selected team.']
+    ],
+    contrib: {
+      fin: ['Net revenue retention stayed below 100% in every period reported, so growth comes from acquisitions.', 'Targets are bought at 3 to 5 times adjusted EBITDA.'],
+      env: ['Reusing software that others wrote off is real but secondary.'],
+      soc: ['Part of the value released is transferred, from acquired employees and locked-in users to shareholders. Part is created through real turnarounds.']
+    }
+  },
+  {
+    id: 'vinted', name: 'Vinted', vs: 'Thrift store', kind: 'built', year: '2008', place: 'Lithuania',
+    tag: 'Second-hand, repriced',
+    source: 'Built for this tool from Session 6',
+    prov: 'Constructed from course concepts, not read from a course chart. The course supplies the platform logic and the move of the fee from sellers to buyers. The levels are our judgement, so challenge them.',
+    summary: 'Vinted is a two-sided second-hand platform. Its key move was a business model change, charging the buyer a protection fee at checkout instead of charging the seller.',
+    practice: false,
+    sides: [
+      {
+        name: 'Buyers', ref: 'A thrift store', neu: 'Vinted',
+        attrs: [
+          ['Price attractiveness', 4, 3.5, 'Low prices, but the buyer now pays a protection fee at checkout.'],
+          ['Choice and variety', 2, 5, 'A catalogue of sellers instead of one shop\'s stock.'],
+          ['Convenience', 1.5, 5, 'Browse and buy from home.'],
+          ['Finding what you want', 1.5, 4.5, 'Search by size, brand and style.'],
+          ['Trust and protection', 4, 3.5, 'Buyer protection helps, but you cannot touch the item first.'],
+          ['Treasure-hunt experience', 4.5, 3, 'Browsing shelves is replaced by scrolling.'],
+          ['Having it today', 5, 1.5, 'Shipping takes days, a shop is immediate.']
+        ]
+      },
+      {
+        name: 'Sellers', ref: 'A flea market stall or a donation bin', neu: 'Vinted',
+        attrs: [
+          ['Cash earned for items', 2, 3.5, 'The seller sets the price and keeps it.'],
+          ['Reach of buyers', 1.5, 5, 'A large audience instead of a local crowd.'],
+          ['Absence of selling fees', 3, 5, 'The fee moved from the seller to the buyer.'],
+          ['Ease of selling', 3, 2.5, 'Photos, listing and shipping take effort.'],
+          ['Speed to cash', 4, 3, 'Cash at a stall is immediate, a sale online takes days.']
+        ]
+      }
+    ],
+    dirs: [
+      [6, 'Sellers and buyers are connected directly, and the sellers\' wardrobes are the supply.'],
+      [7, 'The buyer-protection fee replaces the seller fee.'],
+      [3, 'People with unused clothes who never sold second-hand become suppliers.']
+    ],
+    arch: [
+      ['Core', 'A website and app that match buyers and sellers, with sellers shipping directly.'],
+      ['Strategic resource', 'The community of buyers and sellers, which gains value as it grows.'],
+      ['Assets', 'Asset-light, like most platforms.']
+    ],
+    contrib: {
+      fin: ['The buyer pays the protection fee, and the seller keeps the sale price.', 'The course note says new features ship only with a clear return.'],
+      env: ['Circular platform: clothes get a longer life.'],
+      soc: ['Sellers earn extra income from items they own (our reading).']
+    }
+  },
+  {
+    id: 'pinduoduo', name: 'Pinduoduo', vs: 'Traditional e-commerce', kind: 'built', year: '2015', place: 'China',
+    tag: 'Together, more savings, more fun',
+    source: 'Built for this tool from Session 6 and the HEC case',
+    prov: 'Constructed from course concepts and the HEC case, not read from a course chart. The levels are our judgement, so challenge them.',
+    summary: 'Pinduoduo sidestepped the chicken-and-egg problem. It drew buyers from WeChat\'s social graph through group buying and games, and won farmers by removing the middlemen.',
+    practice: false,
+    sides: [
+      {
+        name: 'Buyers', ref: 'Traditional e-commerce', neu: 'Pinduoduo',
+        attrs: [
+          ['Price through group buying', 3, 5, 'Buying together with friends unlocks discounts.'],
+          ['Fun and gamification', 2, 5, 'Games such as Duo Duo Orchard keep users coming back.'],
+          ['Social shopping', 1.5, 5, 'Buyers join through WeChat and their own contacts.'],
+          ['Search precision', 4.5, 2.5, 'The platform shows items instead of letting you search.'],
+          ['Brand and quality assurance', 4, 2.5, 'The offer leans toward unbranded goods and farm produce.'],
+          ['Delivery speed', 4, 2.5, 'Orders are grouped and shipped directly from the source.']
+        ]
+      },
+      {
+        name: 'Farmers and merchants', ref: 'The traditional chain with middlemen', neu: 'Pinduoduo',
+        attrs: [
+          ['Share of the final price', 1.5, 4, 'Removing the middlemen leaves more of the price with the producer.'],
+          ['Direct access to customers', 1.5, 4.5, 'Goods go straight from producer to buyer.'],
+          ['Demand certainty', 2, 4.5, 'Group orders are known before the goods are picked.'],
+          ['Waste from unsold goods', 2, 4, 'Demand-driven supply means less produce goes unsold.'],
+          ['Control over pricing', 3, 2.5, 'Group-buying discounts press on the price.']
+        ]
+      }
+    ],
+    dirs: [
+      [6, 'Farmers are connected directly with buyers.'],
+      [5, 'Codes from games enter shopping, described as "Costco meets Disneyland".'],
+      [9, 'Middlemen are removed and goods ship directly from the source.']
+    ],
+    arch: [
+      ['Chicken and egg', 'Buyers came from WeChat\'s existing social graph. Sellers came because the middlemen were removed.'],
+      ['2016 merger', 'Pinhuohuo\'s logistics and sourcing expertise joined the gamified Pinduoduo app.'],
+      ['Interface', 'Display rather than search, with direct shipment.']
+    ],
+    contrib: {
+      fin: ['A platform with low assets, whose strategic resource is the community of buyers.', 'Over 60 million daily active users by the end of 2019.'],
+      env: ['Less waste from unsold produce (our reading).'],
+      soc: ['Farmers keep more of the final price (our reading).']
+    }
+  },
+  {
+    id: 'netflix', name: 'Netflix', vs: 'Blockbuster', kind: 'built', year: '1997', place: 'United States',
+    tag: 'The rental shop disrupted',
+    source: 'Built for this tool from Session 11',
+    prov: 'Constructed from course concepts, not read from a course chart. Session 11 gives the Blockbuster and Netflix story and the disruption logic. The levels are our judgement, so challenge them.',
+    summary: 'Netflix replaced the rental shop with a subscription and, later, streaming. The curve shows what viewers gain and what they give up, and why an incumbent paid by late fees found the move hard to copy.',
+    practice: false,
+    sides: [{
+      name: 'Home movie viewers', ref: 'Blockbuster store rental', neu: 'Netflix',
+      attrs: [
+        ['Choice of titles', 3, 4.5, 'A shelf is finite, a catalogue is not.'],
+        ['Convenience (no trip)', 1.5, 5, 'No trip to the store and no return.'],
+        ['Absence of late fees', 1, 5, 'A subscription removes the late fee.'],
+        ['Watching right now', 2.5, 5, 'Streaming plays on demand.'],
+        ['Personal recommendations', 1.5, 5, 'Viewing data feeds suggestions. The course note says Netflix has had customer data since 1997.'],
+        ['Newest releases', 4.5, 3, 'Hit releases reached the store shelf first.'],
+        ['Price for heavy viewers', 2, 4, 'A flat monthly fee beats paying per rental.'],
+        ['The going-out experience', 3, 1.5, 'Browsing shelves was an outing, and streaming gives that up.']
+      ]
+    }],
+    dirs: [
+      [8, 'The internet delivers the films, and viewing data drives recommendations.'],
+      [7, 'A subscription replaces a per-rental price with late fees.'],
+      [10, 'The physical store and the return trip disappear.']
+    ],
+    arch: [
+      ['Value chain', 'Physical stores give way to delivery by mail, then by streaming.'],
+      ['Data', 'Customer data collected since 1997 later guided what Netflix chose to produce.'],
+      ['Course link', 'Session 11 reads this as an incumbent caught between exploiting its stores and exploring a new model.']
+    ],
+    contrib: {
+      fin: ['Revenue from subscriptions.', 'The incumbent\'s own income depended on the model that was being replaced.'],
+      env: ['Not covered in the course material.'],
+      soc: ['Not covered in the course material.']
+    }
+  }
+];
+
+const KIND = {
+  course: { label: 'From the course', cls: 'k-course' },
+  analysis: { label: 'Student analysis', cls: 'k-analysis' },
+  built: { label: 'Built from course concepts', cls: 'k-built' }
+};
+
+const caseById = id => CASES.find(c => c.id === id) || CASES[0];
+
+/* ---------- Value-curve chart engine (SVG, drag, tween) ---------- */
+const NS = 'http://www.w3.org/2000/svg';
+const RM = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+const sv = (tag, a, parent) => { const e = document.createElementNS(NS, tag); if (a) for (const k in a) e.setAttribute(k, a[k]); if (parent) parent.appendChild(e); return e; };
+const clampV = v => Math.max(1, Math.min(5, Math.round(v * 2) / 2));
+
+class VC {
+  /* opts: height, onChange(id, idx, v), onSelect(idx), editable ids via series.drag */
+  constructor(host, opts = {}) {
+    this.host = host; this.o = Object.assign({ height: 360 }, opts);
+    this.labels = []; this.series = []; this.sel = -1; this.showGaps = true; this.tw = {};
+    this.svg = sv('svg', { class: 'vc', role: 'group' }); host.appendChild(this.svg);
+    this.ro = new ResizeObserver(() => { const w = host.clientWidth; if (w && (this.pend !== undefined || Math.abs(w - (this.W || 0)) > 1)) { const r = this.pend; this.pend = undefined; this.build(!!r); } });
+    this.ro.observe(host);
+  }
+  destroy() { this.ro.disconnect(); Object.values(this.tw).forEach(cancelAnimationFrame); }
+  set(labels, series, { reveal = true } = {}) {
+    this.labels = labels.slice();
+    this.series = series.map(s => ({ id: s.id, cls: s.cls, drag: !!s.drag, name: s.name || s.id, vals: s.vals.slice(), show: s.show !== false }));
+    if (!this.host.clientWidth) { this.pend = reveal; return; }
+    this.pend = undefined; this.build(reveal);
+  }
+  get(id) { return this.series.find(s => s.id === id); }
+  setSeriesVisible(id, on) { const s = this.get(id); if (s) { s.show = on; this.build(false); } }
+  select(i) { this.sel = i; if (this.cols) { this.cols.forEach((c, k) => c.classList.toggle('on', k === i)); this.xl.forEach((t, k) => t.classList.toggle('on', k === i)); } }
+  layout() {
+    const W = Math.max(this.host.clientWidth, 240), n = this.labels.length || 1, F = 6.1;
+    let padL = W < 520 ? 34 : 46, padR = W < 520 ? 14 : 22, padT = 30;
+    const longest = Math.max(...this.labels.map(l => Math.max(...(l || 'Attribute 1').split(/\s+/).map(w => w.length))), 4);
+    const cell0 = (W - padL - padR) / n;
+    const rot = cell0 < longest * F + 6;
+    const shortLab = l => { l = l || 'Attribute'; return l.length > 22 ? l.slice(0, 21) + '…' : l; };
+    if (rot) { const ext = Math.max(...this.labels.slice(0, 2).map((l, i) => shortLab(l).length * 5.9 * .79 - i * 40)) + 10; padL = Math.max(padL, Math.min(150, ext)); padR = Math.max(padR, 18); }
+    const wrapAll = cell => { const cpl = Math.max(6, Math.floor(cell / F)); return this.labels.map(l => { const w = (l || 'Attribute').split(/\s+/), out = []; let cur = ''; for (const x of w) { if ((cur + ' ' + x).trim().length > cpl && cur) { out.push(cur); cur = x; } else cur = (cur + ' ' + x).trim(); } out.push(cur); return out.slice(0, 3); }); };
+    let wrapped;
+    if (rot) wrapped = this.labels.map(l => [shortLab(l)]);
+    else {
+      for (let pass = 0; pass < 2; pass++) {
+        wrapped = wrapAll((W - padL - padR) / n);
+        const wid = a => Math.max(...a.map(x => x.length)) * F / 2 + 4;
+        padL = Math.max(padL, wid(wrapped[0])); padR = Math.max(padR, wid(wrapped[n - 1]));
+      }
+      wrapped = wrapAll((W - padL - padR) / n);
+    }
+    const colW = (W - padL - padR) / Math.max(n - 1, 1);
+    const lines = rot ? 1 : Math.max(...wrapped.map(a => a.length), 1);
+    const padB = rot ? 106 : 24 + lines * 14;
+    const H = this.o.height + (rot ? 20 : 0);
+    return { W, H, padL, padR, padT, padB, colW, rot, wrapped, plotH: H - padT - padB, n };
+  }
+  X(i) { const L = this.L; return this.labels.length === 1 ? L.padL + (L.W - L.padL - L.padR) / 2 : L.padL + i * L.colW; }
+  Y(v) { const L = this.L; return L.padT + (5 - v) / 4 * L.plotH; }
+  build(reveal = false) {
+    cancelAnimationFrame(this._rv);
+    const L = this.L = this.layout(), svg = this.svg;
+    svg.setAttribute('viewBox', `0 0 ${L.W} ${L.H}`); svg.setAttribute('height', L.H); this.W = L.W;
+    svg.textContent = '';
+    const defs = sv('defs', null, svg);
+    this.clipId = 'cl' + Math.random().toString(36).slice(2, 8);
+    const cp = sv('clipPath', { id: this.clipId }, defs);
+    this.clipRect = sv('rect', { x: 0, y: 0, width: reveal && !RM ? 0 : L.W + 20, height: L.H }, cp);
+    // grid
+    for (let v = 1; v <= 5; v++) sv('line', { class: 'grid', x1: L.padL, x2: L.W - L.padR, y1: this.Y(v), y2: this.Y(v) }, svg);
+    const yl1 = sv('text', { class: 'ylab', x: L.padL - 10, y: this.Y(5) + 4, 'text-anchor': 'end' }, svg); yl1.textContent = 'High';
+    const yl2 = sv('text', { class: 'ylab', x: L.padL - 10, y: this.Y(1) + 4, 'text-anchor': 'end' }, svg); yl2.textContent = 'Low';
+    // columns
+    this.cols = []; this.xl = [];
+    this.labels.forEach((lab, i) => {
+      this.cols.push(sv('line', { class: 'col' + (i === this.sel ? ' on' : ''), x1: this.X(i), x2: this.X(i), y1: L.padT - 6, y2: L.padT + L.plotH + 6 }, svg));
+    });
+    // labels
+    this.labels.forEach((lab, i) => {
+      const x = this.X(i), y = L.padT + L.plotH + 22;
+      const t = sv('text', { class: 'xlab' + (i === this.sel ? ' on' : '') + (lab ? '' : ' ph'), x, y, 'text-anchor': L.rot ? 'end' : 'middle' }, svg);
+      if (L.rot) { t.setAttribute('transform', `rotate(-38 ${x + 4} ${y})`); t.setAttribute('x', x + 4); t.textContent = lab || 'Attribute ' + (i + 1); }
+      else if (!lab) { t.textContent = 'Attribute ' + (i + 1); }
+      else L.wrapped[i].forEach((ln, k) => { const s = sv('tspan', { x, dy: k ? 14 : 0 }, t); s.textContent = ln; });
+      t.addEventListener('click', () => this.pick(i));
+      this.xl.push(t);
+    });
+    // column hit areas (hover / click)
+    this.labels.forEach((_, i) => {
+      const w = Math.max(L.colW, 40), r = sv('rect', { class: 'colhit', x: this.X(i) - w / 2, y: L.padT - 10, width: w, height: L.plotH + 20 }, svg);
+      r.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse' && !this.dragging) this.pick(i, true); });
+      r.addEventListener('click', () => this.pick(i));
+    });
+    // gaps + series (clipped)
+    this.gapG = sv('g', { 'clip-path': `url(#${this.clipId})` }, svg);
+    this.gaps = this.labels.map(() => sv('line', { class: 'gap' }, this.gapG));
+    this.gs = {};
+    const vis = this.series.filter(s => s.show);
+    // draw order: ref first, then others; draggable on top
+    vis.sort((a, b) => (a.cls === 's-ref' ? -1 : 0) - (b.cls === 's-ref' ? -1 : 0));
+    vis.forEach(s => {
+      const g = sv('g', { class: s.cls + (s.drag ? ' drag' : ''), 'clip-path': `url(#${this.clipId})` }, svg);
+      const path = sv('path', { class: 'path' }, g);
+      const dots = s.vals.map((v, i) => {
+        const gg = sv('g', null, g);
+        const halo = sv('circle', { class: 'halo', r: 18 }, gg);
+        const dot = sv('circle', { class: 'dot', r: 8 }, gg);
+        const hit = sv('circle', { class: 'hit', r: 20 }, gg);
+        if (s.drag) {
+          hit.style.display = ''; dot.setAttribute('tabindex', 0); dot.setAttribute('role', 'slider');
+          dot.setAttribute('aria-valuemin', 1); dot.setAttribute('aria-valuemax', 5); dot.setAttribute('aria-label', `${s.name}: ${this.labels[i] || 'Attribute ' + (i + 1)}`);
+          this.bindDrag(s, i, hit, dot, halo);
+          dot.addEventListener('keydown', e => { const d = { ArrowUp: .5, ArrowRight: .5, ArrowDown: -.5, ArrowLeft: -.5 }[e.key]; if (d) { e.preventDefault(); this.commit(s, i, clampV(s.vals[i] + d)); } });
+          dot.addEventListener('focus', () => this.pick(i, true));
+        } else { hit.style.display = 'none'; halo.style.display = 'none'; }
+        return { gg, halo, dot, hit };
+      });
+      this.gs[s.id] = { g, path, dots, s };
+    });
+    this.tipG = sv('g', { class: 'tip', opacity: 0 }, svg);
+    this.tipR = sv('rect', { rx: 8, width: 38, height: 22, x: -19, y: -34 }, this.tipG); this.tipT = sv('text', { y: -19 }, this.tipG);
+    this.update();
+    if (reveal && !RM) this.revealAnim();
+  }
+  pick(i, soft) { this.select(i); if (this.o.onSelect) this.o.onSelect(i, !!soft); }
+  revealAnim(dur = 1100) {
+    const t0 = performance.now(), L = this.L, cr = this.clipRect, step = now => { const p = Math.max(0, Math.min(1, (now - t0) / dur)); cr.setAttribute('width', (L.W + 20) * ease(p)); if (p < 1) this._rv = requestAnimationFrame(step); };
+    cancelAnimationFrame(this._rv); this._rv = requestAnimationFrame(step);
+  }
+  update() {
+    const ref = this.get('ref'), prim = this.series.find(s => s.show && s.id !== 'ref' && this.gs[s.id]);
+    this.series.forEach(s => {
+      const o = this.gs[s.id]; if (!o) return;
+      const pts = s.vals.map((v, i) => [this.X(i), this.Y(v)]);
+      o.path.setAttribute('d', pts.length > 1 ? 'M' + pts.map(p => p.join(',')).join('L') : '');
+      o.dots.forEach((d, i) => { const [x, y] = pts[i]; [d.halo, d.dot, d.hit].forEach(c => { c.setAttribute('cx', x); c.setAttribute('cy', y); }); d.dot.setAttribute('aria-valuenow', s.vals[i]); });
+    });
+    this.gaps.forEach((ln, i) => {
+      if (!ref || !prim || !this.showGaps || !this.gs.ref) { ln.style.display = 'none'; return; }
+      const a = ref.vals[i], b = prim.vals[i]; ln.style.display = ''; ln.setAttribute('x1', this.X(i)); ln.setAttribute('x2', this.X(i)); ln.setAttribute('y1', this.Y(a)); ln.setAttribute('y2', this.Y(b));
+      ln.setAttribute('class', 'gap ' + (b > a ? 'up' : b < a ? 'dn' : '')); if (b === a) ln.style.display = 'none';
+    });
+  }
+  tip(s, i, on) {
+    if (!on) { this.tipG.setAttribute('opacity', 0); return; }
+    const x = this.X(i), y = this.Y(s.vals[i]) - 4; this.tipG.setAttribute('transform', `translate(${x},${y})`); this.tipT.textContent = s.vals[i].toFixed(1); this.tipG.setAttribute('opacity', 1);
+  }
+  commit(s, i, v) {
+    if (s.vals[i] === v) return; s.vals[i] = v; this.update(); this.tip(s, i, true);
+    if (this.o.onChange) this.o.onChange(s.id, i, v, s.vals.slice());
+  }
+  bindDrag(s, i, hit, dot, halo) {
+    const move = e => { const r = this.svg.getBoundingClientRect(), y = (e.clientY - r.top) * (this.L.H / r.height); const v = clampV(5 - (y - this.L.padT) / this.L.plotH * 4); this.commit(s, i, v); };
+    hit.addEventListener('pointerdown', e => {
+      e.preventDefault(); hit.setPointerCapture(e.pointerId); this.dragging = true; halo.style.opacity = .18; dot.classList.add('act'); this.pick(i, true); this.tip(s, i, true);
+      const up = () => { this.dragging = false; halo.style.opacity = 0; dot.classList.remove('act'); this.tip(s, i, false); hit.removeEventListener('pointermove', move); hit.removeEventListener('pointerup', up); hit.removeEventListener('pointercancel', up); };
+      hit.addEventListener('pointermove', move); hit.addEventListener('pointerup', up); hit.addEventListener('pointercancel', up);
+    });
+    hit.addEventListener('pointerenter', () => { if (!this.dragging) { halo.style.opacity = .12; this.tip(s, i, true); } });
+    hit.addEventListener('pointerleave', () => { if (!this.dragging) { halo.style.opacity = 0; this.tip(s, i, false); } });
+  }
+  /* tween a series to new values */
+  to(id, vals, dur = 900, delay = 0) {
+    const s = this.get(id); if (!s) return Promise.resolve();
+    cancelAnimationFrame(this.tw[id]);
+    const from = s.vals.slice(), n = vals.length;
+    if (from.length !== n) { s.vals = vals.slice(); this.update(); return Promise.resolve(); }
+    if (RM) { s.vals = vals.slice(); this.update(); return Promise.resolve(); }
+    return new Promise(res => {
+      const t0 = performance.now() + delay;
+      const step = now => { const p = Math.max(0, Math.min(1, (now - t0) / dur)), e = ease(p); s.vals = from.map((a, i) => a + (vals[i] - a) * e); this.update(); if (p < 1) this.tw[id] = requestAnimationFrame(step); else { s.vals = vals.slice(); this.update(); res(); } };
+      this.tw[id] = requestAnimationFrame(step);
+    });
+  }
+}
+
+/* static sparkline for case cards */
+function spark(side) {
+  const n = side.attrs.length, w = 240, h = 70, x = i => 8 + i * (w - 16) / Math.max(n - 1, 1), y = v => 8 + (5 - v) / 4 * (h - 16);
+  const p = k => 'M' + side.attrs.map((a, i) => x(i) + ',' + y(a[k]).toFixed(1)).join('L');
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none" aria-hidden="true"><path d="${p(1)}" fill="none" stroke="var(--ref)" stroke-width="2" stroke-dasharray="5 5" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/><path d="${p(2)}" fill="none" stroke="var(--you)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>`;
+}
+
+/* ---------- App core: helpers, state, router, shell ---------- */
+{ const _ap = Element.prototype.append; Element.prototype.append = function (...a) { return _ap.apply(this, a.flat().filter(x => x != null && x !== false)); }; }
+const $ = (s, r = document) => r.querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+function h(tag, p, ...kids) {
+  const e = document.createElement(tag);
+  if (p) for (const k in p) { const v = p[k]; if (v == null || v === false) continue;
+    if (k === 'class') e.className = v; else if (k === 'html') e.innerHTML = v; else if (k === 'text') e.textContent = v;
+    else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v); }
+  kids.flat(9).forEach(c => { if (c == null || c === false) return; e.append(c.nodeType ? c : document.createTextNode(c)); });
+  return e;
+}
+const KEY = 'odyssey-studio-v1';
+const store = {
+  get() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } },
+  put(patch) { try { localStorage.setItem(KEY, JSON.stringify(Object.assign(store.get(), patch))); } catch (e) {} }
+};
+const fmt = v => (Math.round(v * 2) / 2).toString().replace(/^(\d)$/, '$1');
+const sgn = d => (d > 0 ? '+' : d < 0 ? '−' : '±') + Math.abs(d).toString();
+const dirT = n => (DIRS.find(d => d.n === n) || {}).t || '';
+
+const S = { view: 'home', caseId: 'fairphone', side: 0, tab: 'vp', cmp: ['fairphone:0', 'netflix:0'], prac: null };
+let charts = [], timers = [], aiSample = true, toastT;
+function cleanup() { charts.forEach(c => c.destroy()); charts = []; timers.forEach(clearTimeout); timers = []; }
+const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return t; };
+function mkChart(host, opts) { const c = new VC(host, opts); charts.push(c); return c; }
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
+function countUp(el, to, dur = 1200, dec = 0) { if (RM) { el.textContent = to.toFixed(dec); return; } const t0 = performance.now(); const f = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = (to * ease(p)).toFixed(dec); if (p < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); }
+
+const NAV = [['home', 'Home'], ['explore', 'Explore'], ['compare', 'Compare'], ['practice', 'Practice'], ['build', 'Build'], ['method', 'Method']];
+function go(view, id, extra) {
+  cleanup(); S.view = view; if (view === 'explore' && id) { S.caseId = id; S.side = 0; }
+  if (view === 'practice') S.prac = id ? { caseId: id } : null;
+  if (extra) Object.assign(S, extra);
+  paint(); try { history.replaceState(null, '', '#' + view + (id ? '-' + id : '')); } catch (e) {}
+  window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
+}
+function fromHash() { const m = (location.hash || '').slice(1).split('-'); const v = NAV.find(n => n[0] === m[0]); if (v) { S.view = v[0]; if (v[0] === 'explore' && m[1] && CASES.some(c => c.id === m[1])) S.caseId = m[1]; if (v[0] === 'practice' && m[1] && CASES.some(c => c.id === m[1] && c.practice)) S.prac = { caseId: m[1] }; } }
+
+function observeReveal(root) {
+  const els = root.querySelectorAll('.rv'); if (!els.length) return;
+  if (!('IntersectionObserver' in window) || RM) { els.forEach(e => e.classList.add('in')); return; }
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+  els.forEach(e => io.observe(e));
+}
+function mark(active) { const nav = $('#nav'), b = nav.querySelector('[aria-current=page]'), bar = $('#bar'); if (b) { bar.style.left = b.offsetLeft + 'px'; bar.style.width = b.offsetWidth + 'px'; } }
+
+function shell() {
+  const logo = `<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="1" y="1" width="30" height="30" rx="9" fill="var(--ink)"/><path d="M5 22 L12 12 L19 18 L27 8" fill="none" stroke="var(--ref)" stroke-width="2" stroke-dasharray="3 3" stroke-linecap="round"/><path d="M5 18 L12 21 L19 9 L27 14" fill="none" stroke="var(--on-ink)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="19" cy="9" r="3" fill="var(--ai)"/></svg>`;
+  const nav = h('nav', { class: 'nav', id: 'nav', 'aria-label': 'Sections' }, NAV.map(([k, t]) => h('button', { 'data-v': k, onclick: () => go(k) }, t)), h('span', { class: 'bar', id: 'bar' }));
+  const theme = h('button', { class: 'icon-btn', 'aria-label': 'Toggle light and dark theme', onclick: toggleTheme, html: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4.2"/><path d="M12 2.5v2.2M12 19.3v2.2M2.5 12h2.2M19.3 12h2.2M5.3 5.3l1.5 1.5M17.2 17.2l1.5 1.5M5.3 18.7l1.5-1.5M17.2 6.8l1.5-1.5"/></svg>' });
+  const top = h('header', { class: 'top' }, h('div', { class: 'top-in' }, h('div', { class: 'top-lock' }, h('button', { class: 'brand', 'aria-label': 'Odyssey Studio, home', onclick: () => go('home'), html: logo + '<span>Odyssey Studio</span>' }), h('span', { class: 'hec-sep' }), h('span', { class: 'hec', role: 'img', 'aria-label': 'HEC Paris' })), nav, theme));
+  const foot = h('footer', null, h('div', { class: 'wrap' }, h('div', { class: 'foot-l' }, h('span', { class: 'hec', role: 'img', 'aria-label': 'HEC Paris' }), h('span', { class: 'mono', text: 'Reinventing Your Business Model · Odyssey 3.14' })), h('span', { text: 'A student project built on the course framework and cases. Not an official HEC tool.' })));
+  document.body.prepend(top); document.body.append(foot);
+  try { const t = store.get().theme; if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
+  window.addEventListener('resize', () => mark());
+  window.addEventListener('hashchange', () => { const before = S.view; fromHash(); if (S.view !== before) { cleanup(); paint(); } });
+}
+function toggleTheme() {
+  const r = document.documentElement, cur = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const nx = cur === 'dark' ? 'light' : 'dark'; r.setAttribute('data-theme', nx); store.put({ theme: nx });
+}
+function paint() {
+  const m = $('#app'); m.textContent = '';
+  document.querySelectorAll('#nav button').forEach(b => b.setAttribute('aria-current', b.dataset.v === S.view ? 'page' : 'false'));
+  const v = { home: viewHome, explore: viewExplore, compare: viewCompare, practice: viewPractice, build: viewBuild, method: viewMethod }[S.view] || viewHome;
+  const el = h('div', { class: 'view' }); m.append(el); v(el); observeReveal(el); mark();
+  document.title = 'Odyssey Studio';
+}
+
+/* ---------- Shared pieces ---------- */
+function badge(c) { const k = KIND[c.kind]; return h('span', { class: 'badge ' + k.cls, text: k.label }); }
+function sideData(c, i) { return c.sides[Math.min(i || 0, c.sides.length - 1)]; }
+function profile(side) {
+  const d = side.attrs.map(a => a[2] - a[1]); const up = side.attrs.filter((a, i) => d[i] >= 1), dn = side.attrs.filter((a, i) => d[i] <= -1);
+  const big = side.attrs.reduce((m, a) => Math.abs(a[2] - a[1]) > Math.abs(m[2] - m[1]) ? a : m, side.attrs[0]);
+  const bigUp = side.attrs.reduce((m, a) => (a[2] - a[1]) > (m[2] - m[1]) ? a : m, side.attrs[0]);
+  const bigDn = side.attrs.reduce((m, a) => (a[2] - a[1]) < (m[2] - m[1]) ? a : m, side.attrs[0]);
+  return { n: side.attrs.length, up, dn, steady: side.attrs.length - up.length - dn.length, mean: d.reduce((s, x) => s + Math.abs(x), 0) / d.length, big, bigUp, bigDn };
+}
+function readSentence(c, side) {
+  const p = profile(side), nm = side.neu;
+  let t = `<em>${esc(nm)}</em> raises ${p.up.length} of ${p.n} attributes and cuts ${p.dn.length} against ${esc(side.ref)}.`;
+  if (p.up.length) t += ` Its biggest raise is <em>${esc(p.bigUp[0].toLowerCase())}</em> (${sgn(p.bigUp[2] - p.bigUp[1])}).`;
+  if (p.dn.length) t += ` It gives up most on <em>${esc(p.bigDn[0].toLowerCase())}</em> (${sgn(p.bigDn[2] - p.bigDn[1])}).`;
+  return t;
+}
+function attrList(side, chartRef) {
+  const ul = h('ul', { class: 'attr-list' });
+  side.attrs.forEach((a, i) => {
+    const d = a[2] - a[1];
+    const li = h('li', { class: 'attr', tabindex: 0, 'data-i': i, onclick: () => { chartRef().pick(i); }, onkeydown: e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); chartRef().pick(i); } } },
+      h('b', { text: a[0] }), h('span', { class: 'delta ' + (d > 0 ? 'up' : d < 0 ? 'dn' : ''), text: `${fmt(a[1])} → ${fmt(a[2])}` }), h('p', { text: a[3] }));
+    ul.append(li);
+  });
+  return ul;
+}
+function setActiveAttr(ul, i) { ul.querySelectorAll('.attr').forEach((e, k) => e.classList.toggle('on', k === i)); }
+function dirCard(d, why) { return h('div', { class: 'dir' + (why ? ' used' : '') }, h('span', { class: 'no', text: 'Direction ' + d.n }), h('h4', { text: d.t }), h('p', { text: d.q }), why ? h('p', { class: 'why', text: why }) : null); }
+function dirGrid(used) {
+  const map = {}; (used || []).forEach(([n, w]) => map[n] = w);
+  const grp = (g, title) => [h('div', { class: 'mini-h grp-t', text: title }), h('div', { class: 'dirs' }, DIRS.filter(d => d.g === g).map(d => dirCard(d, map[d.n])))];
+  return h('div', null, grp('vp', 'Value proposition · directions 1 to 7'), grp('va', 'Value architecture · directions 8 to 14'));
+}
+function archBlock(c) {
+  if (!c.arch || !c.arch.length) return h('p', { class: 'hint', text: 'The course material for this case does not detail the value chain.' });
+  return h('div', { class: 'chain' }, c.arch.map((s, i) => h('div', { class: 'step' }, h('span', { class: 'num', text: String(i + 1).padStart(2, '0') }), h('h4', { text: s[0] }), h('p', { text: s[1] }))));
+}
+const CRIT = { Financial: 'Which of these numbers would change if customers stopped paying the price you assume?', Environmental: 'What does this model leave out of its count, and who bears that cost?', Societal: 'Who gains and who loses, and is the sharing fair?' };
+function contribBlock(c) {
+  const col = (t, a) => h('div', { class: 'panel' }, h('h3', { text: t }), h('ul', null, (a || []).map(x => h('li', { text: x }))), h('p', { class: 'crit' }, h('span', { class: 'mono', text: 'Think critically' }), CRIT[t]));
+  return h('div', { class: 'contrib' }, col('Financial', c.contrib.fin), col('Environmental', c.contrib.env), col('Societal', c.contrib.soc));
+}
+
+/* ---------- Views: home, explore, compare, practice, method ---------- */
+function viewHome(root) {
+  const HERO = ['fairphone', 'petith', 'perfectday', 'netflix'];
+  const capB = h('b', { text: '' }), dots = h('div', { class: 'dots' }, HERO.map(() => h('i')));
+  const host = h('div');
+  const hero = h('section', { class: 'hero' },
+    h('div', null,
+      h('span', { class: 'eyebrow', text: 'Reinventing Your Business Model · Odyssey 3.14' }),
+      h('h1', { html: 'Draw the curve.<br>Then see how the course <em>reads</em> it.' }),
+      h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Study eight cases, predict a curve before it is revealed, then build your own and have a coach built around the course\'s rules check it.' }),
+      h('div', { class: 'cta' },
+        h('button', { class: 'btn', onclick: () => go('practice') }, 'Start with Practice ', h('span', { class: 'arrow', text: '→' })),
+        h('button', { class: 'btn ghost', onclick: () => go('build') }, 'Build your own curve'))),
+    h('div', { class: 'hero-card' }, h('div', { class: 'cap' }, capB, dots), host, h('p', { class: 'hero-note', text: 'Dashed: the reference. Solid: the new offer. Green and amber bars show what rises and what is given up.' })));
+  const strip = h('section', { class: 'strip rv' },
+    [['01', 'Value proposition', 'What the customer gets, drawn as a value curve against a reference.'], ['02', 'Value architecture', 'The value chain, partners and resources that make the curve possible.'], ['03', 'Contributions', 'What the model earns, and what it does for the planet and for people.']].map(a => h('div', null, h('span', { class: 'n', text: a[0] }), h('h3', { text: a[1] }), h('p', { text: a[2] }))));
+  const modes = h('section', { class: 'sec' },
+    h('div', { class: 'sec-h rv' }, h('h2', { text: 'Three ways to work with a curve' }), h('p', { text: 'Each mode asks you to commit to an answer before the tool says anything.' })),
+    h('div', { class: 'modes' }, [
+      ['explore', '01', 'Explore', 'Read the eight cases. Hover an attribute to see why the curve moves, then see which of the 14 directions the company used.', 'Open the cases'],
+      ['practice', '02', 'Practice', 'Read a short brief, drag the new curve into place, pick the directions, then watch the course curve slide in beside yours.', 'Test your eye'],
+      ['build', '03', 'Build', 'Describe a company, place both curves, and get a live checklist built only from the course rules. Optionally ask Gemini for a second opinion.', 'Build a curve']
+    ].map((m, i) => h('button', { class: 'mode rv', style: `--d:${i * .08}s`, onclick: () => go(m[0]) },
+      h('span', { class: 'ix', text: m[1] }), h('h3', { text: m[2] }), h('p', { text: m[3] }), h('span', { class: 'go' }, m[4], h('span', { class: 'arrow', text: '→' })),
+      h('span', { html: '<svg class="bg" viewBox="0 0 150 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 70 L35 30 L70 55 L110 20 L145 40" stroke-dasharray="6 7"/><path d="M5 50 L35 65 L70 25 L110 60 L145 15"/></svg>' })))));
+  const cases = h('section', { class: 'sec' },
+    h('div', { class: 'sec-h rv' }, h('h2', { text: 'Eight cases, each labelled by where it comes from' }), h('p', { text: 'Four are read from the textbook, one is the author\'s own analysis from Assignment 1, and three are built here from course concepts.' })),
+    h('div', { class: 'cases' }, CASES.map((c, i) => h('button', { class: 'case rv', style: `--d:${(i % 4) * .07}s`, onclick: () => go('explore', c.id) },
+      badge(c), h('h3', { text: c.name }), h('span', { class: 'vs', text: 'vs ' + c.vs }), h('span', { html: spark(c.sides[0]) })))));
+  const ground = h('section', { class: 'sec' }, h('div', { class: 'ground rv' },
+    h('div', null, h('span', { class: 'eyebrow', style: 'color:inherit;opacity:.6', text: 'How the feedback is built' }), h('h2', { style: 'margin-top:12px', text: 'It only speaks the language of the course.' }),
+      h('p', { style: 'margin-top:16px', text: 'The checks, the questions and the hints you see are built around the course\'s rules and its 14 directions, not around a generic business model template.' }),
+      h('div', { style: 'margin-top:24px' }, h('button', { class: 'btn ghost', style: 'color:var(--on-ink);border-color:color-mix(in srgb,var(--on-ink) 40%,transparent)', onclick: () => go('method') }, 'See the method ', h('span', { class: 'arrow', text: '→' })))),
+    h('ul', null, [
+      ['1', 'Course concepts only. Value curve rules, the three pillars and the 14 directions.'],
+      ['2', 'You draw first. Practice reveals the answer after you commit, and Build checks your curve after you place it.'],
+      ['3', 'You bring the facts. The tool never looks a company up, so you must gather and judge the information yourself.'],
+      ['4', 'Every number has a label. Estimated points are flagged, and nothing is passed off as official.']
+    ].map(a => h('li', null, h('b', { text: a[0] }), h('span', { text: a[1] }))))));
+  root.append(hero, strip, modes, cases, ground);
+
+  /* hero chart cycle */
+  const chart = mkChart(host, { height: 330 }); let k = 0;
+  const play = () => {
+    if (!host.isConnected) return;
+    const c = caseById(HERO[k % HERO.length]), sd = c.sides[0];
+    capB.style.opacity = 0;
+    later(() => { capB.textContent = c.name + ' vs ' + c.vs; capB.style.opacity = 1; }, 250);
+    dots.querySelectorAll('i').forEach((d, i) => d.classList.toggle('on', i === k % HERO.length));
+    chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: sd.attrs.map(a => a[1]) }, { id: 'new', cls: 's-new', vals: sd.attrs.map(a => a[1]) }]);
+    later(() => chart.to('new', sd.attrs.map(a => a[2]), 1500), 1300);
+    k++; later(play, 6200);
+  };
+  play();
+}
+
+function viewExplore(root) {
+  const c = caseById(S.caseId); let sd = sideData(c, S.side);
+  const pills = h('div', { class: 'pills', role: 'tablist' }, CASES.map(x => h('button', { class: 'chip', role: 'tab', 'aria-pressed': x.id === c.id, onclick: () => go('explore', x.id) }, x.name)));
+  const head = h('div', { class: 'case-head' },
+    h('div', null, h('h1', null, c.name, h('small', { text: 'versus ' + c.vs })), h('p', { class: 'tagline', text: c.tag })),
+    h('div', null, h('p', { text: c.summary }), h('div', { class: 'meta' }, badge(c), h('span', { text: c.year + ' · ' + c.place }), h('span', { text: c.source }))));
+  const sideTabs = c.sides.length > 1 ? h('div', { class: 'sides' }, c.sides.map((s, i) => h('button', { class: 'chip', 'aria-pressed': i === S.side, onclick: () => { S.side = i; go('explore', c.id, { side: i }); } }, s.name))) : null;
+  const host = h('div'), legend = h('div', { class: 'legend' });
+  const readEl = h('p', { class: 'read' });
+  const listHost = h('div');
+  let chart, ul;
+  const drawSide = () => {
+    sd = sideData(c, S.side); legend.textContent = '';
+    legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), sd.neu),
+      h('span', { class: 'sp' }, h('button', { class: 'chip sm', 'aria-pressed': true, onclick: e => { const on = e.currentTarget.getAttribute('aria-pressed') !== 'true'; e.currentTarget.setAttribute('aria-pressed', on); chart.showGaps = on; chart.update(); } }, 'Show gaps'),
+        h('button', { class: 'chip', onclick: replay }, '↻ Replay')));
+    chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: sd.attrs.map(a => a[1]), name: sd.ref }, { id: 'new', cls: 's-new', vals: sd.attrs.map(a => a[1]), name: sd.neu }]);
+    later(() => chart.to('new', sd.attrs.map(a => a[2]), 1400), 900);
+    readEl.innerHTML = readSentence(c, sd);
+    listHost.textContent = ''; ul = attrList(sd, () => chart); listHost.append(ul);
+  };
+  const replay = () => { chart.set(chart.labels, [{ id: 'ref', cls: 's-ref', vals: sd.attrs.map(a => a[1]) }, { id: 'new', cls: 's-new', vals: sd.attrs.map(a => a[1]) }]); later(() => chart.to('new', sd.attrs.map(a => a[2]), 1400), 900); };
+  chart = mkChart(host, { height: 440, onSelect: i => setActiveAttr(ul, i) });
+  const left = h('div', null, sideTabs, h('div', { class: 'chart-card' }, legend, host), readEl);
+  const right = h('aside', { class: 'side' }, h('div', { class: 'panel' }, h('h3', { text: 'Why each point sits where it does' }), h('p', { class: 'hint', style: 'margin-bottom:8px', text: 'Select an attribute here or on the chart.' }), listHost));
+  drawSide();
+  const tabs = h('div', { class: 'tabs', role: 'tablist' }), body = h('div', { class: 'tab-body' });
+  const T = [['vp', 'Directions used'], ['va', 'Value architecture'], ['ct', 'Contributions']];
+  const showTab = k => { S.tab = k; tabs.querySelectorAll('button').forEach(b => b.setAttribute('aria-selected', b.dataset.k === k)); body.textContent = '';
+    if (k === 'vp') body.append(h('p', { class: 'hint', style: 'margin-bottom:6px', text: 'Highlighted cards are the directions this case relies on. The others are shown so you can ask whether they were also available.' }), dirGrid(c.dirs));
+    if (k === 'va') body.append(archBlock(c));
+    if (k === 'ct') body.append(contribBlock(c)); };
+  T.forEach(([k, t]) => tabs.append(h('button', { role: 'tab', 'data-k': k, onclick: () => showTab(k) }, t)));
+  showTab(S.tab || 'vp');
+  const prov = h('div', { class: 'prov' }, h('span', { text: c.prov }));
+  const cta = c.practice ? h('div', { style: 'margin-top:26px' }, h('button', { class: 'btn', onclick: () => go('practice', c.id) }, 'Predict this curve in Practice ', h('span', { class: 'arrow', text: '→' }))) : null;
+  root.append(pills, head, h('div', { class: 'two' }, left, right), prov, cta, tabs, body);
+}
+
+function mix(a, b) { return a.filter(x => b.includes(x)); }
+function viewCompare(root) {
+  const opts = []; CASES.forEach(c => c.sides.forEach((s, i) => opts.push([c.id + ':' + i, c.name + (c.sides.length > 1 ? ' · ' + s.name : '')])));
+  const mk = idx => { const [id, si] = S.cmp[idx].split(':'); const c = caseById(id); return { c, sd: sideData(c, +si) }; };
+  const out = h('div'), sels = [0, 1].map(idx => { const s = h('select', { class: 'sel', 'aria-label': 'Case ' + (idx + 1), onchange: e => { S.cmp[idx] = e.target.value; draw(); } }, opts.map(o => h('option', { value: o[0], selected: o[0] === S.cmp[idx] }, o[1]))); return s; });
+  root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Comparator' }), h('h1', { style: 'margin-top:10px', text: 'Two curves, side by side' })), h('p', { text: 'Attributes differ from case to case, so curves cannot be laid on top of each other. Compare their shape instead: what each case raises, what it gives up, and which directions it relies on.' })),
+    h('div', { class: 'cmp-grid', style: 'margin-bottom:18px' }, sels), out);
+  function draw() {
+    charts.forEach(c => c.destroy()); charts = []; out.textContent = '';
+    const A = mk(0), B = mk(1), grid = h('div', { class: 'cmp-grid' });
+    [A, B].forEach(X => { const host = h('div'), card = h('div', { class: 'chart-card' }, h('div', { class: 'legend' }, h('span', null, h('i', { class: 'ref' }), X.sd.ref), h('span', null, h('i'), X.sd.neu)), host); grid.append(card);
+      const ch = mkChart(host, { height: 300 }); ch.set(X.sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: X.sd.attrs.map(a => a[1]) }, { id: 'new', cls: 's-new', vals: X.sd.attrs.map(a => a[1]) }]); later(() => ch.to('new', X.sd.attrs.map(a => a[2]), 1300), 800); });
+    const pa = profile(A.sd), pb = profile(B.sd), da = A.c.dirs.map(d => d[0]), db = B.c.dirs.map(d => d[0]), both = mix(da, db);
+    const chips = (arr, bothArr) => h('div', { class: 'dchips' }, arr.length ? arr.map(n => h('span', { class: 'dchip' + (bothArr.includes(n) ? ' both' : ''), title: dirT(n), text: n + ' · ' + dirT(n) })) : h('span', { class: 'hint', text: 'None noted' }));
+    const row = (l, a, b) => h('tr', null, h('td', { text: l }), h('td', null, a), h('td', null, b));
+    const tb = h('table', { class: 't' }, h('thead', null, h('tr', null, h('th', { text: '' }), h('th', { text: A.c.name }), h('th', { text: B.c.name }))), h('tbody', null,
+      row('Attributes', String(pa.n), String(pb.n)),
+      row('Raised by 1 or more', `${pa.up.length}`, `${pb.up.length}`),
+      row('Cut by 1 or more', `${pa.dn.length}`, `${pb.dn.length}`),
+      row('Biggest raise', `${pa.bigUp[0]} (${sgn(pa.bigUp[2] - pa.bigUp[1])})`, `${pb.bigUp[0]} (${sgn(pb.bigUp[2] - pb.bigUp[1])})`),
+      row('Biggest cut', pa.dn.length ? `${pa.bigDn[0]} (${sgn(pa.bigDn[2] - pa.bigDn[1])})` : 'Nothing is cut', pb.dn.length ? `${pb.bigDn[0]} (${sgn(pb.bigDn[2] - pb.bigDn[1])})` : 'Nothing is cut'),
+      row('Average move per attribute', pa.mean.toFixed(1) + ' points', pb.mean.toFixed(1) + ' points'),
+      row('Directions used', chips(da, both), chips(db, both))));
+    const obs = [];
+    if (pa.dn.length && pb.dn.length) obs.push('Both give something up. That is the course rule at work: a new curve cannot beat the reference on every attribute.');
+    else if (pa.dn.length !== pb.dn.length) obs.push(`${pa.dn.length ? A.c.name : B.c.name} gives something up, ${pa.dn.length ? B.c.name : A.c.name} does not in this reading. Ask what the second one trades away that the chart does not show.`);
+    if (both.length) obs.push(`They share direction${both.length > 1 ? 's' : ''} ${both.join(', ')}: ${both.map(dirT).join('; ')}.`); else obs.push('They use different directions, so the two models reinvent value in different ways.');
+    const sizeDiff = Math.abs(pa.mean - pb.mean); obs.push(sizeDiff < .3 ? 'The two curves move by a similar amount overall.' : `${pa.mean > pb.mean ? A.c.name : B.c.name} makes the bolder move overall.`);
+    out.append(grid, h('div', { class: 'panel', style: 'margin-top:18px' }, h('div', { class: 'tw' }, tb)), h('div', { class: 'note', style: 'margin-top:18px' }, h('b', { text: 'What to notice. ' }), obs.join(' ')));
+  }
+  draw();
+}
+
+/* ---------- Practice: predict, then reveal ---------- */
+function viewPractice(root) {
+  const P = S.prac; const prog = store.get().prog || {};
+  if (!P) {
+    root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Practice' }), h('h1', { style: 'margin-top:10px', text: 'Predict first. Then compare.' })), h('p', { text: 'You get a short brief and the reference curve. Place the new curve, pick the directions you think the company used, and reveal the course\'s reading. The gap between the two is where you learn.' })));
+    root.append(h('div', { class: 'pcards' }, CASES.filter(c => c.practice).map(c => { const p = prog[c.id]; return h('button', { class: 'pcard rv', onclick: () => go('practice', c.id) }, badge(c), h('h3', { text: c.name }), h('p', { text: c.tag + '. ' + c.vs + ' is the reference.' }), p ? h('span', { class: 'best', text: `Best so far: ${p.best}%` }) : h('span', { class: 'hint', text: 'Not tried yet' })); })));
+    return;
+  }
+  const c = caseById(P.caseId), sd = c.sides[0], n = sd.attrs.length, ref = sd.attrs.map(a => a[1]), truth = sd.attrs.map(a => a[2]);
+  const st = { vals: ref.slice(), moved: new Set(), dirs: new Set(), why: '', done: false };
+  const stepsEl = h('div', { class: 'steps' });
+  const setSteps = k => { stepsEl.textContent = ''; ['Read the brief', 'Draw your curve', 'Reveal and reflect'].forEach((t, i) => { if (i) stepsEl.append(h('i')); stepsEl.append(h('span', { class: i === k ? 'on' : i < k ? 'done' : '' }, h('b', { text: i < k ? '✓' : String(i + 1) }), t)); }); };
+  setSteps(1);
+  const host = h('div'), legend = h('div', { class: 'legend' }, h('span', null, h('i', { class: 'ref' }), sd.ref + ' (given)'), h('span', null, h('i'), 'Your curve, drag the dots'));
+  const chart = mkChart(host, { height: 440, onChange: (id, i) => { st.moved.add(i); upd(); } });
+  chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: ref, drag: true, name: 'Your curve' }]);
+  const reveal = h('button', { class: 'btn you', disabled: true, onclick: doReveal }, 'Reveal the course\'s curve ', h('span', { class: 'arrow', text: '→' }));
+  const hintEl = h('p', { class: 'hint', text: 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' });
+  function upd() { st.vals = chart.get('you').vals.slice(); reveal.disabled = st.moved.size < 1; hintEl.textContent = st.moved.size < 1 ? 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' : `${st.moved.size} of ${n} attributes moved. Untouched dots count as "same as the reference".`; }
+  const chips = h('div', { class: 'chips' }, DIRS.map(d => h('button', { class: 'chip', 'aria-pressed': false, title: d.q, onclick: e => { const on = !st.dirs.has(d.n); on ? st.dirs.add(d.n) : st.dirs.delete(d.n); e.currentTarget.setAttribute('aria-pressed', on); } }, h('small', { text: d.n }), ' ' + d.t)));
+  const why = h('textarea', { class: 'inp', rows: 2, placeholder: 'In one sentence: what is the company\'s bet? (optional, but it sharpens your reasoning)', oninput: e => st.why = e.target.value });
+  const lbl = t => h('div', { class: 'mini-h', text: t });
+  const result = h('div');
+  const left = h('div', null, h('div', { class: 'chart-card' }, legend, host));
+  const right = h('aside', { class: 'side' }, h('div', { class: 'panel' },
+    h('span', { class: 'eyebrow', text: c.name + ' · ' + c.year + ' · ' + c.place }), h('p', { class: 'brief', style: 'margin:10px 0 14px', text: c.brief }),
+    h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` }),
+    lbl('Which directions did the company use?'), chips, lbl('Your reasoning'), why, h('div', { class: 'flex', style: 'margin-top:16px' }, reveal), hintEl));
+  root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, h('div', { class: 'two' }, left, right), result);
+
+  function doReveal() {
+    if (st.done) return; st.done = true; setSteps(3); reveal.disabled = true;
+    const yv = chart.get('you').vals.slice();
+    legend.textContent = ''; legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), 'Your curve'), h('span', null, h('i', { class: 'truth' }), 'The course: ' + sd.neu));
+    chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: yv }, { id: 'truth', cls: 's-truth', vals: yv.slice() }], { reveal: false });
+    chart.showGaps = false; chart.update();
+    chart.to('truth', truth, 1600, 300);
+    const rows = sd.attrs.map((a, i) => { const d = Math.abs(yv[i] - truth[i]); return { i, a, d, pts: d <= .5 ? 2 : d <= 1 ? 1 : 0 }; });
+    const tot = rows.reduce((s, r) => s + r.pts, 0), pct = Math.round(tot / (2 * n) * 100);
+    const lab = pct >= 85 ? 'A sharp eye' : pct >= 60 ? 'A good read' : 'Worth a second look';
+    const pd = prog[c.id] || {}; const best = Math.max(pct, pd.best || 0); store.put({ prog: Object.assign({}, store.get().prog, { [c.id]: { best, last: pct } }) });
+    const R = 46, C = 2 * Math.PI * R, fg = h('circle', { class: 'fg', cx: 55.9, cy: 55.9, r: R, 'stroke-dasharray': C, 'stroke-dashoffset': C });
+    const ring = h('div', { class: 'ring' }, h('span', { html: `<svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="${R}"/></svg>` }), h('b', { text: '0' }));
+    ring.querySelector('svg').append(fg); fg.setAttribute('cx', 56); fg.setAttribute('cy', 56);
+    setTimeout(() => { fg.style.strokeDashoffset = C * (1 - pct / 100); countUp(ring.querySelector('b'), pct, 1400); }, 600);
+    const vd = r => r.pts === 2 ? ['v-hit', 'Spot on'] : r.pts === 1 ? ['v-near', 'Close'] : ['v-miss', 'Rethink'];
+    const table = h('div', { class: 'ptable' }, rows.map((r, k) => { const [cl, tx] = vd(r); return h('div', { class: 'prow', style: `--d:${.9 + k * .12}s` }, h('b', { text: r.a[0] }), h('span', { class: 'num', text: `You ${fmt(yv[r.i])}` }), h('span', { class: 'num', text: `Course ${fmt(truth[r.i])}` }), h('span', { class: 'verdict ' + cl, text: tx }), h('p', { text: r.a[3] })); }));
+    const tdirs = c.dirs.map(d => d[0]), hit = tdirs.filter(x => st.dirs.has(x)), miss = tdirs.filter(x => !st.dirs.has(x)), extra = [...st.dirs].filter(x => !tdirs.includes(x));
+    const worst = rows.slice().sort((a, b) => b.d - a.d)[0];
+    const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not named by the course for this case. Can you argue for it?'); }))) : null;
+    result.textContent = '';
+    result.append(h('div', { class: 'sec', style: 'padding-top:34px' }, h('div', { class: 'two' },
+      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because the course curves are read by eye.` }))), h('div', { style: 'margin-top:12px' }, table)),
+      h('div', { class: 'stack' },
+        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} that the course names for this case.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
+        h('div', { class: 'panel' }, h('h3', { text: 'Reflect before moving on' }), h('ul', { class: 'qs' },
+          h('li', { text: worst.d > .5 ? `You were furthest from the course on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, course ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
+          h('li', { text: 'Which attribute does the company give up, and who is the customer that does not mind?' }),
+          h('li', { text: 'Which strategic resource or competence would a rival need in order to copy this curve?' })),
+          st.why ? h('p', { class: 'hint', style: 'margin-top:12px', text: 'Your bet was: ' + st.why }) : null,
+          h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn', onclick: () => go('practice', c.id) }, '↻ Try again'), h('button', { class: 'btn ghost', onclick: () => go('explore', c.id) }, 'See the full case'), h('button', { class: 'btn ghost', onclick: () => go('practice') }, 'Next case')))))));
+    later(() => result.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), 1700);
+  }
+}
+
+function viewMethod(root) {
+  const m = h('div', { class: 'method' });
+  m.innerHTML = `
+  <div class="case-head"><div><span class="eyebrow">Method</span><h1 style="margin-top:10px">How Odyssey Studio is grounded</h1></div><p>This page is for the teacher and for next year's students: what the tool knows, what it checks, and what it does not do.</p></div>
+  <h2>The framework it teaches</h2>
+  <p>Odyssey 3.14 asks you to reinvent a business model by working on three pillars: the <b>value proposition</b> (drawn as a value curve), the <b>value architecture</b> (value chain, partners, strategic resources and competencies) and the <b>contributions</b> (financial, environmental, societal). Fourteen directions help you move: seven act on the proposition, seven on the architecture.</p>
+  <h2>What the coach looks at</h2>
+  <p>The coach is built around the course's value-curve rules. It looks at seven things as you build:</p>
+  <ol class="rules">
+    <li><span><b>Five to eight attributes.</b> Enough to show a profile, few enough to read.</span></li>
+    <li><span><b>The customer's point of view.</b> Attributes are what the customer sees, never "our algorithm" or "our supply chain".</span></li>
+    <li><span><b>Two clearly different curves.</b> A reference and a new offer on the same attributes, compared attribute by attribute.</span></li>
+    <li><span><b>Something is given up.</b> Not everything can get better, so a believable new curve falls somewhere.</span></li>
+    <li><span><b>Not a perfect score.</b> A new curve with every level at 4 or more has no weak spot.</span></li>
+    <li><span><b>One curve per customer group.</b> A model that serves two groups, such as buyers and sellers, needs a curve for each.</span></li>
+    <li><span><b>The customer's cost is on the curve.</b> Directions 1 and 7 start there.</span></li>
+  </ol>
+  <p style="margin-top:14px">Beyond the checks, the coach asks questions: which strategic resource makes your biggest raise possible and could a rival copy it (inimitability), and which step of the value chain changes most.</p>
+  <h2>The 14 directions</h2><div id="mdirs"></div>
+  <h2>Where the cases come from</h2>
+  <ul>
+    <li><span class="badge k-course">From the course</span> Fairphone, Petit h, Perfect Day and Michelin Fleet Solutions are read from the textbook charts. Levels are read by eye on a 1 to 5 scale, and two Michelin points are estimated and flagged.</li>
+    <li><span class="badge k-analysis">Student analysis</span> Bending Spoons comes from a course assignment by the author of this tool.</li>
+    <li><span class="badge k-built">Built from course concepts</span> Vinted, Pinduoduo and Netflix versus Blockbuster were drawn for this tool using course concepts and are labelled as our judgement.</li>
+  </ul>
+  <h2>What the AI does, and does not do</h2>
+  <ul>
+    <li>Everything on this page, including the checklist, the direction hints and the Practice scoring, runs without any AI.</li>
+    <li>In Build, two optional buttons ask Gemini, Google's model, for a second opinion. Gemini does not carry the course in its memory. Every request therefore includes the course's rules, the 14 directions with their guiding questions and the textbook's worked curves, and tells Gemini to use nothing else. The course is supplied with each question, not trained into the model.</li>
+    <li>For the "AI's view" Gemini never sees your scores, so it cannot simply agree with you. It scores the attributes you chose, then you compare. Where you differ is the interesting part, and you must defend your reading.</li>
+    <li>Gemini is a second opinion, never the answer. It knows the course only through what the request contains (not the lectures or the textbook text), so its reading can miss the nuance taught in class. The tool does not browse the web, and a company it does not know is flagged as an assumption. Only the company facts and curve you typed are sent, never anything else.</li>
+  </ul>
+  <h2>For next year's students</h2>
+  <ul>
+    <li>Run Practice on a case before reading it in the textbook, then compare.</li>
+    <li>In Build, write the company facts yourself. Gathering and judging them is part of the exercise.</li>
+    <li>Treat every red or amber check as a question to answer, not a score to fix.</li>
+  </ul>`;
+  const g = m.querySelector('#mdirs'); g.append(dirGrid([]));
+  root.append(m);
+}
+
+/* ---------- Build: your own curve, rule-based coach, optional AI ---------- */
+const blankSide = () => ({ name: '', ref: '', neu: '', attrs: [0, 1, 2, 3, 4].map(() => ({ l: '', r: 3, n: 3 })) });
+function loadB() { const b = store.get().build; if (b && b.sides && b.sides.length) return b; return { company: '', offer: '', sides: [blankSide()], active: 0 }; }
+const BAD_VIEW = /\b(we|our|us|algorithm|technology|supply chain|process|infrastructure|team|backend|machine learning|ai-powered)\b/i;
+const PLATFORM = /platform|marketplace|two-sided|both sides|buyers and sellers|sellers|drivers|riders|advertis|creators|merchants|hosts|guests|farmers/i;
+function coach(B) {
+  const sd = B.sides[B.active], A = sd.attrs.filter(a => a.l.trim()), n = A.length, text = [B.company, B.offer, sd.name, sd.neu].join(' ');
+  const d = A.map(a => a.n - a.r), mean = n ? d.reduce((s, x) => s + Math.abs(x), 0) / n : 0, worse = A.filter(a => a.n - a.r <= -1);
+  const bad = A.filter(a => BAD_VIEW.test(a.l)).map(a => a.l), dup = new Set(A.map(a => a.l.trim().toLowerCase())).size < n;
+  const priceLab = A.some(a => /price|cost|fee|afford|cheap|expens|free|pay|subscription/i.test(a.l));
+  const plat = PLATFORM.test(text) && B.sides.length === 1;
+  const checks = [
+    { id: 'count', ok: n >= 5 && n <= 8, t: 'Five to eight attributes', d: n >= 5 && n <= 8 ? `${n} named attributes, inside the range.` : n < 5 ? `You have ${n}. Name at least five so the curve has a shape.` : `You have ${n}. Beyond eight the curve becomes hard to read. Merge or drop some.` },
+    { id: 'view', ok: n > 0 && !bad.length && !dup, t: 'Written from the customer\'s point of view', d: bad.length ? `"${bad[0]}" sounds like the company's point of view. Rewrite it as something the customer feels or gets.` : dup ? 'Two attributes share a name. Each must be distinct.' : n ? 'No company-side wording spotted. Check each label by asking "does the customer see this?"' : 'Name your attributes first.' },
+    { id: 'differ', ok: n > 0 && mean >= .75, t: 'The two curves clearly differ', d: n && mean >= .75 ? `On average they differ by ${mean.toFixed(1)} points per attribute.` : 'The new curve barely leaves the reference. A reinvention should change the shape, not nudge it.' },
+    { id: 'trade', ok: worse.length > 0, t: 'Something is given up', d: worse.length ? `"${worse[0].l}" falls. That is the trade-off that makes the curve believable.` : 'Every attribute holds or rises. The course says not everything can get better. What does this offer give up?' },
+    { id: 'notall', ok: n > 0 && !A.every(a => a.n >= 4), t: 'Not a perfect score', d: n && !A.every(a => a.n >= 4) ? 'The new curve has at least one modest level.' : 'All new levels are 4 or more. Customers will not believe a curve with no weak spot.' },
+    { id: 'sides', ok: B.sides.length > 1 ? B.sides.every(x => x.name.trim() && x.attrs.filter(a => a.l.trim()).length >= 3) : !plat, t: B.sides.length > 1 ? 'One curve per customer group' : 'One curve is enough, or is it?', d: B.sides.length > 1 ? (B.sides.every(x => x.name.trim() && x.attrs.filter(a => a.l.trim()).length >= 3) ? 'Each group has its own named curve. Click each chart to review it.' : 'Give every group a name and at least three attributes of its own.') : plat ? 'Your text mentions more than one group (for example buyers and sellers). Add a second customer group: each group needs its own curve.' : 'The text points to one customer group, so one curve will do.' },
+    { id: 'price', ok: priceLab, t: 'The customer\'s cost is on the curve', d: priceLab ? 'An attribute speaks to what the customer pays.' : 'No attribute is about price or cost. Direction 1 (reduce customer overall costs) and 7 (modify the revenue stream) both start there.' }
+  ];
+  const dirs = [], push = (n, w) => { if (!dirs.some(x => x.n === n)) dirs.push({ n, why: w }); };
+  A.forEach(a => {
+    const dl = a.n - a.r;
+    if (/price|cost|fee|afford|cheap|expens/i.test(a.l) && dl) push(1, `"${a.l}" moves. Is the saving real for the customer, or is a third party paying?`);
+    if (/hassle|effort|time|wait|easy|ease|convenien|access|friction|simpl|speed/i.test(a.l) && dl > 0) push(2, `"${a.l}" rises: you may be removing a pain point.`);
+    if (/status|brand|image|emotion|fun|pleasure|design|ethic|trust|belong|identity|joy|sustainab|impact/i.test(a.l) && dl > 0) push(4, `"${a.l}" is an emotional attribute that rises.`);
+    if (/feature|function|performance|accuracy|capacity|quality|durab|reliab|repair/i.test(a.l) && dl > 0) push(4, `"${a.l}" is a functional attribute that rises.`);
+  });
+  if (B.sides.length > 1 || plat) push(6, 'More than one group is involved: another stakeholder is already part of the model.');
+  if (/subscription|lease|rent|pay per|freemium|advert|commission|fee|insurance|per use/i.test(text)) push(7, 'Your description mentions a billing logic that could differ from the reference.');
+  if (/\b(ai|algorithm|app|software|sensor|blockchain|data|automation|robot|platform)\b/i.test(text)) push(8, 'A technology appears in your description. Which step of the value chain does it change?');
+  if (/non-?customers?|never (bought|use)|do(es)?n.t (buy|use)/i.test(text)) push(3, 'You mention people who do not buy today.');
+  const up = A.slice().sort((a, b) => (b.n - b.r) - (a.n - a.r))[0], dn = A.slice().sort((a, b) => (a.n - a.r) - (b.n - b.r))[0], qs = [];
+  if (up && up.n - up.r > 0) qs.push(`Which strategic resource or competence makes "${up.l}" possible for you, and could a rival copy it within a year?`);
+  if (dn && dn.n - dn.r < 0) qs.push(`Why will customers accept less "${dn.l}"? Which customers does that free you from, and which will you lose?`);
+  qs.push(B.sides.length > 1 ? 'Does each side still get a clear reason to join, or does one side carry the other?' : 'Which other party could you connect to these customers (direction 6), and what would it pay for?');
+  qs.push('Which step of the value chain changes most to deliver your biggest raise (directions 9 and 10)?');
+  return { checks, dirs: dirs.slice(0, 4), qs: qs.slice(0, 3), score: checks.filter(c => c.ok).length };
+}
+
+
+function aiErr(e) { const c = e && e.code; return c === 'cancelled' ? '' : c === 'rate_limited' ? 'Too many requests. Wait a few minutes, then try again.' : c === 'not_configured' ? 'The AI is not configured on this site yet. The checks on the left work without it.' : c === 'offline' ? 'No connection. Check your network and try again.' : 'The AI could not answer this time. The rest of the tool is unaffected.'; }
+async function callAI(task, payload, signal) {
+  let r;
+  try { r = await fetch('/api/ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ task }, payload)), signal }); }
+  catch (e) { throw { code: e && e.name === 'AbortError' ? 'cancelled' : 'offline' }; }
+  let j = null; try { j = await r.json(); } catch (e) {}
+  if (!r.ok) throw { code: (j && j.error) || 'error' };
+  if (!j || typeof j !== 'object') throw { code: 'error' };
+  return j;
+}
+const half = v => { v = Number(v); return isFinite(v) ? Math.max(1, Math.min(5, Math.round(v * 2) / 2)) : null; };
+
+function viewBuild(root) {
+  const B = loadB(); let aiView = null, aiCtl, panels = [], rmConfirm = -1;
+  const save = () => store.put({ build: B });
+  const side = () => B.sides[B.active];
+  root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Build' }), h('h1', { style: 'margin-top:10px', text: 'Your company, your curve' })), h('p', { text: 'Write what you know about the company, name the attributes, then drag both curves into place. The checklist responds as you work. The tool does not look anything up: the facts must come from you.' })));
+  const form = h('div', { class: 'panel' }), attrsEl = h('div', { class: 'panel' });
+  const coachEl = h('div', { class: 'panel', style: 'margin-top:18px' }), aiEl = h('div');
+  const L = h('div', { class: 'chartcol' });
+  const R = h('div', { class: 'stack' }, attrsEl, coachEl, aiEl);
+  root.append(form, h('div', { class: 'two build', style: 'margin-top:20px' }, L, R));
+
+  const field = (lab, el) => h('div', { class: 'field' }, h('label', { text: lab }), el);
+  const bind = (el, obj, key, after) => { el.value = obj[key] || ''; el.addEventListener('input', () => { obj[key] = el.value; save(); after && after(); }); return el; };
+  let rt; const rebuildChart = () => { clearTimeout(rt); rt = setTimeout(() => drawChart(), 180); };
+
+  function drawForm() {
+    form.textContent = ''; attrsEl.textContent = '';
+    const sd = side();
+    const colA = h('div', null,
+      field('Company name', bind(h('input', { class: 'inp', placeholder: 'e.g. Fairphone', maxlength: 80 }), B, 'company', queueCoach)),
+      field('What does it offer, and how? (facts you gathered)', bind(h('textarea', { class: 'inp', rows: 3, placeholder: 'Two or three sentences. Who is the customer, what do they get, how is it paid for?', maxlength: 700 }), B, 'offer', queueCoach)));
+    const sides = h('div', { class: 'sides' }, B.sides.map((s, i) => h('button', { class: 'chip', 'aria-pressed': i === B.active, onclick: () => selectGroup(i) }, s.name.trim() || 'Group ' + (i + 1))),
+      B.sides.length < 2 ? h('button', { class: 'chip', onclick: () => { B.sides.push(blankSide()); B.active = B.sides.length - 1; save(); aiView = null; drawAll(); } }, '+ Add a second customer group') : null);
+    const colB = h('div', null, h('div', { class: 'mini-h', style: 'margin-top:0', text: 'Customer groups: one curve per group' }), sides,
+      h('p', { class: 'hint', style: 'margin:-2px 0 12px', text: 'Most models need one. A platform that serves two groups, such as buyers and sellers on Vinted, needs a curve for each, so add the second group.' }),
+      field('Who is the customer group on this curve?', bind(h('input', { class: 'inp', placeholder: 'e.g. Smartphone buyers', maxlength: 80 }), sd, 'name', () => { drawSidesLabels(); panels.forEach((q, k) => paintHead(q, k)); queueCoach(); })),
+      h('div', { class: 'row2' },
+        field('Reference', bind(h('input', { class: 'inp', placeholder: 'e.g. iPhone by Apple', maxlength: 80 }), sd, 'ref', rebuildChart)),
+        field('Your new offer', bind(h('input', { class: 'inp', placeholder: 'e.g. Fairphone', maxlength: 80 }), sd, 'neu', rebuildChart))));
+    form.append(h('h3', { text: 'The company' }), h('div', { class: 'fgrid' }, colA, colB));
+    attrsEl.append(h('h3', { text: 'Attributes' }), h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'What the customer sees. Drag the dots on the chart to set the levels.' }));
+    const list = h('div');
+    sd.attrs.forEach((a, i) => list.append(h('div', { class: 'arow' }, h('span', { class: 'ix', text: i + 1 }),
+      bind(h('input', { class: 'inp', placeholder: ['Price paid', 'Ease of use', 'Durability', 'Status', 'Choice'][i % 5] + ' …', maxlength: 40, 'aria-label': 'Attribute ' + (i + 1) }), a, 'l', () => { rebuildChart(); queueCoach(); }),
+      h('button', { class: 'x', 'aria-label': 'Remove attribute ' + (i + 1), onclick: () => { if (sd.attrs.length > 2) { sd.attrs.splice(i, 1); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '×'))));
+    attrsEl.append(list, h('div', { class: 'flex' },
+      h('button', { class: 'btn ghost sm', onclick: () => { if (sd.attrs.length < 10) { sd.attrs.push({ l: '', r: 3, n: 3 }); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '+ Add attribute'),
+      h('select', { class: 'sel', style: 'width:auto;padding:8px 12px;font-size:.85rem', 'aria-label': 'Start from a course case', onchange: e => { loadCase(e.target.value); e.target.value = ''; } },
+        h('option', { value: '' }, 'Start from a course case…'), CASES.flatMap(c => c.sides.map((s, i) => h('option', { value: c.id + ':' + i }, c.name + (c.sides.length > 1 ? ' · ' + s.name : '')))))),
+      h('p', { class: 'hint', style: 'margin-top:10px', text: 'Label every attribute so that "high" means more of that thing for the customer. A high price is not a good thing for them, so name it "Price attractiveness" or "Affordability".' }));
+    attrsEl.append(h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn ghost sm', onclick: copySummary }, 'Copy my summary'), h('button', { class: 'btn ghost sm', onclick: resetAll }, 'Start over')));
+  }
+  function drawSidesLabels() { form.querySelectorAll('.sides .chip').forEach((b, i) => { if (B.sides[i]) b.textContent = B.sides[i].name.trim() || 'Group ' + (i + 1); }); }
+  function loadCase(v) { if (!v) return; const [id, i] = v.split(':'), sdc = sideData(caseById(id), +i); B.sides[B.active] = { name: sdc.name, ref: sdc.ref, neu: sdc.neu, attrs: sdc.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }; save(); aiView = null; drawAll(); toast('Loaded. Now change it until it is yours.'); }
+  function resetAll() { B.company = ''; B.offer = ''; B.sides = [blankSide()]; B.active = 0; aiView = null; save(); drawAll(); toast('Cleared.'); }
+  function summaryText() { let t = `${B.company || 'Company'}: ${B.offer || ''}\n`; B.sides.forEach(s => { t += `\nCustomer: ${s.name}. ${s.neu || 'New'} vs ${s.ref || 'reference'}\n`; s.attrs.filter(a => a.l.trim()).forEach(a => t += `- ${a.l}: ${fmt(a.r)} -> ${fmt(a.n)}\n`); }); return t; }
+  function copySummary() { const t = summaryText(); (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Summary copied.'), () => { const ta = h('textarea', { class: 'inp', rows: 8 }); ta.value = t; attrsEl.append(ta); ta.select(); toast('Select and copy the text below.'); }); }
+
+  const dead = c => { c.destroy(); charts = charts.filter(x => x !== c); };
+  function drawChart(structural) {
+    const n = B.sides.length;
+    if (structural || panels.length !== n) {
+      panels.forEach(p => dead(p.chart)); panels = []; L.textContent = '';
+      B.sides.forEach((s, i) => {
+        const head = h('div', { class: 'ghead' }), cl = h('div', { class: 'legend' }), host = h('div');
+        const card = h('div', { class: 'chart-card' + (n === 1 ? ' stick' : ''), onpointerdown: e => { if (n > 1 && B.active !== i && !e.target.closest('button')) selectGroup(i); } }, head, cl, host);
+        const chart = mkChart(host, { height: n > 1 ? 340 : 440, onChange: (id, k, v) => { const a = B.sides[i].attrs[k]; if (!a) return; if (id === 'ref') a.r = v; if (id === 'you') a.n = v; save(); queueCoach(); } });
+        panels.push({ card, head, cl, chart }); L.append(card);
+      });
+    }
+    L.classList.toggle('multi', n > 1);
+    panels.forEach((p, i) => { paintHead(p, i); paintChart(p, i); });
+  }
+  function paintHead(p, i) {
+    const sd = B.sides[i], n = B.sides.length;
+    p.card.classList.toggle('active', n > 1 && i === B.active); p.head.textContent = '';
+    if (n < 2) return;
+    p.head.append(h('b', { text: sd.name.trim() || 'Group ' + (i + 1) }), i === B.active ? h('span', { class: 'badge k-analysis', text: 'Editing' }) : h('span', { class: 'hint', text: 'Click to edit' }),
+      rmConfirm === i ? h('span', { class: 'flex push' }, h('button', { class: 'btn sm', onclick: () => removeGroup(i) }, 'Remove this group'), h('button', { class: 'btn ghost sm', onclick: () => { rmConfirm = -1; paintHead(p, i); } }, 'Keep'))
+        : h('button', { class: 'chip sm push', 'aria-label': 'Remove ' + (sd.name.trim() || 'group ' + (i + 1)), onclick: () => { rmConfirm = i; panels.forEach((q, k) => paintHead(q, k)); } }, '× Remove'));
+  }
+  function paintChart(p, i) {
+    const sd = B.sides[i], labels = sd.attrs.map(a => a.l.trim()), ch = p.chart, showAI = aiView && i === B.active;
+    p.cl.textContent = ''; p.cl.append(h('span', null, h('i', { class: 'ref' }), (sd.ref || 'Reference') + ' (drag)'), h('span', null, h('i'), (sd.neu || 'Your new offer') + ' (drag)'));
+    if (showAI) p.cl.append(h('span', null, h('i', { class: 'ai dash' }), 'Gemini: ' + (sd.ref || 'reference')), h('span', null, h('i', { class: 'ai' }), 'Gemini: ' + (sd.neu || 'new offer')));
+    p.cl.append(h('span', { class: 'sp' }, h('button', { class: 'chip sm', 'aria-pressed': ch.showGaps, onclick: e => { ch.showGaps = !ch.showGaps; e.currentTarget.setAttribute('aria-pressed', ch.showGaps); ch.update(); } }, 'Gaps')));
+    const ser = [{ id: 'ref', cls: 's-ref', drag: true, vals: sd.attrs.map(a => a.r), name: 'Reference' }, { id: 'you', cls: 's-you', drag: true, vals: sd.attrs.map(a => a.n), name: 'New offer' }];
+    if (showAI) { ser.push({ id: 'airef', cls: 's-airef', vals: aiView.map(x => x.r) }); ser.push({ id: 'ai', cls: 's-ai', vals: aiView.map(x => x.n) }); }
+    ch.set(labels, ser, { reveal: false });
+  }
+  function selectGroup(i) {
+    if (i === B.active) return; const had = !!aiView; B.active = i; rmConfirm = -1; aiView = null; save(); aiEl.textContent = '';
+    panels.forEach((p, k) => { paintHead(p, k); if (had) paintChart(p, k); }); drawForm(); drawCoach();
+  }
+  function removeGroup(i) {
+    B.sides.splice(i, 1); if (i < B.active || B.active >= B.sides.length) B.active = Math.max(0, Math.min(B.active - (i < B.active ? 1 : 0), B.sides.length - 1));
+    rmConfirm = -1; aiView = null; save(); drawAll(); toast('Group removed.');
+  }
+  /* coach panel */
+  let ct, items = {};
+  function queueCoach() { clearTimeout(ct); ct = setTimeout(drawCoach, 120); }
+  function drawCoach() {
+    const res = coach(B);
+    if (!coachEl.firstChild) {
+      coachEl.append(h('h3', { text: 'Coach' }), h('p', { class: 'hint', text: 'Built around the course\'s rules. Each line is a question to answer, not a grade.' }), h('div', { class: 'meter' }, h('i', { id: 'mt' })), h('ul', { class: 'checks', id: 'cks' }), h('div', { id: 'cx' }));
+    }
+    const ul = $('#cks', coachEl);
+    res.checks.forEach((c, k) => {
+      let li = items[c.id];
+      if (!li || !li.isConnected) { li = items[c.id] = h('li', { class: 'chk', style: `--d:${k * .07}s` }, h('span', { class: 'ic' }), h('div', null, h('b'), h('span', { class: 'd' }))); ul.append(li); }
+      li.className = 'chk ' + (c.ok ? 'ok' : 'warn'); li.querySelector('.ic').textContent = c.ok ? '✓' : '!'; li.querySelector('b').textContent = c.t; li.querySelector('.d').textContent = c.d;
+    });
+    $('#mt', coachEl).style.width = (res.score / res.checks.length * 100) + '%';
+    const cx = $('#cx', coachEl); cx.textContent = '';
+    if (res.dirs.length) cx.append(h('div', { class: 'mini-h', text: 'Directions your curve may point to' }), h('ul', { class: 'qs' }, res.dirs.map(d => h('li', null, h('b', { text: `${d.n} · ${dirT(d.n)}. ` }), d.why))));
+    cx.append(h('div', { class: 'mini-h', text: 'Questions to push your thinking' }), h('ol', { class: 'qs' }, res.qs.map(q => h('li', { text: q }))));
+    drawAIBtns();
+  }
+  /* AI */
+  function drawAIBtns() {
+    let box = $('#aib', coachEl); if (!box) { box = h('div', { id: 'aib' }); coachEl.append(box); } box.textContent = '';
+    if (!aiSample) { box.append(h('p', { class: 'hint', style: 'margin-top:18px', text: 'The AI second opinion is unavailable right now. Everything above works without it.' })); return; }
+    const ready = side().attrs.filter(a => a.l.trim()).length >= 3 && (B.company.trim() || B.offer.trim());
+    box.append(h('div', { class: 'mini-h', text: 'Second opinion (optional, powered by Gemini)' }), h('div', { class: 'flex' },
+      h('button', { class: 'btn ai sm', disabled: !ready, onclick: askCoach }, 'Ask the AI coach'), h('button', { class: 'btn ghost sm', disabled: !ready, onclick: askView }, 'Show the AI\'s own curve')),
+      ready ? null : h('p', { class: 'hint', style: 'margin-top:8px', text: 'Add the company facts and at least three attribute names to enable these.' }));
+  }
+  const packSide = withScores => ({ customer: side().name, reference: side().ref, newOffer: side().neu, attributes: side().attrs.filter(a => a.l.trim()).map(a => withScores ? { label: a.l.trim(), reference: a.r, new: a.n } : { label: a.l.trim() }) });
+  function aiBusy(msg, stop) { aiEl.textContent = ''; aiEl.append(h('div', { class: 'aibox' }, h('p', { class: 'pulse' }, h('span', { class: 'spin' }), msg), h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => aiCtl && aiCtl.abort() }, 'Stop')))); }
+  function aiFail(e) { aiEl.textContent = ''; const m = aiErr(e); if (m) aiEl.append(h('div', { class: 'aibox' }, h('p', { text: m }))); }
+  async function askCoach() {
+    aiCtl = new AbortController(); aiBusy('Gemini is reading your curve with the course\'s rules…');
+    try {
+      const r = await callAI('coach', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(true) }, aiCtl.signal);
+      aiEl.textContent = '';
+      const li = a => (Array.isArray(a) ? a : []).filter(x => typeof x === 'string').map(x => h('li', { text: x }));
+      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge k-built', style: 'color:var(--ai);border-color:var(--ai)', text: 'Gemini, using course concepts only' }), h('h4', { style: 'margin-top:10px', text: 'Second opinion' }), h('p', { text: String(r.verdict || '') }),
+        r.strengths && r.strengths.length ? h('div', null, h('div', { class: 'mini-h', text: 'What works' }), h('ul', null, li(r.strengths))) : null,
+        r.issues && r.issues.length ? h('div', null, h('div', { class: 'mini-h', text: 'To fix against the rules' }), h('ul', null, li(r.issues))) : null,
+        Array.isArray(r.directions) && r.directions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Directions to try' }), h('ul', null, r.directions.filter(d => d && d.n >= 1 && d.n <= 14).map(d => h('li', null, h('b', { text: `${d.n} · ${dirT(d.n)}. ` }), String(d.why || ''))))) : null,
+        h('div', { class: 'mini-h', text: 'Questions to answer' }), h('ol', null, li(r.questions)),
+        r.architecture ? h('div', null, h('div', { class: 'mini-h', text: 'Value architecture' }), h('p', { text: String(r.architecture) })) : null,
+        r.watch ? h('div', null, h('div', { class: 'mini-h', text: 'Watch out' }), h('p', { text: String(r.watch) })) : null));
+    } catch (e) { aiFail(e); }
+  }
+  async function askView() {
+    aiCtl = new AbortController(); aiBusy('Gemini is drawing its own curve without seeing yours…');
+    const sd = side(), labels = sd.attrs.filter(a => a.l.trim());
+    try {
+      const r = await callAI('view', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(false) }, aiCtl.signal);
+      const arr = Array.isArray(r.attributes) ? r.attributes : [];
+      const out = labels.map((a, i) => { const m = arr.find(x => x && String(x.label).trim().toLowerCase() === a.l.trim().toLowerCase()) || arr[i] || {}; return { l: a.l.trim(), r: half(m.ref), n: half(m.new), whyRef: String(m.whyRef || m.why || ''), whyNew: String(m.whyNew || m.why || ''), conf: m.confidence || 'low', mine: a }; });
+      if (out.some(o => o.r == null || o.n == null)) throw { code: 'bad' };
+      aiView = out; drawChart();
+      const diffs = out.filter(o => Math.abs(o.n - o.mine.n) >= 1 || Math.abs(o.r - o.mine.r) >= 1);
+      aiEl.textContent = '';
+      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge', style: 'color:var(--ai);border-color:var(--ai)', text: r.known ? 'Gemini recognises the company' : 'Gemini does not recognise it: description only' }),
+        h('h4', { style: 'margin-top:10px', text: 'Gemini\'s view against yours' }), h('p', { text: String(r.summary || '') }),
+        h('div', { class: 'mini-h', text: diffs.length ? 'Where you and Gemini disagree by a point or more' : 'You and Gemini agree within a point everywhere' }),
+        h('ul', { class: 'diffs' }, diffs.map(o => reasonLi(o, sd))),
+        h('details', { style: 'margin-top:10px' }, h('summary', { text: 'Gemini\'s reasoning on every attribute' }), h('ul', { class: 'diffs' }, out.map(o => reasonLi(o, sd)))),
+        Array.isArray(r.missing) && r.missing.length ? h('div', null, h('div', { class: 'mini-h', text: 'Facts that would sharpen the curve' }), h('ul', null, r.missing.map(x => h('li', { text: String(x) })))) : null,
+        Array.isArray(r.assumptions) && r.assumptions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Gemini\'s assumptions' }), h('ul', null, r.assumptions.map(x => h('li', { text: String(x) })))) : null,
+        h('p', { class: 'hint', style: 'margin-top:12px', text: 'A second opinion, not the truth. Decide who is right and be ready to defend it.' }),
+        h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => { aiView = null; drawChart(); aiEl.textContent = ''; } }, 'Hide Gemini\'s curve'))));
+    } catch (e) { aiFail(e.code === 'bad' ? { code: 'x' } : e); }
+  }
+  const reasonLi = (o, sd) => h('li', null, h('b', { text: o.l + '. ' }), `You ${fmt(o.mine.r)} → ${fmt(o.mine.n)}; Gemini ${fmt(o.r)} → ${fmt(o.n)} (${o.conf} confidence).`,
+    h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.ref || 'Reference' }), ' ' + o.whyRef), h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.neu || 'New offer' }), ' ' + o.whyNew));
+  function drawAll() { items = {}; coachEl.textContent = ''; aiEl.textContent = ''; drawForm(); drawChart(true); drawCoach(); }
+  drawAll();
+  aiHook = drawAIBtns;
+}
+let aiHook = null;
+
+/* ---------- boot ---------- */
+(async function boot() {
+  shell(); fromHash();
+  const app = h('main', { id: 'app', class: 'wrap' }); document.body.insertBefore(app, document.querySelector('footer'));
+  document.body.append(h('div', { id: 'toast', class: 'toast', role: 'status' }));
+  paint();
+})();
+</script>
+
+</body>
+</html>
