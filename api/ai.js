@@ -100,7 +100,7 @@ async function callGemini(key, prompt) {
     const text = (j.candidates?.[0]?.content?.parts || []).filter(p => !p.thought).map(p => p.text || '').join('').trim();
     const body = text.replace(/^```(?:json)?\s*/i, '').replace(/```\s*$/, '');
     console.log(`Gemini ${model} answered in ${Date.now() - t0} ms`);
-    try { return JSON.parse(body); } catch (e) { throw { status: 502, detail: `${model} returned non-JSON (finish: ${j.candidates?.[0]?.finishReason})` }; }
+    try { return { out: JSON.parse(body), model, ms: Date.now() - t0 }; } catch (e) { throw { status: 502, detail: `${model} returned non-JSON (finish: ${j.candidates?.[0]?.finishReason})` }; }
   }
   if (last && last.timeout) throw { status: 504, detail: `timed out (last tried ${last.model})` };
   throw { status: 502, detail: `no model available (last tried ${last && last.model})` };
@@ -128,7 +128,8 @@ export default async function handler(req, res) {
   if (!prompt) return res.status(400).json({ error: 'bad_request' });
 
   try {
-    const out = await callGemini(key, prompt);
+    const { out, model, ms } = await callGemini(key, prompt);
+    res.setHeader('X-AI-Model', `${model}; ${ms} ms`);
     return res.status(200).json(out);
   } catch (e) {
     if (e && e.status === 429) return res.status(429).json({ error: 'rate_limited' });
