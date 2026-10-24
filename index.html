@@ -55,7 +55,7 @@ button{font:inherit;color:inherit;cursor:pointer}
 .icon-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:var(--card);display:grid;place-items:center;flex:none;transition:transform .2s,border-color .2s}
 .icon-btn:hover{transform:rotate(18deg);border-color:var(--ink-3)}
 .icon-btn svg{width:18px;height:18px}
-@media(max-width:640px){.top{gap:10px}.brand span{display:none}.top-in{gap:8px}.nav{margin-left:0;flex:1}.nav button{padding:8px 9px;font-size:.88rem}}
+@media(max-width:640px){.top{gap:10px;padding-block:10px 2px}.brand span{display:none}.top-in{gap:4px 8px;flex-wrap:wrap}.icon-btn{margin-left:auto}.nav{order:3;flex:1 1 100%;margin-left:0;gap:0;justify-content:space-between;overflow:visible}.nav button{padding:8px 3px;font-size:.85rem}}
 
 main{padding-block:clamp(28px,5vw,56px) 40px;min-height:70vh}
 .view{animation:viewin .6s cubic-bezier(.2,.7,.2,1) both}
@@ -334,6 +334,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
 
 .two.build{grid-template-columns:minmax(0,1.7fr) minmax(0,1fr);align-items:stretch}
 .chart-card.stick{position:sticky;top:calc(env(safe-area-inset-top,0px) + 84px)}
+.chart-card{scroll-margin-top:calc(env(safe-area-inset-top,0px) + 96px)}
 .fgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(16px,3vw,40px);margin-top:10px}
 @media(max-width:820px){.fgrid{grid-template-columns:1fr}}
 .chartcol{min-width:0}
@@ -358,7 +359,7 @@ footer .hec{height:34px}
 .vc .s-airef .dot{fill:var(--card);stroke:var(--ai);stroke-width:2.4}
 .legend i.dash{border-top-style:dashed}
 
-.why2{margin-top:3px;font-size:.88rem;color:var(--ink-2)}.why2 .mono{color:var(--ai);margin-right:4px}.diffs{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px}details summary{cursor:pointer;color:var(--ink-2);font-weight:600;font-size:.9rem}
+.why2{margin-top:3px;font-size:.88rem;color:var(--ink-2)}.why2 .mono{color:var(--ai);margin-right:4px}.diffs{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px}.decide{display:grid;gap:8px;margin-top:8px}.decide .inp{padding:8px 12px;font-size:.88rem}details summary{cursor:pointer;color:var(--ink-2);font-weight:600;font-size:.9rem}
 
 .crit{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-family:'Instrument Serif',serif;font-size:1.15rem;line-height:1.3;color:var(--ink)}.crit .mono{display:block;font-family:'IBM Plex Mono',monospace;font-size:.68rem;color:var(--you);margin-bottom:4px}
 </style>
@@ -837,6 +838,7 @@ class VC {
     cancelAnimationFrame(this._rv); this._rv = requestAnimationFrame(step);
   }
   update() {
+    if (!this.gs) return;
     const ref = this.get('ref'), prim = this.series.find(s => s.show && s.id !== 'ref' && this.gs[s.id]);
     this.series.forEach(s => {
       const o = this.gs[s.id]; if (!o) return;
@@ -896,7 +898,7 @@ const $ = (s, r = document) => r.querySelector(s);
 const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
 function h(tag, p, ...kids) {
   const e = document.createElement(tag);
-  if (p) for (const k in p) { const v = p[k]; if (v == null || v === false) continue;
+  if (p) for (const k in p) { const v = p[k]; if (k.startsWith('aria-') && typeof v === 'boolean') { e.setAttribute(k, String(v)); continue; } if (v == null || v === false) continue;
     if (k === 'class') e.className = v; else if (k === 'html') e.innerHTML = v; else if (k === 'text') e.textContent = v;
     else if (k.startsWith('on')) e.addEventListener(k.slice(2), v); else e.setAttribute(k, v === true ? '' : v); }
   kids.flat(9).forEach(c => { if (c == null || c === false) return; e.append(c.nodeType ? c : document.createTextNode(c)); });
@@ -917,6 +919,14 @@ function cleanup() { charts.forEach(c => c.destroy()); charts = []; timers.forEa
 const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return t; };
 function mkChart(host, opts) { const c = new VC(host, opts); charts.push(c); return c; }
 function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
+function copyText(t, host, ok) { (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(ok || 'Copied.'), () => { const ta = h('textarea', { class: 'inp', rows: 8 }); ta.value = t; host.append(ta); ta.select(); toast('Select and copy the text below.'); }); }
+const day = t => new Date(t).toISOString().slice(0, 10);
+function journalText() {
+  const prog = store.get().prog || {}; let t = 'Odyssey Studio · my practice journal\n';
+  CASES.filter(c => c.practice && prog[c.id] && prog[c.id].journal).forEach(c => { t += `\n${c.name} (best ${prog[c.id].best}%)\n`; prog[c.id].journal.forEach(e => { t += `- ${day(e.t)} · ${e.pct}% · ${e.conf || 'no confidence given'}\n  Bet: ${e.bet || '-'}\n  Reflection: ${e.reflection || '-'}\n`; }); });
+  return t;
+}
+function copyJournal(e) { copyText(journalText(), e && e.currentTarget ? e.currentTarget.parentElement : $('#app'), 'Practice journal copied.'); }
 function countUp(el, to, dur = 1200, dec = 0) { if (RM) { el.textContent = to.toFixed(dec); return; } const t0 = performance.now(); const f = now => { const p = Math.min(1, (now - t0) / dur); el.textContent = (to * ease(p)).toFixed(dec); if (p < 1) requestAnimationFrame(f); }; requestAnimationFrame(f); }
 
 const NAV = [['home', 'Home'], ['explore', 'Explore'], ['compare', 'Compare'], ['practice', 'Practice'], ['build', 'Build'], ['method', 'Method']];
@@ -924,10 +934,14 @@ function go(view, id, extra) {
   cleanup(); S.view = view; if (view === 'explore' && id) { S.caseId = id; S.side = 0; }
   if (view === 'practice') S.prac = id ? { caseId: id } : null;
   if (extra) Object.assign(S, extra);
-  paint(); try { history.replaceState(null, '', '#' + view + (id ? '-' + id : '')); } catch (e) {}
+  paint();
+  const hash = '#' + view + (id ? '-' + id : '');
+  try { if (location.hash !== hash) history.pushState(null, '', hash); else history.replaceState(null, '', hash); } catch (e) {}
   window.scrollTo({ top: 0, behavior: RM ? 'auto' : 'smooth' });
 }
-function fromHash() { const m = (location.hash || '').slice(1).split('-'); const v = NAV.find(n => n[0] === m[0]); if (v) { S.view = v[0]; if (v[0] === 'explore' && m[1] && CASES.some(c => c.id === m[1])) S.caseId = m[1]; if (v[0] === 'practice' && m[1] && CASES.some(c => c.id === m[1] && c.practice)) S.prac = { caseId: m[1] }; } }
+function fromHash() { const m = (location.hash || '').slice(1).split('-'); const v = NAV.find(n => n[0] === m[0]); if (v) { S.view = v[0]; if (v[0] === 'explore' && m[1] && CASES.some(c => c.id === m[1])) S.caseId = m[1]; if (v[0] === 'practice') S.prac = m[1] && CASES.some(c => c.id === m[1] && c.practice) ? { caseId: m[1] } : null; } }
+const navKey = () => S.view + '|' + S.caseId + '|' + (S.prac ? S.prac.caseId : '');
+function onNav() { const before = navKey(); fromHash(); if (navKey() !== before) { cleanup(); paint(); window.scrollTo(0, 0); } }
 
 function observeReveal(root) {
   const els = root.querySelectorAll('.rv'); if (!els.length) return;
@@ -946,7 +960,8 @@ function shell() {
   document.body.prepend(top); document.body.append(foot);
   try { const t = store.get().theme; if (t) document.documentElement.setAttribute('data-theme', t); } catch (e) {}
   window.addEventListener('resize', () => mark());
-  window.addEventListener('hashchange', () => { const before = S.view; fromHash(); if (S.view !== before) { cleanup(); paint(); } });
+  window.addEventListener('hashchange', onNav);
+  window.addEventListener('popstate', onNav);
 }
 function toggleTheme() {
   const r = document.documentElement, cur = r.getAttribute('data-theme') || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
@@ -957,7 +972,8 @@ function paint() {
   document.querySelectorAll('#nav button').forEach(b => b.setAttribute('aria-current', b.dataset.v === S.view ? 'page' : 'false'));
   const v = { home: viewHome, explore: viewExplore, compare: viewCompare, practice: viewPractice, build: viewBuild, method: viewMethod }[S.view] || viewHome;
   const el = h('div', { class: 'view' }); m.append(el); v(el); observeReveal(el); mark();
-  document.title = 'Odyssey Studio';
+  const vt = (NAV.find(n => n[0] === S.view) || [])[1];
+  document.title = S.view === 'home' || !vt ? 'Odyssey Studio' : vt + ' · Odyssey Studio';
 }
 
 /* ---------- Shared pieces ---------- */
@@ -1013,10 +1029,10 @@ function viewHome(root) {
     h('div', null,
       h('span', { class: 'eyebrow', text: 'Reinventing Your Business Model · Odyssey 3.14' }),
       h('h1', { html: 'Draw the curve.<br>Then see how the course <em>reads</em> it.' }),
-      h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Study eight cases, predict a curve before it is revealed, then build your own and have a coach built around the course\'s rules check it.' }),
+      h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Predict a curve before the course reveals it, then build your own and argue with an AI that draws its own curve without seeing yours. You decide who is right, and every AI answer goes into your log.' }),
       h('div', { class: 'cta' },
         h('button', { class: 'btn', onclick: () => go('practice') }, 'Start with Practice ', h('span', { class: 'arrow', text: '→' })),
-        h('button', { class: 'btn ghost', onclick: () => go('build') }, 'Build your own curve'))),
+        h('button', { class: 'btn ghost', onclick: () => go('build', null, { demo: true }) }, 'See the AI disagree with you'))),
     h('div', { class: 'hero-card' }, h('div', { class: 'cap' }, capB, dots), host, h('p', { class: 'hero-note', text: 'Dashed: the reference. Solid: the new offer. Green and amber bars show what rises and what is given up.' })));
   const strip = h('section', { class: 'strip rv' },
     [['01', 'Value proposition', 'What the customer gets, drawn as a value curve against a reference.'], ['02', 'Value architecture', 'The value chain, partners and resources that make the curve possible.'], ['03', 'Contributions', 'What the model earns, and what it does for the planet and for people.']].map(a => h('div', null, h('span', { class: 'n', text: a[0] }), h('h3', { text: a[1] }), h('p', { text: a[2] }))));
@@ -1025,7 +1041,7 @@ function viewHome(root) {
     h('div', { class: 'modes' }, [
       ['explore', '01', 'Explore', 'Read the eight cases. Hover an attribute to see why the curve moves, then see which of the 14 directions the company used.', 'Open the cases'],
       ['practice', '02', 'Practice', 'Read a short brief, drag the new curve into place, pick the directions, then watch the course curve slide in beside yours.', 'Test your eye'],
-      ['build', '03', 'Build', 'Describe a company, place both curves, and get a live checklist built only from the course rules. Optionally ask Gemini for a second opinion.', 'Build a curve']
+      ['build', '03', 'Build', 'Describe a company, place both curves and get a live checklist from the course rules. Then let Gemini draw its own curve blind, and defend your reading where you disagree.', 'Build a curve']
     ].map((m, i) => h('button', { class: 'mode rv', style: `--d:${i * .08}s`, onclick: () => go(m[0]) },
       h('span', { class: 'ix', text: m[1] }), h('h3', { text: m[2] }), h('p', { text: m[3] }), h('span', { class: 'go' }, m[4], h('span', { class: 'arrow', text: '→' })),
       h('span', { html: '<svg class="bg" viewBox="0 0 150 90" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 70 L35 30 L70 55 L110 20 L145 40" stroke-dasharray="6 7"/><path d="M5 50 L35 65 L70 25 L110 60 L145 15"/></svg>' })))));
@@ -1141,7 +1157,7 @@ function viewPractice(root) {
     return;
   }
   const c = caseById(P.caseId), sd = c.sides[0], n = sd.attrs.length, ref = sd.attrs.map(a => a[1]), truth = sd.attrs.map(a => a[2]);
-  const st = { vals: ref.slice(), moved: new Set(), dirs: new Set(), why: '', done: false };
+  const st = { vals: ref.slice(), moved: new Set(), dirs: new Set(), why: '', conf: '', done: false };
   const stepsEl = h('div', { class: 'steps' });
   const setSteps = k => { stepsEl.textContent = ''; ['Read the brief', 'Draw your curve', 'Reveal and reflect'].forEach((t, i) => { if (i) stepsEl.append(h('i')); stepsEl.append(h('span', { class: i === k ? 'on' : i < k ? 'done' : '' }, h('b', { text: i < k ? '✓' : String(i + 1) }), t)); }); };
   setSteps(1);
@@ -1150,20 +1166,31 @@ function viewPractice(root) {
   chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: ref, drag: true, name: 'Your curve' }]);
   const reveal = h('button', { class: 'btn you', disabled: true, onclick: doReveal }, 'Reveal the course\'s curve ', h('span', { class: 'arrow', text: '→' }));
   const hintEl = h('p', { class: 'hint', text: 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' });
-  function upd() { st.vals = chart.get('you').vals.slice(); reveal.disabled = st.moved.size < 1; hintEl.textContent = st.moved.size < 1 ? 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' : `${st.moved.size} of ${n} attributes moved. Untouched dots count as "same as the reference".`; }
+  function upd() {
+    st.vals = chart.get('you').vals.slice();
+    const todo = [st.moved.size < 1 && 'move at least one dot', st.why.trim().length < 10 && 'write your bet in one sentence', !st.conf && 'say how sure you are'].filter(Boolean);
+    reveal.disabled = todo.length > 0;
+    hintEl.textContent = todo.length ? 'To unlock the reveal: ' + todo.join(', ') + '. Tip: use arrow keys on a focused dot for half-points.' : `${st.moved.size} of ${n} attributes moved. Untouched dots count as "same as the reference".`;
+  }
   const chips = h('div', { class: 'chips' }, DIRS.map(d => h('button', { class: 'chip', 'aria-pressed': false, title: d.q, onclick: e => { const on = !st.dirs.has(d.n); on ? st.dirs.add(d.n) : st.dirs.delete(d.n); e.currentTarget.setAttribute('aria-pressed', on); } }, h('small', { text: d.n }), ' ' + d.t)));
-  const why = h('textarea', { class: 'inp', rows: 2, placeholder: 'In one sentence: what is the company\'s bet? (optional, but it sharpens your reasoning)', oninput: e => st.why = e.target.value });
+  const why = h('textarea', { class: 'inp', rows: 2, 'aria-label': 'Your bet', placeholder: 'In one sentence: what is the company\'s bet? Committing to it first is what makes the reveal useful.', oninput: e => { st.why = e.target.value; upd(); } });
+  const CONF = [['guess', 'A guess'], ['fair', 'Fairly sure'], ['sure', 'Sure']];
+  const conf = h('div', { class: 'chips', role: 'group', 'aria-label': 'How sure are you?' }, CONF.map(([k, t]) => h('button', { class: 'chip', 'aria-pressed': false, onclick: e => { st.conf = k; conf.querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', b === e.currentTarget)); upd(); } }, t)));
   const lbl = t => h('div', { class: 'mini-h', text: t });
   const result = h('div');
-  const left = h('div', null, h('div', { class: 'chart-card' }, legend, host));
+  const chartCard = h('div', { class: 'chart-card' }, legend, host);
+  const left = h('div', { class: 'stack' }, chartCard, h('div', { class: 'panel' },
+    lbl('Which directions did the company use?'), chips, lbl('Your bet'), why, lbl('How sure are you?'), conf,
+    h('div', { class: 'flex', style: 'margin-top:16px' }, reveal), hintEl));
   const right = h('aside', { class: 'side' }, h('div', { class: 'panel' },
     h('span', { class: 'eyebrow', text: c.name + ' · ' + c.year + ' · ' + c.place }), h('p', { class: 'brief', style: 'margin:10px 0 14px', text: c.brief }),
-    h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` }),
-    lbl('Which directions did the company use?'), chips, lbl('Your reasoning'), why, h('div', { class: 'flex', style: 'margin-top:16px' }, reveal), hintEl));
+    h('p', { class: 'hint', html: `Customer: <b>${esc(sd.name)}</b>. Reference: <b>${esc(sd.ref)}</b>. Higher is better for the attribute named.` })));
   root.append(h('button', { class: 'chip', style: 'margin-bottom:16px', onclick: () => go('practice') }, '← All cases'), stepsEl, h('div', { class: 'two' }, left, right), result);
+  upd();
 
   function doReveal() {
     if (st.done) return; st.done = true; setSteps(3); reveal.disabled = true;
+    chartCard.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' });
     const yv = chart.get('you').vals.slice();
     legend.textContent = ''; legend.append(h('span', null, h('i', { class: 'ref' }), sd.ref), h('span', null, h('i'), 'Your curve'), h('span', null, h('i', { class: 'truth' }), 'The course: ' + sd.neu));
     chart.set(sd.attrs.map(a => a[0]), [{ id: 'ref', cls: 's-ref', vals: ref }, { id: 'you', cls: 's-you', vals: yv }, { id: 'truth', cls: 's-truth', vals: yv.slice() }], { reveal: false });
@@ -1172,7 +1199,13 @@ function viewPractice(root) {
     const rows = sd.attrs.map((a, i) => { const d = Math.abs(yv[i] - truth[i]); return { i, a, d, pts: d <= .5 ? 2 : d <= 1 ? 1 : 0 }; });
     const tot = rows.reduce((s, r) => s + r.pts, 0), pct = Math.round(tot / (2 * n) * 100);
     const lab = pct >= 85 ? 'A sharp eye' : pct >= 60 ? 'A good read' : 'Worth a second look';
-    const pd = prog[c.id] || {}; const best = Math.max(pct, pd.best || 0); store.put({ prog: Object.assign({}, store.get().prog, { [c.id]: { best, last: pct } }) });
+    const pd = prog[c.id] || {}; const best = Math.max(pct, pd.best || 0);
+    const confT = (CONF.find(x => x[0] === st.conf) || [])[1] || '';
+    const entry = { t: Date.now(), pct, bet: st.why.trim(), conf: confT, reflection: '' };
+    const journal = (pd.journal || []).concat(entry).slice(-20);
+    const saveProg = () => store.put({ prog: Object.assign({}, store.get().prog, { [c.id]: { best, last: pct, journal } }) });
+    saveProg();
+    const calib = st.conf === 'sure' && pct < 60 ? 'You were sure and the course read it differently: that gap is the most useful thing to reflect on.' : st.conf === 'guess' && pct >= 85 ? 'You called it a guess and read it well: your eye is better than you think.' : '';
     const R = 46, C = 2 * Math.PI * R, fg = h('circle', { class: 'fg', cx: 55.9, cy: 55.9, r: R, 'stroke-dasharray': C, 'stroke-dashoffset': C });
     const ring = h('div', { class: 'ring' }, h('span', { html: `<svg viewBox="0 0 112 112"><circle class="bgc" cx="56" cy="56" r="${R}"/></svg>` }), h('b', { text: '0' }));
     ring.querySelector('svg').append(fg); fg.setAttribute('cx', 56); fg.setAttribute('cy', 56);
@@ -1184,16 +1217,23 @@ function viewPractice(root) {
     const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not named by the course for this case. Can you argue for it?'); }))) : null;
     result.textContent = '';
     result.append(h('div', { class: 'sec', style: 'padding-top:34px' }, h('div', { class: 'two' },
-      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because the course curves are read by eye.` }))), h('div', { style: 'margin-top:12px' }, table)),
+      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because the course curves are read by eye.` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }))), h('div', { style: 'margin-top:12px' }, table)),
       h('div', { class: 'stack' },
         h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} that the course names for this case.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
         h('div', { class: 'panel' }, h('h3', { text: 'Reflect before moving on' }), h('ul', { class: 'qs' },
           h('li', { text: worst.d > .5 ? `You were furthest from the course on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, course ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
           h('li', { text: 'Which attribute does the company give up, and who is the customer that does not mind?' }),
           h('li', { text: 'Which strategic resource or competence would a rival need in order to copy this curve?' })),
-          st.why ? h('p', { class: 'hint', style: 'margin-top:12px', text: 'Your bet was: ' + st.why }) : null,
+          h('p', { class: 'hint', style: 'margin-top:12px', text: 'Your bet was: ' + st.why.trim() }),
+          (() => {
+            const ta = h('textarea', { class: 'inp', rows: 3, 'aria-label': 'Your reflection', placeholder: 'Answer one of the questions above, in your own words. It is saved in this browser with your bet and score.' });
+            const saved = h('span', { class: 'hint' });
+            const keep = () => { entry.reflection = ta.value.trim(); saveProg(); saved.textContent = entry.reflection ? 'Saved in your practice journal.' : ''; };
+            ta.addEventListener('change', keep);
+            return h('div', { style: 'margin-top:12px' }, lbl('Your reflection'), ta, h('div', { class: 'flex', style: 'margin-top:8px' }, h('button', { class: 'btn ghost sm', onclick: keep }, 'Save reflection'), h('button', { class: 'btn ghost sm', onclick: copyJournal }, 'Copy my practice journal'), saved));
+          })(),
           h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn', onclick: () => go('practice', c.id) }, '↻ Try again'), h('button', { class: 'btn ghost', onclick: () => go('explore', c.id) }, 'See the full case'), h('button', { class: 'btn ghost', onclick: () => go('practice') }, 'Next case')))))));
-    later(() => result.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), 1700);
+    later(() => result.scrollIntoView({ behavior: RM ? 'auto' : 'smooth', block: 'start' }), RM ? 300 : 2600);
   }
 }
 
@@ -1224,10 +1264,11 @@ function viewMethod(root) {
   </ul>
   <h2>What the AI does, and does not do</h2>
   <ul>
-    <li>Everything on this page, including the checklist, the direction hints and the Practice scoring, runs without any AI.</li>
-    <li>In Build, two optional buttons ask Gemini, Google's model, for a second opinion. Gemini does not carry the course in its memory. Every request therefore includes the course's rules, the 14 directions with their guiding questions and the textbook's worked curves, and tells Gemini to use nothing else. The course is supplied with each question, not trained into the model.</li>
+    <li>The AI always goes second. The checklist, the direction hints and the Practice scoring work without it, so a student commits to a reading before any AI speaks.</li>
+    <li>In Build, Gemini, Google's model, acts as a sparring partner in two ways: it draws its own curve without seeing yours, or it reviews your curve after you have written down your own weakest point. Gemini does not carry the course in its memory. Every request therefore includes the course's rules, the 14 directions with their guiding questions and the textbook's worked curves, and tells Gemini to use nothing else. The course is supplied with each question, not trained into the model.</li>
     <li>For the "AI's view" Gemini never sees your scores, so it cannot simply agree with you. It scores the attributes you chose, then you compare. Where you differ is the interesting part, and you must defend your reading.</li>
     <li>Gemini is a second opinion, never the answer. It knows the course only through what the request contains (not the lectures or the textbook text), so its reading can miss the nuance taught in class. The tool does not browse the web, and a company it does not know is flagged as an assumption. Only the company facts and curve you typed are sent, never anything else.</li>
+    <li>No shadow AI. For every AI answer the student records what they did with it (kept their reading, changed the curve, or rejected it) and why. This AI log goes into the copied summary, ready for an AI-use statement.</li>
   </ul>
   <h2>For next year's students</h2>
   <ul>
@@ -1280,11 +1321,14 @@ function coach(B) {
 }
 
 
-function aiErr(e) { const c = e && e.code; return c === 'cancelled' ? '' : c === 'rate_limited' ? 'Too many requests. Wait a few minutes, then try again.' : c === 'not_configured' ? 'The AI is not configured on this site yet. The checks on the left work without it.' : c === 'offline' ? 'No connection. Check your network and try again.' : 'The AI could not answer this time. The rest of the tool is unaffected.'; }
+function aiErr(e) { const c = e && e.code; return c === 'cancelled' ? '' : c === 'rate_limited' ? 'Too many requests. Wait a few minutes, then try again.' : c === 'not_configured' ? 'The AI is not configured on this site yet. The checks on the left work without it.' : c === 'offline' ? 'No connection. Check your network and try again.' : c === 'timeout' ? 'The AI took too long to answer. Try again in a moment; the rest of the tool is unaffected.' : 'The AI could not answer this time. The rest of the tool is unaffected.'; }
 async function callAI(task, payload, signal) {
-  let r;
-  try { r = await fetch('/api/ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ task }, payload)), signal }); }
-  catch (e) { throw { code: e && e.name === 'AbortError' ? 'cancelled' : 'offline' }; }
+  let r, timedOut = false;
+  const ctl = new AbortController(), timer = setTimeout(() => { timedOut = true; ctl.abort(); }, 65000);
+  if (signal) signal.addEventListener('abort', () => ctl.abort(), { once: true });
+  try { r = await fetch('/api/ai', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(Object.assign({ task }, payload)), signal: ctl.signal }); }
+  catch (e) { throw { code: timedOut ? 'timeout' : e && e.name === 'AbortError' ? 'cancelled' : 'offline' }; }
+  finally { clearTimeout(timer); }
   let j = null; try { j = await r.json(); } catch (e) {}
   if (!r.ok) throw { code: (j && j.error) || 'error' };
   if (!j || typeof j !== 'object') throw { code: 'error' };
@@ -1293,9 +1337,19 @@ async function callAI(task, payload, signal) {
 const half = v => { v = Number(v); return isFinite(v) ? Math.max(1, Math.min(5, Math.round(v * 2) / 2)) : null; };
 
 function viewBuild(root) {
-  const B = loadB(); let aiView = null, aiCtl, panels = [], rmConfirm = -1;
+  const B = loadB(); let aiView = null, aiCtl, panels = [], rmConfirm = -1, dragMode = 'both', aiRunning = false, selfCheck = '';
+  if (!Array.isArray(B.log)) B.log = [];
   const save = () => store.put({ build: B });
   const side = () => B.sides[B.active];
+  const isEmpty = () => !B.company.trim() && !B.offer.trim() && B.sides.every(s => s.attrs.every(a => !a.l.trim()));
+  if (S.demo) {
+    S.demo = false;
+    if (isEmpty() || confirm('Replace your current curve with the Vinted demo? Your own work will be cleared.')) {
+      const v = caseById('vinted'), d = sideData(v, 0);
+      B.company = v.name; B.offer = v.brief || v.summary; B.sides = [{ name: d.name, ref: d.ref, neu: d.neu, attrs: d.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }]; B.active = 0; save();
+      later(() => toast('Demo loaded. Now press "Show the AI\'s own curve" and see where it disagrees.'), 400);
+    }
+  }
   root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Build' }), h('h1', { style: 'margin-top:10px', text: 'Your company, your curve' })), h('p', { text: 'Write what you know about the company, name the attributes, then drag both curves into place. The checklist responds as you work. The tool does not look anything up: the facts must come from you.' })));
   const form = h('div', { class: 'panel' }), attrsEl = h('div', { class: 'panel' });
   const coachEl = h('div', { class: 'panel', style: 'margin-top:18px' }), aiEl = h('div');
@@ -1325,7 +1379,7 @@ function viewBuild(root) {
     attrsEl.append(h('h3', { text: 'Attributes' }), h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'What the customer sees. Drag the dots on the chart to set the levels.' }));
     const list = h('div');
     sd.attrs.forEach((a, i) => list.append(h('div', { class: 'arow' }, h('span', { class: 'ix', text: i + 1 }),
-      bind(h('input', { class: 'inp', placeholder: ['Price paid', 'Ease of use', 'Durability', 'Status', 'Choice'][i % 5] + ' …', maxlength: 40, 'aria-label': 'Attribute ' + (i + 1) }), a, 'l', () => { rebuildChart(); queueCoach(); }),
+      bind(h('input', { class: 'inp', placeholder: ['Price paid', 'Ease of use', 'Durability', 'Status', 'Choice'][i % 5] + ' …', maxlength: 40, 'aria-label': 'Attribute ' + (i + 1) }), a, 'l', () => { if (aiView) { aiView = null; aiEl.textContent = ''; toast('You renamed an attribute: ask Gemini again for its curve.'); } rebuildChart(); queueCoach(); }),
       h('button', { class: 'x', 'aria-label': 'Remove attribute ' + (i + 1), onclick: () => { if (sd.attrs.length > 2) { sd.attrs.splice(i, 1); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '×'))));
     attrsEl.append(list, h('div', { class: 'flex' },
       h('button', { class: 'btn ghost sm', onclick: () => { if (sd.attrs.length < 10) { sd.attrs.push({ l: '', r: 3, n: 3 }); save(); aiView = null; drawForm(); drawChart(); queueCoach(); } } }, '+ Add attribute'),
@@ -1335,10 +1389,32 @@ function viewBuild(root) {
     attrsEl.append(h('div', { class: 'flex', style: 'margin-top:16px' }, h('button', { class: 'btn ghost sm', onclick: copySummary }, 'Copy my summary'), h('button', { class: 'btn ghost sm', onclick: resetAll }, 'Start over')));
   }
   function drawSidesLabels() { form.querySelectorAll('.sides .chip').forEach((b, i) => { if (B.sides[i]) b.textContent = B.sides[i].name.trim() || 'Group ' + (i + 1); }); }
-  function loadCase(v) { if (!v) return; const [id, i] = v.split(':'), sdc = sideData(caseById(id), +i); B.sides[B.active] = { name: sdc.name, ref: sdc.ref, neu: sdc.neu, attrs: sdc.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }; save(); aiView = null; drawAll(); toast('Loaded. Now change it until it is yours.'); }
-  function resetAll() { B.company = ''; B.offer = ''; B.sides = [blankSide()]; B.active = 0; aiView = null; save(); drawAll(); toast('Cleared.'); }
-  function summaryText() { let t = `${B.company || 'Company'}: ${B.offer || ''}\n`; B.sides.forEach(s => { t += `\nCustomer: ${s.name}. ${s.neu || 'New'} vs ${s.ref || 'reference'}\n`; s.attrs.filter(a => a.l.trim()).forEach(a => t += `- ${a.l}: ${fmt(a.r)} -> ${fmt(a.n)}\n`); }); return t; }
-  function copySummary() { const t = summaryText(); (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast('Summary copied.'), () => { const ta = h('textarea', { class: 'inp', rows: 8 }); ta.value = t; attrsEl.append(ta); ta.select(); toast('Select and copy the text below.'); }); }
+  function loadCase(v) {
+    if (!v) return; const [id, i] = v.split(':'), cs = caseById(id), sdc = sideData(cs, +i);
+    B.sides[B.active] = { name: sdc.name, ref: sdc.ref, neu: sdc.neu, attrs: sdc.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) };
+    if (!B.company.trim() && !B.offer.trim()) { B.company = cs.name; B.offer = cs.brief || cs.summary || ''; }
+    save(); aiView = null; drawAll(); toast('Loaded. Now change it until it is yours.');
+  }
+  function resetAll() { B.company = ''; B.offer = ''; B.sides = [blankSide()]; B.active = 0; B.log = []; aiView = null; save(); drawAll(); toast('Cleared.'); }
+  const DEC = { kept: 'kept my reading', changed: 'changed my curve', rejected: 'rejected it' };
+  function summaryText() {
+    let t = `${B.company || 'Company'}: ${B.offer || ''}\n`;
+    B.sides.forEach(s => { t += `\nCustomer: ${s.name}. ${s.neu || 'New'} vs ${s.ref || 'reference'}\n`; s.attrs.filter(a => a.l.trim()).forEach(a => t += `- ${a.l}: ${fmt(a.r)} -> ${fmt(a.n)}\n`); });
+    t += `\nAI use: ${B.log.length ? `I consulted Gemini ${B.log.length} time(s) as a second opinion. Every decision below is mine.` : 'I did not consult the AI for this curve.'}\n`;
+    B.log.forEach(e => { t += `- ${day(e.t)} · ${e.task === 'coach' ? 'AI coach' : 'AI\'s own curve'}${e.self ? ` · my self-check first: "${e.self}"` : ''}\n`; (e.decisions || []).forEach(d => t += `  ${d.attr ? d.attr + ': ' : ''}I ${DEC[d.decision] || d.decision}. Why: ${d.why}\n`); });
+    return t;
+  }
+  function copySummary() { copyText(summaryText(), attrsEl, 'Summary copied.'); }
+  /* the student's decision on an AI answer goes into the AI log, with a reason */
+  function decide(entry, attr, choices, onPick) {
+    const why = h('input', { class: 'inp', maxlength: 200, placeholder: 'One line: why?', 'aria-label': 'Why' + (attr ? ', ' + attr : '') });
+    const row = h('div', { class: 'decide' }, why, h('div', { class: 'flex' }, choices.map(([k, t]) => h('button', { class: 'chip sm', onclick: () => {
+      if (why.value.trim().length < 8) { why.focus(); toast('Write one line on why first.'); return; }
+      entry.decisions = (entry.decisions || []).filter(d => d.attr !== attr).concat({ attr, decision: k, why: why.value.trim() }); save();
+      row.querySelectorAll('.chip').forEach(b => b.setAttribute('aria-pressed', b.textContent === t)); onPick && onPick(k); toast('Noted in your AI log.');
+    } }, t))));
+    return row;
+  }
 
   const dead = c => { c.destroy(); charts = charts.filter(x => x !== c); };
   function drawChart(structural) {
@@ -1367,8 +1443,10 @@ function viewBuild(root) {
     const sd = B.sides[i], labels = sd.attrs.map(a => a.l.trim()), ch = p.chart, showAI = aiView && i === B.active;
     p.cl.textContent = ''; p.cl.append(h('span', null, h('i', { class: 'ref' }), (sd.ref || 'Reference') + ' (drag)'), h('span', null, h('i'), (sd.neu || 'Your new offer') + ' (drag)'));
     if (showAI) p.cl.append(h('span', null, h('i', { class: 'ai dash' }), 'Gemini: ' + (sd.ref || 'reference')), h('span', null, h('i', { class: 'ai' }), 'Gemini: ' + (sd.neu || 'new offer')));
-    p.cl.append(h('span', { class: 'sp' }, h('button', { class: 'chip sm', 'aria-pressed': ch.showGaps, onclick: e => { ch.showGaps = !ch.showGaps; e.currentTarget.setAttribute('aria-pressed', ch.showGaps); ch.update(); } }, 'Gaps')));
-    const ser = [{ id: 'ref', cls: 's-ref', drag: true, vals: sd.attrs.map(a => a.r), name: 'Reference' }, { id: 'you', cls: 's-you', drag: true, vals: sd.attrs.map(a => a.n), name: 'New offer' }];
+    const dm = h('span', { class: 'flex', role: 'group', 'aria-label': 'Which curve to drag', style: 'gap:6px' }, h('span', { class: 'hint', text: 'Drag:' }),
+      [['both', 'Both'], ['ref', 'Reference'], ['you', 'New offer']].map(([k, t]) => h('button', { class: 'chip sm', 'aria-pressed': dragMode === k, onclick: () => { dragMode = k; panels.forEach((q, j) => paintChart(q, j)); } }, t)));
+    p.cl.append(h('span', { class: 'sp flex', style: 'gap:10px' }, dm, h('button', { class: 'chip sm', 'aria-pressed': ch.showGaps, onclick: e => { ch.showGaps = !ch.showGaps; e.currentTarget.setAttribute('aria-pressed', ch.showGaps); ch.update(); } }, 'Gaps')));
+    const ser = [{ id: 'ref', cls: 's-ref', drag: dragMode !== 'you', vals: sd.attrs.map(a => a.r), name: 'Reference' }, { id: 'you', cls: 's-you', drag: dragMode !== 'ref', vals: sd.attrs.map(a => a.n), name: 'New offer' }];
     if (showAI) { ser.push({ id: 'airef', cls: 's-airef', vals: aiView.map(x => x.r) }); ser.push({ id: 'ai', cls: 's-ai', vals: aiView.map(x => x.n) }); }
     ch.set(labels, ser, { reveal: false });
   }
@@ -1405,49 +1483,74 @@ function viewBuild(root) {
     let box = $('#aib', coachEl); if (!box) { box = h('div', { id: 'aib' }); coachEl.append(box); } box.textContent = '';
     if (!aiSample) { box.append(h('p', { class: 'hint', style: 'margin-top:18px', text: 'The AI second opinion is unavailable right now. Everything above works without it.' })); return; }
     const ready = side().attrs.filter(a => a.l.trim()).length >= 3 && (B.company.trim() || B.offer.trim());
-    box.append(h('div', { class: 'mini-h', text: 'Second opinion (optional, powered by Gemini)' }), h('div', { class: 'flex' },
-      h('button', { class: 'btn ai sm', disabled: !ready, onclick: askCoach }, 'Ask the AI coach'), h('button', { class: 'btn ghost sm', disabled: !ready, onclick: askView }, 'Show the AI\'s own curve')),
-      ready ? null : h('p', { class: 'hint', style: 'margin-top:8px', text: 'Add the company facts and at least three attribute names to enable these.' }));
+    const selfOk = () => selfCheck.trim().length >= 15;
+    const coachBtn = h('button', { class: 'btn ai sm', disabled: !ready || aiRunning || !selfOk(), onclick: askCoach }, 'Ask the AI coach');
+    const self = h('textarea', { class: 'inp', rows: 2, maxlength: 300, 'aria-label': 'Your self-check before asking the AI coach', placeholder: 'Before you ask: which check above is your weakest, and why?' });
+    self.value = selfCheck; self.addEventListener('input', () => { selfCheck = self.value; coachBtn.disabled = !ready || aiRunning || !selfOk(); });
+    box.append(h('div', { class: 'mini-h', text: 'Argue with an AI (Gemini)' }),
+      h('p', { class: 'hint', style: 'margin-bottom:10px', text: 'The AI goes second. It draws its own curve without seeing your levels, or reviews yours after you have judged it yourself. You decide what to keep, and every answer goes into your AI log.' }),
+      h('div', { class: 'flex' }, h('button', { class: 'btn ai sm', disabled: !ready || aiRunning, onclick: askView }, 'Show the AI\'s own curve')),
+      h('div', { style: 'margin-top:12px' }, self, h('div', { class: 'flex', style: 'margin-top:8px' }, coachBtn)),
+      ready ? null : h('p', { class: 'hint', style: 'margin-top:8px', text: 'Add the company facts and at least three attribute names to enable these. Or load a course case below.' }),
+      B.log.length ? h('details', { style: 'margin-top:12px' }, h('summary', { text: `Your AI log (${B.log.length})` }), h('ul', { class: 'qs' }, B.log.slice().reverse().map(e => h('li', null, h('b', { text: `${day(e.t)} · ${e.task === 'coach' ? 'AI coach' : 'AI\'s own curve'}. ` }),
+        (e.decisions || []).length ? e.decisions.map(d => `${d.attr ? d.attr + ': ' : ''}I ${DEC[d.decision] || d.decision} (${d.why})`).join('; ') : 'No decision recorded yet.'))),
+        h('p', { class: 'hint', text: 'The log goes into "Copy my summary", ready for an AI-use statement.' })) : null);
   }
+  function aiStart(msg) { if (aiCtl) aiCtl.abort(); aiCtl = new AbortController(); aiRunning = true; drawAIBtns(); aiBusy(msg); return aiCtl; }
+  function aiEnd(ctl) { if (ctl === aiCtl) { aiRunning = false; drawAIBtns(); } }
   const packSide = withScores => ({ customer: side().name, reference: side().ref, newOffer: side().neu, attributes: side().attrs.filter(a => a.l.trim()).map(a => withScores ? { label: a.l.trim(), reference: a.r, new: a.n } : { label: a.l.trim() }) });
   function aiBusy(msg, stop) { aiEl.textContent = ''; aiEl.append(h('div', { class: 'aibox' }, h('p', { class: 'pulse' }, h('span', { class: 'spin' }), msg), h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => aiCtl && aiCtl.abort() }, 'Stop')))); }
   function aiFail(e) { aiEl.textContent = ''; const m = aiErr(e); if (m) aiEl.append(h('div', { class: 'aibox' }, h('p', { text: m }))); }
   async function askCoach() {
-    aiCtl = new AbortController(); aiBusy('Gemini is reading your curve with the course\'s rules…');
+    if (aiRunning) return; const ctl = aiStart('Gemini is reading your curve with the course\'s rules…');
     try {
-      const r = await callAI('coach', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(true) }, aiCtl.signal);
+      const r = await callAI('coach', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(true), selfCheck: selfCheck.trim() }, ctl.signal);
+      if (ctl !== aiCtl) return;
+      const entry = { t: Date.now(), task: 'coach', self: selfCheck.trim(), decisions: [] }; B.log.push(entry); B.log = B.log.slice(-50); save(); selfCheck = '';
       aiEl.textContent = '';
       const li = a => (Array.isArray(a) ? a : []).filter(x => typeof x === 'string').map(x => h('li', { text: x }));
-      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge k-built', style: 'color:var(--ai);border-color:var(--ai)', text: 'Gemini, using course concepts only' }), h('h4', { style: 'margin-top:10px', text: 'Second opinion' }), h('p', { text: String(r.verdict || '') }),
+      aiEl.append(h('div', { class: 'aibox', 'aria-live': 'polite' }, h('span', { class: 'badge k-built', style: 'color:var(--ai);border-color:var(--ai)', text: 'Gemini, prompted with the course\'s rules' }), h('h4', { style: 'margin-top:10px', text: 'Second opinion' }),
+        r.selfCheck ? h('div', null, h('div', { class: 'mini-h', text: 'On your self-check' }), h('p', { class: 'hint', text: 'You wrote: ' + entry.self }), h('p', { text: String(r.selfCheck) })) : null,
+        h('div', { class: 'mini-h', text: 'Overall' }), h('p', { text: String(r.verdict || '') }),
         r.strengths && r.strengths.length ? h('div', null, h('div', { class: 'mini-h', text: 'What works' }), h('ul', null, li(r.strengths))) : null,
         r.issues && r.issues.length ? h('div', null, h('div', { class: 'mini-h', text: 'To fix against the rules' }), h('ul', null, li(r.issues))) : null,
         Array.isArray(r.directions) && r.directions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Directions to try' }), h('ul', null, r.directions.filter(d => d && d.n >= 1 && d.n <= 14).map(d => h('li', null, h('b', { text: `${d.n} · ${dirT(d.n)}. ` }), String(d.why || ''))))) : null,
         h('div', { class: 'mini-h', text: 'Questions to answer' }), h('ol', null, li(r.questions)),
         r.architecture ? h('div', null, h('div', { class: 'mini-h', text: 'Value architecture' }), h('p', { text: String(r.architecture) })) : null,
-        r.watch ? h('div', null, h('div', { class: 'mini-h', text: 'Watch out' }), h('p', { text: String(r.watch) })) : null));
-    } catch (e) { aiFail(e); }
+        r.watch ? h('div', null, h('div', { class: 'mini-h', text: 'Watch out' }), h('p', { text: String(r.watch) })) : null,
+        h('div', { class: 'mini-h', text: 'What do you do with this second opinion?' }),
+        decide(entry, '', [['kept', 'I keep my curve'], ['changed', 'I change my curve'], ['rejected', 'I reject it']], () => drawAIBtns())));
+    } catch (e) { if (ctl === aiCtl) aiFail(e); }
+    finally { aiEnd(ctl); }
   }
   async function askView() {
-    aiCtl = new AbortController(); aiBusy('Gemini is drawing its own curve without seeing yours…');
-    const sd = side(), labels = sd.attrs.filter(a => a.l.trim());
+    if (aiRunning) return;
+    const sd = side();
+    if (sd.attrs.some(a => !a.l.trim())) { sd.attrs = sd.attrs.filter(a => a.l.trim()); save(); drawForm(); drawChart(); toast('Empty attribute rows removed.'); }
+    const labels = sd.attrs.slice(), ctl = aiStart('Gemini is drawing its own curve without seeing yours…');
     try {
-      const r = await callAI('view', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(false) }, aiCtl.signal);
+      const r = await callAI('view', { company: B.company, offer: B.offer, sides: B.sides.length, curve: packSide(false) }, ctl.signal);
+      if (ctl !== aiCtl) return;
       const arr = Array.isArray(r.attributes) ? r.attributes : [];
       const out = labels.map((a, i) => { const m = arr.find(x => x && String(x.label).trim().toLowerCase() === a.l.trim().toLowerCase()) || arr[i] || {}; return { l: a.l.trim(), r: half(m.ref), n: half(m.new), whyRef: String(m.whyRef || m.why || ''), whyNew: String(m.whyNew || m.why || ''), conf: m.confidence || 'low', mine: a }; });
       if (out.some(o => o.r == null || o.n == null)) throw { code: 'bad' };
       aiView = out; drawChart();
       const diffs = out.filter(o => Math.abs(o.n - o.mine.n) >= 1 || Math.abs(o.r - o.mine.r) >= 1);
+      const entry = { t: Date.now(), task: 'view', decisions: [] }; B.log.push(entry); B.log = B.log.slice(-50); save();
+      const useAI = o => k => { if (k === 'changed') { o.mine.r = o.r; o.mine.n = o.n; save(); drawChart(); queueCoach(); } };
       aiEl.textContent = '';
-      aiEl.append(h('div', { class: 'aibox' }, h('span', { class: 'badge', style: 'color:var(--ai);border-color:var(--ai)', text: r.known ? 'Gemini recognises the company' : 'Gemini does not recognise it: description only' }),
+      aiEl.append(h('div', { class: 'aibox', 'aria-live': 'polite' }, h('span', { class: 'badge', style: 'color:var(--ai);border-color:var(--ai)', text: r.known ? 'Gemini recognises the company' : 'Gemini does not recognise it: description only' }),
         h('h4', { style: 'margin-top:10px', text: 'Gemini\'s view against yours' }), h('p', { text: String(r.summary || '') }),
-        h('div', { class: 'mini-h', text: diffs.length ? 'Where you and Gemini disagree by a point or more' : 'You and Gemini agree within a point everywhere' }),
-        h('ul', { class: 'diffs' }, diffs.map(o => reasonLi(o, sd))),
+        h('div', { class: 'mini-h', text: diffs.length ? 'Where you and Gemini disagree by a point or more: defend your reading' : 'You and Gemini agree within a point everywhere' }),
+        h('ul', { class: 'diffs' }, diffs.map(o => { const li = reasonLi(o, sd); li.append(decide(entry, o.l, [['kept', 'Keep mine'], ['changed', 'Use Gemini\'s levels']], useAI(o))); return li; })),
+        diffs.length ? null : h('div', null, h('div', { class: 'mini-h', text: 'What do you take from this?' }), decide(entry, '', [['kept', 'It confirms my reading'], ['changed', 'I will still change something']])),
         h('details', { style: 'margin-top:10px' }, h('summary', { text: 'Gemini\'s reasoning on every attribute' }), h('ul', { class: 'diffs' }, out.map(o => reasonLi(o, sd)))),
         Array.isArray(r.missing) && r.missing.length ? h('div', null, h('div', { class: 'mini-h', text: 'Facts that would sharpen the curve' }), h('ul', null, r.missing.map(x => h('li', { text: String(x) })))) : null,
         Array.isArray(r.assumptions) && r.assumptions.length ? h('div', null, h('div', { class: 'mini-h', text: 'Gemini\'s assumptions' }), h('ul', null, r.assumptions.map(x => h('li', { text: String(x) })))) : null,
         h('p', { class: 'hint', style: 'margin-top:12px', text: 'A second opinion, not the truth. Decide who is right and be ready to defend it.' }),
         h('div', { class: 'flex', style: 'margin-top:10px' }, h('button', { class: 'btn ghost sm', onclick: () => { aiView = null; drawChart(); aiEl.textContent = ''; } }, 'Hide Gemini\'s curve'))));
-    } catch (e) { aiFail(e.code === 'bad' ? { code: 'x' } : e); }
+    } catch (e) { if (ctl === aiCtl) aiFail(e && e.code === 'bad' ? { code: 'x' } : e); }
+    finally { aiEnd(ctl); }
   }
   const reasonLi = (o, sd) => h('li', null, h('b', { text: o.l + '. ' }), `You ${fmt(o.mine.r)} → ${fmt(o.mine.n)}; Gemini ${fmt(o.r)} → ${fmt(o.n)} (${o.conf} confidence).`,
     h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.ref || 'Reference' }), ' ' + o.whyRef), h('div', { class: 'why2' }, h('span', { class: 'mono', text: sd.neu || 'New offer' }), ' ' + o.whyNew));
