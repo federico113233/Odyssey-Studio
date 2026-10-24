@@ -923,7 +923,7 @@ let charts = [], timers = [], aiSample = true, toastT;
 function cleanup() { charts.forEach(c => c.destroy()); charts = []; timers.forEach(clearTimeout); timers = []; }
 const later = (fn, ms) => { const t = setTimeout(fn, ms); timers.push(t); return t; };
 function mkChart(host, opts) { const c = new VC(host, opts); charts.push(c); return c; }
-function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 2600); }
+function toast(msg) { const t = $('#toast'); t.textContent = msg; t.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), Math.max(2600, msg.length * 55)); }   // long enough to read
 function copyText(t, host, ok) { (navigator.clipboard && navigator.clipboard.writeText ? navigator.clipboard.writeText(t) : Promise.reject()).then(() => toast(ok || 'Copied.'), () => { const ta = h('textarea', { class: 'inp', rows: 8 }); ta.value = t; host.append(ta); ta.select(); toast('Select and copy the text below.'); }); }
 const day = t => new Date(t).toLocaleDateString('en-CA');   // YYYY-MM-DD in the student's own time zone
 function journalText() {
@@ -1043,7 +1043,7 @@ function viewHome(root) {
       h('p', { class: 'lede', text: 'Odyssey Studio is a place to practise the value curve, the course\'s core tool. Predict a curve before the course reveals it, then build your own and argue with your coach, who draws its own curve without seeing yours. You decide who is right, and every answer goes into your log.' }),
       h('div', { class: 'cta' },
         h('button', { class: 'btn', onclick: () => go('practice') }, 'Start with Practice ', h('span', { class: 'arrow', text: '→' })),
-        h('button', { class: 'btn ghost', onclick: () => go('build', null, { demo: true }) }, 'See your coach disagree with you'))),
+        h('button', { class: 'btn ghost', onclick: () => go('build', null, { demo: true }) }, 'Try the coach on an example'))),
     h('div', { class: 'hero-card' }, h('div', { class: 'cap' }, capB, dots), host, h('p', { class: 'hero-note', text: 'Dashed: the reference. Solid: the new offer. Green and amber bars show what rises and what is given up.' })));
   const strip = h('section', { class: 'strip rv' },
     [['01', 'Value proposition', 'What the customer gets, drawn as a value curve against a reference.'], ['02', 'Value architecture', 'The value chain, partners and resources that make the curve possible.'], ['03', 'Contributions', 'What the model earns, and what it does for the planet and for people.']].map(a => h('div', null, h('span', { class: 'n', text: a[0] }), h('h3', { text: a[1] }), h('p', { text: a[2] }))));
@@ -1180,7 +1180,7 @@ function viewPractice(root) {
   const hintEl = h('p', { class: 'hint', text: 'Move at least one dot to unlock the reveal. Tip: use arrow keys on a focused dot for half-points.' });
   function upd() {
     st.vals = chart.get('you').vals.slice();
-    const todo = [st.moved.size < 1 && 'move at least one dot', st.why.trim().length < 10 && 'write your bet in one sentence', !st.conf && 'say how sure you are'].filter(Boolean);
+    const todo = [st.moved.size < 1 && 'move at least one dot', st.why.trim().split(/\s+/).filter(w => /[a-z]{2,}/i.test(w)).length < 3 && 'write your bet in one sentence', !st.conf && 'say how sure you are'].filter(Boolean);
     reveal.disabled = todo.length > 0;
     hintEl.textContent = todo.length ? 'To unlock the reveal: ' + todo.join(', ') + '. Tip: use arrow keys on a focused dot for half-points.' : `${st.moved.size} of ${n} attributes moved. Untouched dots count as "same as the reference".`;
   }
@@ -1234,10 +1234,11 @@ function viewPractice(root) {
     const worst = rows.slice().sort((a, b) => b.d - a.d)[0];
     const dl = (arr, t) => arr.length ? h('div', { style: 'margin-top:12px' }, h('div', { class: 'lab', text: t }), h('div', { class: 'stack', style: 'gap:8px;margin-top:8px' }, arr.map(n => { const w = (c.dirs.find(d => d[0] === n) || [])[1]; return h('div', { class: 'note' }, h('b', { text: `${n} · ${dirT(n)}. ` }), w || 'Not in our reading of this case. Can you argue for it?'); }))) : null;
     result.textContent = '';
+    // left: score, table and directions (long); right: the reflection, sticky (short)
     result.append(h('div', { class: 'sec', style: 'padding-top:34px' }, h('div', { class: 'two' },
-      h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because ${ours ? 'our levels are a judgement' : 'the course curves are read by eye'}.` }), h('p', { class: 'hint', text: `Shape: you moved ${sameWay} of ${n} attributes the same way as ${ours ? 'our reading' : 'the course'} (up, down or held).` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }), retry ? h('p', { class: 'hint', text: 'A retry within a day does not change your best score: come back tomorrow and see if your reading holds.' }) : null)), h('div', { style: 'margin-top:12px' }, table)),
-      h('div', { class: 'stack' },
-        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} directions in our reading of this case. The course material does not name directions for these cases, so treat this as a discussion, not a key.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added')),
+      h('div', { class: 'stack' }, h('div', { class: 'panel' }, h('div', { class: 'score' }, ring, h('div', null, h('h3', { style: 'font-size:2rem', text: lab }), h('p', { class: 'hint', text: `${tot} of ${2 * n} points. Within half a point counts as spot on, because ${ours ? 'our levels are a judgement' : 'the course curves are read by eye'}.` }), h('p', { class: 'hint', text: `Shape: you moved ${sameWay} of ${n} attributes the same way as ${ours ? 'our reading' : 'the course'} (up, down or held).` }), h('p', { class: 'hint', text: `Before the reveal you said: ${confT.toLowerCase()}. ${calib}` }), retry ? h('p', { class: 'hint', text: 'A retry within a day does not change your best score: come back tomorrow and see if your reading holds.' }) : null)), h('div', { style: 'margin-top:12px' }, table)),
+        h('div', { class: 'panel' }, h('h3', { text: 'Directions' }), h('p', { class: 'hint', text: `You matched ${hit.length} of ${tdirs.length} directions in our reading of this case. The course material does not name directions for these cases, so treat this as a discussion, not a key.` }), dl(hit, 'You found'), dl(miss, 'You missed'), dl(extra, 'You added'))),
+      h('aside', { class: 'side' },
         h('div', { class: 'panel' }, h('h3', { text: 'Reflect before moving on' }), h('ul', { class: 'qs' },
           h('li', { text: worst.d > .5 ? `You were furthest from ${ours ? 'our reading' : 'the course'} on "${worst.a[0]}" (you ${fmt(yv[worst.i])}, ${ours ? 'ours' : 'course'} ${fmt(truth[worst.i])}). What did this customer value that you did not credit?` : 'You placed every point within half a point. What made the logic of this case easy to see?' }),
           h('li', { text: 'Which attribute does the company give up, and who is the customer that does not mind?' }),
@@ -1373,7 +1374,7 @@ function viewBuild(root) {
     if (isEmpty() || confirm('Replace your current curve with the Vinted demo? Your own work will be cleared.')) {
       const v = caseById('vinted'), d = sideData(v, 0);
       B.log = []; B.company = v.name; B.offer = v.brief || v.summary; B.sides = [{ name: d.name, ref: d.ref, neu: d.neu, attrs: d.attrs.map(a => ({ l: a[0], r: a[1], n: a[2] })) }]; B.active = 0; save();
-      later(() => toast('Demo loaded. Now press "See your coach\'s curve" and see where it disagrees.'), 400);
+      later(() => toast('Example loaded: Vinted, for buyers. Press "See your coach\'s curve": it draws its own without seeing yours, then shows where you differ.'), 400);
     }
   }
   root.append(h('div', { class: 'case-head' }, h('div', null, h('span', { class: 'eyebrow', text: 'Build' }), h('h1', { style: 'margin-top:10px', text: 'Your company, your curve' })), h('p', { text: 'Write what you know about the company, name the attributes, then drag both curves into place. The checklist responds as you work. The tool does not look anything up: the facts must come from you.' })));
