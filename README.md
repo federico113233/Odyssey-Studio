@@ -1,12 +1,38 @@
-# Odyssey Studio
+# Odyssey Studio: learn a strategy tool by predicting, then comparing
 
-An interactive web app to practise the **value curve**, the core tool of HEC Paris' course *Reinventing Your Business Model (Odyssey 3.14)*.
+**Live:** [odyssey-studio-seven.vercel.app](https://odyssey-studio-seven.vercel.app) · **Role:** solo, covering concept, UX, visual design and build · **Context:** HEC Paris, *Reinventing Your Business Model (Odyssey 3.14)*, Sept–Oct 2026
 
-- **Explore** eight cases (four from the textbook, one student analysis, three built from course concepts).
-- **Practice**: predict a curve, then reveal the course's reading and get scored.
-- **Build** your own curve with a live, rule-based coach, plus a coach (an AI model, Gemini on the server) that goes second and whose every answer the student must accept or reject with a reason.
+![Odyssey Studio home](docs/screenshots/home.png)
 
-A student project built on the course framework and cases. Not an official HEC tool.
+## The problem
+
+The value curve is the core tool of the course. It compares a new offer with a reference on the attributes customers care about. In class you watch curves being *explained*, but you rarely get to *draw* one and find out whether your reading holds up. Reading cases is passive, and the gap between "I understand it" and "I can do it" only shows up in the exam.
+
+**Users:** my classmates, preparing for assignments and the exam.
+
+## Design principles
+
+- **Predict before you see the answer.** Practice mode gives you a short brief and the reference curve. You place the new curve yourself, and only then does the course's curve slide in beside yours. The gap between the two is where you learn.
+- **Explain every point.** In Explore, each attribute on the chart comes with a sentence on why it sits where it does, and gaps can be shown or hidden.
+- **The AI coach goes second, and you have the last word.** In Build, the student describes a company and places both curves while a rule-based checklist reacts live. Then the AI coach draws its own curve without seeing the student's. For each disagreement the student must accept or reject the coach's reading, *with a reason*. The thinking stays with the student.
+- **The tool never invents facts.** Build doesn't look anything up: the facts about the company have to come from the student.
+
+## The experience
+
+**Explore:** eight cases. Four come from the textbook, one is a student analysis (Bending Spoons), and three are built from course concepts.
+![Explore](docs/screenshots/explore.png)
+
+**Practice:** predict first, then compare.
+![Practice](docs/screenshots/practice.png)
+
+**Build:** your company, your curve, with a live checklist and an AI coach that has to argue its case.
+![Build](docs/screenshots/build.png)
+
+> A student project built on the course framework and cases. Not an official HEC tool.
+
+---
+
+# Technical notes
 
 ## Structure
 
